@@ -31,9 +31,7 @@ public class register extends JFrame{
 		j.setVisible(true);//注意 只有加了这个页面调用才会显示
         //收费信息 sf=new 收费信息();
        
-		price sf=new price();
-        sf.setVisible(true);
-       
+		
 		
 	}
 	
