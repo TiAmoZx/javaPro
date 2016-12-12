@@ -1,23 +1,22 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
-
-import ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷.LoginDemo.B1;
+//import ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½.LoginDemo.B1;
 public class Yuanzhangdeanniu extends JFrame{
 private JButton myButton1,myButton2,myButton3,myButton4;
 public Yuanzhangdeanniu(){
-	super("Ôº³¤µÄ²éÑ¯°´Å¥");
+	super("Ôºï¿½ï¿½ï¿½Ä²ï¿½Ñ¯ï¿½ï¿½Å¥");
 	setBounds(0,0,1000,645);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setVisible(true);
-	myButton1=new JButton("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ð¶î");
-	myButton2=new JButton("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ð¶î(±ýÍ¼)");
-	myButton3=new JButton("¸÷Ò©Æ·¿â´æ");
-	myButton4=new JButton("¸÷Ò½Éú¾ÍÕïÊýÁ¿ºÍ½ð¶î");
+	myButton1=new JButton("ï¿½ï¿½ï¿½Ò¹Òºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½");
+	myButton2=new JButton("ï¿½ï¿½ï¿½Ò¹Òºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½(ï¿½ï¿½Í¼)");
+	myButton3=new JButton("ï¿½ï¿½Ò©Æ·ï¿½ï¿½ï¿½");
+	myButton4=new JButton("ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½");
 	add(myButton1);
 	add(myButton2);
 	add(myButton3);
@@ -49,7 +48,7 @@ class myButton4 implements ActionListener{
 	}
 }
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 		Yuanzhangdeanniu f=new Yuanzhangdeanniu();
 	}
 

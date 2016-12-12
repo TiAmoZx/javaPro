@@ -1,18 +1,18 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 
 import javax.swing.*;
 
-import ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷.Yuanzhangdeanniu.myButton1;
+//import ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½Æ²ï¿½ï¿½ï¿½.Yuanzhangdeanniu.myButton1;
 public class yaopinkucun extends JFrame{
 	private JButton tuichu;
 	private JTextArea keshi,guahaoliang,jine;
 	public yaopinkucun(){	
-	super("Ò©Æ·¿â´æ");
+	super("Ò©Æ·ï¿½ï¿½ï¿½");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	JButton tuichu=new JButton("·µ»Ø");
+	JButton tuichu=new JButton("ï¿½ï¿½ï¿½ï¿½");
 	setBounds(0,0,1000,700);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -38,7 +38,7 @@ public class yaopinkucun extends JFrame{
 		}
 	}
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 yaopinkucun f=new yaopinkucun();
 	}
 }

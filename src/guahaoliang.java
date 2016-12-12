@@ -1,4 +1,4 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+
 import javax.swing.*;
 
 import java.awt.event.*;
@@ -6,10 +6,10 @@ import java.awt.*;
 public class guahaoliang extends JFrame{
 private JTextArea keshi,guahaoliang,jine;
 public guahaoliang(){
-	super("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ð¶î");
+	super("ï¿½ï¿½ï¿½Ò¹Òºï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ü½ï¿½ï¿½");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	JButton tuichu1;
-	JButton tuichu11=new JButton("·µ»Ø");
+	JButton tuichu11=new JButton("ï¿½ï¿½ï¿½ï¿½");
 	add(tuichu11);
 	tuichu11.setBounds(500,600,100,50);
 	setBounds(0,0,1000,700);
@@ -33,7 +33,7 @@ class tuichu1 implements ActionListener{
 		}
 	}
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 guahaoliang f=new guahaoliang();
 	}
 

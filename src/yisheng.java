@@ -1,13 +1,13 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+
 import java.awt.event.*;
 import javax.swing.*;
 public class yisheng extends JFrame{
 	private JTextArea keshi,guahaoliang,jine;
 	public yisheng(){
-		super("¸÷Ò½Éú¾ÍÕïÊýÁ¿ºÍ½ð¶î");
+		super("ï¿½ï¿½Ò½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Í½ï¿½ï¿½");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 		JButton tuichu1;
-		JButton tuichu11=new JButton("·µ»Ø");
+		JButton tuichu11=new JButton("ï¿½ï¿½ï¿½ï¿½");
 		add(tuichu11);
 		tuichu11.setBounds(500,600,100,50);
 		setBounds(0,0,1000,700);
@@ -31,7 +31,7 @@ public class yisheng extends JFrame{
 			}
 		}
 		public static void main(String[] args) {
-			// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+			// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 	guahaoliang f=new guahaoliang();
 		}
 

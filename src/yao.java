@@ -1,4 +1,4 @@
-package yao;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -52,7 +52,7 @@ public class yao extends JFrame {
 		textField.setColumns(10);
 		
 		JButton button = new JButton("\u63D0\u4EA4");
-		button.setFont(new Font("ËÎÌå", Font.PLAIN, 12));
+		button.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 12));
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 			}
@@ -71,12 +71,12 @@ public class yao extends JFrame {
 				System.exit(0);
 			}
 		});
-		button_1.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		button_1.setBounds(544, 381, 89, 29);
 		contentPane.add(button_1);
 		
 		JLabel label_1 = new JLabel("\u8BF7\u5199\u5165\u836F\u54C1");
-		label_1.setFont(new Font("ËÎÌå", Font.PLAIN, 13));
+		label_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 13));
 		label_1.setBounds(21, 123, 65, 29);
 		contentPane.add(label_1);
 		
@@ -94,7 +94,7 @@ public class yao extends JFrame {
 			
 			}
 		});
-		button_2.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button_2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		button_2.setBounds(407, 381, 116, 29);
 		contentPane.add(button_2);
 	}
