@@ -53,7 +53,7 @@ public class Dingdan extends JFrame {
 		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u836F\u65B9\uFF1A");
-		lblNewLabel.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		lblNewLabel.setFont(new Font("å®‹ä½“", Font.PLAIN, 14));
 		lblNewLabel.setBounds(73, 88, 108, 29);
 		contentPane.add(lblNewLabel);
 		
@@ -73,7 +73,7 @@ public class Dingdan extends JFrame {
 				System.exit(0);
 			}
 		});
-		button.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button.setFont(new Font("å®‹ä½“", Font.PLAIN, 14));
 		button.setBounds(537, 409, 89, 29);
 		contentPane.add(button);
 		
@@ -85,17 +85,17 @@ public class Dingdan extends JFrame {
 				 a.setVisible(true);
 			}
 		});
-		button_1.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button_1.setFont(new Font("å®‹ä½“", Font.PLAIN, 14));
 		button_1.setBounds(411, 409, 89, 29);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("\u53D6\u836F");
-		button_2.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button_2.setFont(new Font("å®‹ä½“", Font.PLAIN, 14));
 		button_2.setBounds(73, 270, 89, 29);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("\u5220\u9664\u6B64\u836F\u65B9");
-		button_3.setFont(new Font("ËÎÌå", Font.PLAIN, 11));
+		button_3.setFont(new Font("å®‹ä½“", Font.PLAIN, 11));
 		button_3.setBounds(73, 320, 89, 29);
 		contentPane.add(button_3);
 		
