@@ -15,6 +15,7 @@ import java.awt.SystemColor;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuBar;
 
 public class Dingdan extends JFrame {
 
@@ -41,7 +42,7 @@ public class Dingdan extends JFrame {
 	 */
 	public Dingdan() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 673, 530);
+		setBounds(100, 100, 900, 900);
 		contentPane = new JPanel();
 		contentPane.setBackground(Color.WHITE);
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
@@ -49,17 +50,17 @@ public class Dingdan extends JFrame {
 		contentPane.setLayout(null);
 		
 		JComboBox comboBox = new JComboBox();
-		comboBox.setBounds(73, 138, 168, 29);
+		comboBox.setBounds(160, 162, 168, 29);
 		contentPane.add(comboBox);
 		
 		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u836F\u65B9\uFF1A");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 14));
-		lblNewLabel.setBounds(73, 88, 108, 29);
+		lblNewLabel.setBounds(54, 162, 108, 29);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label = new JLabel("");
-		label.setBackground(Color.WHITE);
-		label.setBounds(337, 103, 258, 309);
+		label.setBackground(Color.GRAY);
+		label.setBounds(352, 198, 443, 518);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
@@ -74,7 +75,7 @@ public class Dingdan extends JFrame {
 			}
 		});
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
-		button.setBounds(537, 409, 89, 29);
+		button.setBounds(706, 779, 89, 29);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("\u8FD4\u56DE");
@@ -86,22 +87,26 @@ public class Dingdan extends JFrame {
 			}
 		});
 		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_1.setBounds(411, 409, 89, 29);
+		button_1.setBounds(596, 779, 89, 29);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("\u53D6\u836F");
 		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_2.setBounds(73, 270, 89, 29);
+		button_2.setBounds(134, 433, 89, 29);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("\u5220\u9664\u6B64\u836F\u65B9");
 		button_3.setFont(new Font("宋体", Font.PLAIN, 11));
-		button_3.setBounds(73, 320, 89, 29);
+		button_3.setBounds(134, 526, 89, 29);
 		contentPane.add(button_3);
 		
 		JLabel label_2 = new JLabel("\u836F\u623F\u7BA1\u7406\u7CFB\u7EDF");
 		label_2.setBackground(Color.WHITE);
-		label_2.setBounds(268, 21, 149, 29);
+		label_2.setBounds(367, 53, 149, 29);
 		contentPane.add(label_2);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 874, 40);
+		contentPane.add(menuBar);
 	}
 }
