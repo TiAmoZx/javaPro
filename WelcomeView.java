@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -57,22 +57,22 @@ public class WelcomeView extends JFrame {
 		
 		JLabel label = new JLabel("\u533B\u9662\u95E8\u8BCA\u5DE5\u4F5C\u7CFB\u7EDF");
 		label.setHorizontalAlignment(SwingConstants.CENTER);
-		label.setFont(new Font("»ªÎÄ¿¬Ìå", Font.PLAIN, 25));
+		label.setFont(new Font("ï¿½ï¿½ï¿½Ä¿ï¿½ï¿½ï¿½", Font.PLAIN, 25));
 		label.setBounds(63, 18, 258, 44);
 		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("\u7528\u6237\u540D\uFF1A");
-		label_1.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		label_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		label_1.setBounds(47, 84, 80, 15);
 		contentPane.add(label_1);
 		
 		JLabel label_2 = new JLabel("\u5BC6\u7801\uFF1A");
-		label_2.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		label_2.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		label_2.setBounds(47, 126, 54, 15);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("\u7528\u6237\u7C7B\u578B\uFF1A");
-		label_3.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		label_3.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		label_3.setBounds(47, 168, 80, 15);
 		contentPane.add(label_3);
 		
@@ -85,7 +85,7 @@ public class WelcomeView extends JFrame {
 		passwordField.setBounds(122, 123, 215, 21);
 		contentPane.add(passwordField);
 		
-		String[] type = {"²¡ÈË","Ò½Éú","ÊÕ·ÑÈËÔ±","Ò©Ê¦","Ôº³¤","¹ÜÀíÔ±"};
+		String[] type = {"ï¿½ï¿½ï¿½ï¿½","Ò½ï¿½ï¿½","ï¿½Õ·ï¿½ï¿½ï¿½Ô±","Ò©Ê¦","Ôºï¿½ï¿½","ï¿½ï¿½ï¿½ï¿½Ô±"};
 		JComboBox comboBox = new JComboBox(type);
 		comboBox.setBounds(122, 165, 215, 21);
 		contentPane.add(comboBox);
@@ -96,7 +96,7 @@ public class WelcomeView extends JFrame {
 				
 			}
 		});
-		button.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		button.setBounds(47, 242, 93, 23);
 		contentPane.add(button);
 		
@@ -106,7 +106,7 @@ public class WelcomeView extends JFrame {
 				System.exit(0);
 			}
 		});
-		button_1.setFont(new Font("ËÎÌå", Font.PLAIN, 14));
+		button_1.setFont(new Font("ï¿½ï¿½ï¿½ï¿½", Font.PLAIN, 14));
 		button_1.setBounds(244, 242, 93, 23);
 		contentPane.add(button_1);
 		

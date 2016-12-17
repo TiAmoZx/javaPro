@@ -29,6 +29,10 @@ import java.io.IOException;
 import java.awt.Dialog.ModalExclusionType;
 import java.awt.Window.Type;
 import java.awt.event.ActionListener;
+import javax.swing.GroupLayout;
+import javax.swing.GroupLayout.Alignment;
+import javax.swing.LayoutStyle.ComponentPlacement;
+import java.awt.ScrollPane;
 
 public class Jfa extends JFrame {
 
@@ -53,7 +57,8 @@ public class Jfa extends JFrame {
 		});
 		
 	}
-
+	JMenuItem menu_zxyygh = new JMenuItem("已在线预约挂号");
+	JMenuItem menu_wzxyy = new JMenuItem("现场预约");
 	/**
 	 * Create the frame.
 	 */
@@ -68,7 +73,7 @@ public class Jfa extends JFrame {
 		 
 		setTitle("挂号");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 502, 391);
+		setBounds(200, 150, 400, 400);
 		
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBackground(Color.LIGHT_GRAY);
@@ -83,12 +88,14 @@ public class Jfa extends JFrame {
 		menu.setBackground(Color.RED);
 		menuBar.add(menu);
 		
-		JMenuItem menu_zxyygh = new JMenuItem("已在线预约挂号");
+		
 		menu_zxyygh.setPressedIcon(new ImageIcon("/Users/yuelei/Desktop/1.jpg"));
 		menu.add(menu_zxyygh);
+		menu_zxyygh.addActionListener(actionListener);
 		
-		JMenuItem menu_wzxyy = new JMenuItem("未在线预约");
+		
 		menu.add(menu_wzxyy);
+		menu_wzxyy.addActionListener(actionListener);
 		
 		JButton button1 = new JButton("退出");
 		button1.addActionListener(new ActionListener() {
@@ -114,47 +121,14 @@ public class Jfa extends JFrame {
 		menuBar.add(button1);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		
 		JLabel label123 = new JLabel(" 欢迎进入挂号收费系统",JLabel.CENTER);
+		label123.setBounds(6, 6, 388, 41);
 		label123.setBackground(Color.CYAN);
 		label123.setHorizontalAlignment(SwingConstants.CENTER);
 		label123.setFont(new Font("Adobe Gothic Std", Font.BOLD, 20));
 		label123.setForeground(Color.BLACK);
-		contentPane.add(label123, BorderLayout.NORTH);
-		
-		JPanel panel = new JPanel();
-		panel.setSize(new Dimension(0, 20));
-		panel.setBorder(new CompoundBorder());
-		panel.setPreferredSize(new Dimension(10, 25));
-		panel.setRequestFocusEnabled(false);
-		panel.setBackground(Color.CYAN);
-		contentPane.add(panel, BorderLayout.SOUTH);
-		
-		JLabel Jlable1 = new JLabel("门诊管理系统");
-		Jlable1.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel.add(Jlable1);
-		Jlable1.setLocation(10, 10);
-		
-		JLabel Jlable2 = new JLabel("欢迎使用");
-		Jlable2.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel.add(Jlable2);
-		//DateFormat df=DateFormat.getDateInstance(DateFormat.LONG);
-		//String dataString=df.format(new Date(0));
-		JLabel Jlable3 = new JLabel("日期");
-	
-		Jlable3.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		Jlable3.setAlignmentX(Component.RIGHT_ALIGNMENT);
-		panel.add(Jlable3);
-		//DateFormat df1=DateFormat.getTimeInstance(DateFormat.MEDIUM);
-		//String dataString1=df1.format(new Date(0));//由于时间设置时间不对而且不会自动改变 所以暂时不要
-		JLabel Jlable4 = new JLabel("时间");
-		Jlable4.setBorder(new EtchedBorder(EtchedBorder.RAISED, null, null));
-		panel.add(Jlable4);
-		
-		JPanel panel_2 = new JPanel();
-		contentPane.add(panel_2, BorderLayout.CENTER);
 		
 		//JLabel label_1 = new JLabel("当前预约情况");
 		
@@ -164,17 +138,30 @@ public class Jfa extends JFrame {
 		 ImageIcon background = new ImageIcon(path);  
 		
 		 
-		 JPanel imagePanel = (JPanel) this.getContentPane();  
-	   
-		 JLabel label_1 = new JLabel(background);
-		 label_1.setHorizontalAlignment(SwingConstants.LEFT);
-	
-		 label_1.setBounds(0, 0, this.getWidth(), this.getHeight()); 
+		 JPanel imagePanel = (JPanel) this.getContentPane();
 		 JPanel imagePanel1 = (JPanel) this.getContentPane();  
-	        imagePanel.setOpaque(false);  
-	        this.getLayeredPane().add(label_1, new Integer(Integer.MIN_VALUE));  
+	        imagePanel.setOpaque(false);
+	        contentPane.setLayout(null);
+	        
+	        JLabel lblNewLabel = new JLabel("");
+	        lblNewLabel.setLabelFor(this);
+	        lblNewLabel.setBounds(6, 36, 388, 340);
+	        lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
+	        contentPane.add(lblNewLabel);
+	        contentPane.add(label123);
+	        
+	        JButton btnNewButton_1 = new JButton("New button");
+	        btnNewButton_1.setBounds(6, 168, 117, 29);
+	        contentPane.add(btnNewButton_1);
+	        
+	        ScrollPane scrollPane = new ScrollPane();
+	        scrollPane.setBounds(16, 65, 378, 267);
+	        contentPane.add(scrollPane);
+	        
+	        JButton btnNewButton_2 = new JButton("New button");
+	        btnNewButton_2.setBounds(53, 168, 117, 29);
+	        contentPane.add(btnNewButton_2);
 	        setVisible(true);
-	        panel_2.add(label_1);
 		
 	
 	}
@@ -182,21 +169,19 @@ public class Jfa extends JFrame {
 		// TODO Auto-generated method stub
 		
 	}
+	private ActionListener actionListener = new ActionListener() {//监听事件
 
-	public void actionPormed(ActionEvent e){
-		try{
-			if (e.getActionCommand()=="已在线预约挂号")
-		      {
-			System.exit(0);
-			
-		      }
-		}
-		   catch(Exception ex){
-			   ex.printStackTrace();
-		      }
-		
-		
-	                                        }
-	
-	
+        @Override
+        public void actionPerformed(ActionEvent e) {
+            // 可以监听不同事件
+            if (e.getSource() == menu_zxyygh) {
+               System.exit(0);;
+            }
+            if(e.getSource()==menu_wzxyy){
+            	dispose();
+            	现场挂号 f=new 现场挂号();
+            	f.setVisible(true);
+            }
+        }
+    };
 }
