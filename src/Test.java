@@ -21,10 +21,15 @@ import javax.swing.JTextPane;
 import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.event.MenuKeyListener;
+import javax.swing.event.MenuKeyEvent;
+import javax.swing.JMenuItem;
+import javax.swing.JRadioButtonMenuItem;
+import javax.swing.AbstractAction;
+import javax.swing.Action;
 
 public class Test extends JFrame {
 	private JTextField textField;
-	private JMenu menu_1;
 
 	/**
 	 * Launch the application.
@@ -55,13 +60,24 @@ public class Test extends JFrame {
 		menuBar.setBorderPainted(false);
 		setJMenuBar(menuBar);
 		
-		JMenu menu = new JMenu("返回上一层");
-		menu.setForeground(new Color(255, 69, 0));
-		menuBar.add(menu);
-		
-		menu_1 = new JMenu("返回首页");
-		menu_1.setForeground(new Color(255, 0, 0));
-		menuBar.add(menu_1);
+		JMenuItem mntmNewMenuItem = new JMenuItem("返回上一层");
+		mntmNewMenuItem.setForeground(new Color(255, 99, 71));
+		menuBar.add(mntmNewMenuItem);
+		mntmNewMenuItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Start frame=new Start();
+				frame.setVisible(true);
+				dispose();		}
+		});
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("返回首页");
+		mntmNewMenuItem_1.setForeground(new Color(255, 127, 80));
+		menuBar.add(mntmNewMenuItem_1);
+		mntmNewMenuItem_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Start frame=new Start();
+				frame.setVisible(true);
+				dispose();		}
+		});
 		
 		JPanel panel = new JPanel();
 		getContentPane().add(panel, BorderLayout.CENTER);
@@ -95,4 +111,5 @@ public class Test extends JFrame {
 		panel.add(btnNewButton);
 		
 	}
+	
 }

@@ -14,6 +14,7 @@ import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
+import javax.swing.JMenuItem;
 
 public class Diagnose extends JFrame {
 
@@ -51,13 +52,27 @@ public class Diagnose extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu menu = new JMenu("返回上一层");
-		menu.setForeground(new Color(255, 99, 71));
-		menuBar.add(menu);
+		JMenuItem menuItem = new JMenuItem("返回上一层");
+		menuItem.setForeground(new Color(255, 99, 71));
+		menuBar.add(menuItem);
+		menuItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Test te=new Test();
+				te.setVisible(true);
+				dispose();
+			}
+		});
 		
-		JMenu menu_1 = new JMenu("返回首页");
-		menu_1.setForeground(new Color(255, 0, 0));
-		menuBar.add(menu_1);
+		JMenuItem menuItem_1 = new JMenuItem("返回首页");
+		menuItem_1.setForeground(new Color(255, 99, 71));
+		menuBar.add(menuItem_1);
+		menuItem_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Start st=new Start();
+				st.setVisible(true);
+				dispose();
+			}
+		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -127,8 +142,12 @@ public class Diagnose extends JFrame {
 		textField_4 = new JTextField();
 		textField_4.setEditable(false);
 		textField_4.setBackground(UIManager.getColor("Button.background"));
-		textField_4.setBounds(358, 7, 66, 21);
+		textField_4.setBounds(338, 7, 66, 21);
 		contentPane.add(textField_4);
 		textField_4.setColumns(10);
+		
+		JLabel label_3 = new JLabel("性别：");
+		label_3.setBounds(291, 10, 54, 15);
+		contentPane.add(label_3);
 	}
 }
