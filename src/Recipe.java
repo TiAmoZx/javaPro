@@ -11,12 +11,15 @@ import javax.swing.border.EmptyBorder;
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
+import javax.swing.JInternalFrame;
+import javax.swing.JCheckBox;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
-public class Diagnose extends JFrame {
+public class Recipe extends JFrame {
 
 	private JPanel contentPane;
 	private JTextField textField;
-	private JTextField textField_1;
 
 	/**
 	 * Launch the application.
@@ -25,7 +28,7 @@ public class Diagnose extends JFrame {
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Diagnose frame = new Diagnose();
+					Recipe frame = new Recipe();
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -37,7 +40,7 @@ public class Diagnose extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Diagnose() {
+	public Recipe() {
 		setTitle("医生诊断界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 474, 334);
@@ -61,30 +64,40 @@ public class Diagnose extends JFrame {
 		btnNewButton_1.setBounds(219, 223, 76, 23);
 		contentPane.add(btnNewButton_1);
 		
-		JLabel lblNewLabel = new JLabel("诊断意见");
-		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 15));
-		lblNewLabel.setBounds(25, 112, 86, 23);
-		contentPane.add(lblNewLabel);
-		
-		textField = new JTextField();
-		textField.setText(" 输入诊断结果……");
-		textField.setBounds(24, 138, 379, 75);
-		contentPane.add(textField);
-		textField.setColumns(10);
-		
-		JButton button = new JButton("开处方");
-		button.setBounds(310, 223, 93, 23);
-		contentPane.add(button);
-		
-		JLabel label = new JLabel("病情描述");
-		label.setFont(new Font("宋体", Font.PLAIN, 15));
-		label.setBounds(25, 10, 86, 23);
+		JLabel label = new JLabel("处方");
+		label.setForeground(new Color(106, 90, 205));
+		label.setFont(new Font("微软雅黑", Font.PLAIN, 15));
+		label.setBounds(24, 20, 108, 29);
 		contentPane.add(label);
 		
-		textField_1 = new JTextField();
-		textField_1.setText(" 输入病人所描述的症状……");
-		textField_1.setBounds(25, 34, 378, 68);
-		contentPane.add(textField_1);
-		textField_1.setColumns(10);
+		JButton button = new JButton("添加药品");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddMedicine frame=new AddMedicine();
+				frame.setVisible(true);
+			}
+		});
+		button.setBounds(334, 98, 93, 23);
+		contentPane.add(button);
+		
+		JButton button_1 = new JButton("添加项目");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				AddItem frame=new AddItem();
+				frame.setVisible(true);
+			}
+		});
+		button_1.setBounds(334, 162, 93, 23);
+		contentPane.add(button_1);
+		
+		JButton button_2 = new JButton("生成处方");
+		button_2.setBounds(305, 223, 93, 23);
+		contentPane.add(button_2);
+		
+		textField = new JTextField();
+		textField.setText("点击添加药品或添加项目……");
+		textField.setBounds(24, 59, 300, 154);
+		contentPane.add(textField);
+		textField.setColumns(10);
 	}
 }

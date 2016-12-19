@@ -24,6 +24,7 @@ import java.awt.event.ActionEvent;
 
 public class Test extends JFrame {
 	private JTextField textField;
+	private JMenu menu_1;
 
 	/**
 	 * Launch the application.
@@ -58,7 +59,7 @@ public class Test extends JFrame {
 		menu.setForeground(new Color(255, 69, 0));
 		menuBar.add(menu);
 		
-		JMenu menu_1 = new JMenu("返回首页");
+		menu_1 = new JMenu("返回首页");
 		menu_1.setForeground(new Color(255, 0, 0));
 		menuBar.add(menu_1);
 		
@@ -81,12 +82,12 @@ public class Test extends JFrame {
 		JButton btnNewButton = new JButton("确定");
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				if(e.getActionCommand().equals("确定"))
-                    
-{
-Login window = new Login();
-                                     window.frame.setVisible(true);
-}				 
+				if(e.getActionCommand().equals("确定"))               
+				{                 
+					Diagnose frame=new Diagnose();
+					frame.setVisible(true);
+					dispose();
+				}				 
 			}
 		});
 		btnNewButton.setBounds(284, 103, 82, 23);
