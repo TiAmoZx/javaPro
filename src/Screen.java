@@ -1,9 +1,17 @@
 package Screen;
 import javax.swing.*;
 
+import Screen.TimeTable.ShowTime;
+import Screen.TimeTable.TimePanel;
+
+import java.util.*;
 import java.awt.*;
+import java.util.Timer;
+import java.text.SimpleDateFormat;
+import java.awt.geom.AffineTransform;
 public class Screen extends JFrame{
-	private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
+	String time=null;
+ private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
 	private JLabel bi=new JLabel();private JLabel ci=new JLabel();private JLabel di=new JLabel();
 	private JLabel ei=new JLabel();private JLabel fi=new JLabel();private JLabel gi=new JLabel();
 	private JLabel hi=new JLabel();private JLabel ii=new JLabel();private JLabel ki=new JLabel();
@@ -14,9 +22,10 @@ public class Screen extends JFrame{
 	private JLabel bb=new JLabel();private JLabel cc=new JLabel();private JLabel dd=new JLabel();
 	private JLabel ee=new JLabel();private JLabel ff=new JLabel();private JLabel gg=new JLabel();
 	private JLabel hh=new JLabel();private JLabel jj=new JLabel();private JLabel kk=new JLabel();
-	private JLabel zz=new JLabel();private JLabel xx=new JLabel();private JLabel sUty=new JLabel();
+	private JLabel zz=new JLabel();private JLabel xx=new JLabel();private JLabel xxxx=new JLabel();
 	private static Thread t,n,s,d,f,a,b,c,e,g,h,i,j,k,l,m,o,p;
-	private int count,xyz=0;	private int prs=620;
+	private int count,xyz=0;	//xyz在这里刻有可无，如果没有，那么显示效果更好，供参考
+	private int prs=620;
 	private int abc=20;private int bcd=60;private int cde=100;
 	private int def=140;private int efg=180;private int fgh=220;
 	private int ghi=260;private int hij=300;private int ijk=340;
@@ -24,6 +33,7 @@ public class Screen extends JFrame{
 	private int mno=500;private int nop=540;private int opq=580;
 	private Container container=getContentPane();
 	public Screen(){
+		
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setBounds(10,10,600,700);
 	setLayout(null);
@@ -100,7 +110,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				prs+=1;
-				  if(prs==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(prs==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  prs=-20;
 				  } 
 			 }
@@ -128,7 +138,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				opq+=1;
-				  if(opq==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(opq==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  opq=-20;
 				  } 
 			 }
@@ -156,7 +166,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				nop+=1;
-				  if(nop==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(nop==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  nop=-20;
 				  } 
 			 }
@@ -184,7 +194,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				mno+=1;
-				  if(mno==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(mno==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  mno=-20;
 				  } 
 			 }
@@ -212,7 +222,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				lmn+=1;
-				  if(lmn==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(lmn==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  lmn=-20;
 				  } 
 			 }
@@ -240,7 +250,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				klm+=1;
-				  if(klm==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(klm==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  klm=-20;
 				  } 
 			 }
@@ -268,7 +278,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				jkl+=1;
-				  if(jkl==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(jkl==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  jkl=-20;
 				  } 
 			 }
@@ -296,7 +306,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				ijk+=1;
-				  if(ijk==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(ijk==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  ijk=-20;
 				  } 
 			 }
@@ -324,7 +334,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				hij+=1;
-				  if(hij==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(hij==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  hij=-20;
 				  } 
 			 }
@@ -352,7 +362,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				ghi+=1;
-				  if(ghi==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(ghi==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  ghi=-20;
 				  } 
 			 }
@@ -380,7 +390,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				fgh+=1;
-				  if(fgh==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(fgh==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  fgh=-20;
 				  } 
 			 }
@@ -408,7 +418,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				efg+=1;
-				  if(efg==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(efg==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  efg=-20;
 				  } 
 			 }
@@ -436,7 +446,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				def+=1;
-				  if(def==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(def==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  def=-20;
 				  } 
 			 }
@@ -464,7 +474,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				  cde+=1;
-				  if(cde==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(cde==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  cde=-20;
 				  } 
 			 }
@@ -492,7 +502,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				  bcd+=1;
-				  if(bcd==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(bcd==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  bcd=-20;
 				  } 
 			 }
@@ -520,7 +530,7 @@ public class Screen extends JFrame{
 					   e.printStackTrace();
 				     }
 				  abc+=1;
-				  if(abc==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+				  if(abc==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 					  abc=-20;
 				  } 
 			 }
@@ -549,7 +559,7 @@ public class Screen extends JFrame{
 						   e.printStackTrace();
 					     }
 					xyz+=1;
-					  if(xyz==660){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+					  if(xyz==550){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 						  xyz=-20;
 					  } 
 				 }
@@ -561,11 +571,12 @@ public class Screen extends JFrame{
 		 container.add(ai);
 			li.setText("请张三到xxx就诊");
 			 li.setHorizontalAlignment(SwingConstants.LEFT);
-			 li.setBounds(50,200,10,50);
+			 li.setBounds(500,200,10,50);
+			 li.setFont(new   java.awt.Font("Dialog",   1,   40));
 			 n =new Thread(new Runnable(){
 				 public void run(){
-					 while(count<200){
-						li.setBounds(count, 600, 100, 50);
+					 while(count<300){
+						li.setBounds(count, 600, 1000, 50);
 						try{
 							 n.sleep(60);
 						     }
@@ -573,7 +584,7 @@ public class Screen extends JFrame{
 							   e.printStackTrace();
 						     }
 						  count+=1;
-						  if(count==170){//注意考虑到label的宽度 当右边界重合时即可进行恢复
+						  if(count==250){//注意考虑到label的宽度 当右边界重合时即可进行恢复
 							  count=10;
 						  } 
 					 }
@@ -581,8 +592,27 @@ public class Screen extends JFrame{
 			 });
 			 n.start();
 			 container.add(li);
-	}
+		    xxxx.setBounds(80,525,1000,50);	 
+		    xxxx.setHorizontalAlignment(SwingConstants.LEFT);        
+	container.add(xxxx);
+Timer timer = new Timer();
+timer.schedule(new RemindTask(), 0, 1000);	
+xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));}
+	
+	   public String getTime() {
+	        Calendar calendar = Calendar.getInstance();
+	        Date date = (Date) calendar.getTime();
+	        SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+	        time = format.format(date);
+	         return time;
+	    }	
 	public static void main(String[] atgs){
-		Screen f=new Screen();
+		Screen f=new Screen();	
+
 	}
+	private class RemindTask extends TimerTask {
+        public void run() {
+            xxxx.setText(getTime());
+        }
+   }
 }
