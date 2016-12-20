@@ -15,6 +15,7 @@ import javax.swing.JInternalFrame;
 import javax.swing.JCheckBox;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.JMenuItem;
 
 public class Recipe extends JFrame {
 
@@ -48,13 +49,27 @@ public class Recipe extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
 		
-		JMenu menu = new JMenu("返回上一层");
-		menu.setForeground(new Color(255, 99, 71));
-		menuBar.add(menu);
+		JMenuItem mntmNewMenuItem = new JMenuItem("返回上一层");
+		mntmNewMenuItem.setForeground(new Color(255, 99, 71));
+		menuBar.add(mntmNewMenuItem);
+		mntmNewMenuItem.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Diagnose di=new Diagnose();
+				di.setVisible(true);
+				dispose();
+			}
+		});
 		
-		JMenu menu_1 = new JMenu("返回首页");
-		menu_1.setForeground(new Color(255, 0, 0));
-		menuBar.add(menu_1);
+		JMenuItem mntmNewMenuItem_1 = new JMenuItem("返回首页");
+		mntmNewMenuItem_1.setForeground(new Color(255, 99, 71));
+		menuBar.add(mntmNewMenuItem_1);
+		mntmNewMenuItem_1.addActionListener(new ActionListener(){
+			public void actionPerformed(ActionEvent e){
+				Start st=new Start();
+				st.setVisible(true);
+				dispose();
+			}
+		});
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -90,7 +105,12 @@ public class Recipe extends JFrame {
 		button_1.setBounds(334, 162, 93, 23);
 		contentPane.add(button_1);
 		
-		JButton button_2 = new JButton("生成处方");
+		JButton button_2 = new JButton("下一个");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//连接到大屏
+			}
+		});
 		button_2.setBounds(305, 223, 93, 23);
 		contentPane.add(button_2);
 		
