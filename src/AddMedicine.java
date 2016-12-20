@@ -1,20 +1,18 @@
+import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
-import javax.swing.JInternalFrame;
-import javax.swing.JCheckBox;
-import java.awt.BorderLayout;
-import javax.swing.JPanel;
-import java.awt.FlowLayout;
-import javax.swing.JLabel;
-import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.border.EmptyBorder;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 
-public class AddMedicine extends JInternalFrame {
+public class AddMedicine extends JFrame {
 	private JTextField textField;
-
+	private JPanel contentPane;
 	/**
 	 * Launch the application.
 	 */

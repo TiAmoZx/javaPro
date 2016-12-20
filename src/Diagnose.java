@@ -12,6 +12,8 @@ import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.JMenuItem;
@@ -79,6 +81,21 @@ public class Diagnose extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("保存");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				File file = new File("Diagnose.txt");
+				try {
+					FileWriter out = new FileWriter(file);
+					String s = textField.getText();
+					String s1=textField_1.getText();
+					out.write("病情描述:\t"+s1+"\r\n"); 
+					out.write("诊断意见:\t"+s+"\r\n");
+					out.close();
+				} catch (Exception e1) {
+					e1.printStackTrace();
+				}
+			}
+		});
 		btnNewButton_1.setBounds(220, 241, 76, 23);
 		contentPane.add(btnNewButton_1);
 		

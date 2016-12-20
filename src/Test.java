@@ -102,6 +102,7 @@ public class Test extends JFrame {
 				{                 
 					Diagnose frame=new Diagnose();
 					frame.setVisible(true);
+					//添加一个线程 传递给大屏可读取病人编号
 					dispose();
 				}				 
 			}

@@ -105,7 +105,12 @@ public class Recipe extends JFrame {
 		button_1.setBounds(334, 162, 93, 23);
 		contentPane.add(button_1);
 		
-		JButton button_2 = new JButton("生成处方");
+		JButton button_2 = new JButton("下一个");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				//连接到大屏
+			}
+		});
 		button_2.setBounds(305, 223, 93, 23);
 		contentPane.add(button_2);
 		
