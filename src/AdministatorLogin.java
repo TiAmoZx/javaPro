@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -104,7 +104,7 @@ public class AdministatorLogin extends JFrame {
 		contentPane.add(button_1);
 		
 		label_2 = new JLabel("");
-		label_2.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\avlogin.jpg"));
+		label_2.setIcon(new ImageIcon("/Users/yuelei/Desktop/avlogin.jpg"));
 		label_2.setBounds(0, 10, 390, 461);
 		contentPane.add(label_2);
 	}

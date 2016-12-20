@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 
@@ -33,6 +33,8 @@ public class WelcomeView extends JFrame {
 
 	private JPanel contentPane;
 	static String selecttype;
+	Thread thread1=new Thread();
+	Thread thread2=new Thread();
 	/**
 	 * Launch the application.
 	 */
@@ -62,9 +64,35 @@ public class WelcomeView extends JFrame {
 		adl.setVisible(true);
 		dispose();
 		}
+		
 	
 	public  WelcomeView() {
-		
+		thread1 =new Thread(new Runnable(){
+			public void run(){
+				
+				try{
+					WelcomeView frame = new WelcomeView();
+					frame.setVisible(false);
+					收费 收费2=new 收费();
+					收费2.setVisible(true);
+				}
+				catch(Exception e){e.printStackTrace();}
+			}
+			
+		});
+		thread2 =new Thread(new Runnable(){
+			public void run(){
+				
+				try{
+					WelcomeView frame = new WelcomeView();
+					frame.setVisible(false);
+					Start s1=new Start();
+					s1.setVisible(true);
+				}
+				catch(Exception e){e.printStackTrace();}
+			}
+			
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 400, 500);
 		contentPane = new JPanel();
@@ -88,6 +116,21 @@ public class WelcomeView extends JFrame {
 				switch(selecttype){
 				case "管理员":
 					ex();
+					break;
+				case"收费人员":
+					dispose();
+					thread1.start();
+					break;
+				case"医生":
+					dispose();
+					thread2.start();
+					break;
+				case"药师":
+					ex();
+					break;
+				case"院长":
+					ex();
+					break;
 					
 				}
 				
@@ -96,6 +139,7 @@ public class WelcomeView extends JFrame {
 				
 		
 		});
+		
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
 		
 		JButton button_1 = new JButton("\u9000\u51FA");
@@ -116,7 +160,7 @@ public class WelcomeView extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setBounds(-12, 0, 396, 472);
-		label.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\wel.jpg"));
+		label.setIcon(new ImageIcon("/Users/yuelei/Desktop/wel.jpg"));
 		contentPane.setLayout(null);
 		contentPane.add(comboBox);
 		contentPane.add(button_1);
