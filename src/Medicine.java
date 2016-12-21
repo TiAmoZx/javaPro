@@ -7,7 +7,6 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
-import java.sql.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
@@ -25,7 +24,6 @@ import javax.swing.ImageIcon;
 
 public class Medicine extends JFrame {
 
-
 	private JPanel contentPane;
 
 	/**
@@ -34,79 +32,46 @@ public class Medicine extends JFrame {
 
 
 	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-				Connection con = null;
-				try {
-					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				} catch (ClassNotFoundException e) {
-					// TODO Auto-generated catch block
+		Connection connection=null;        //数据库链接；
+		PreparedStatement preparedStatement=null;        //预编译的Statement,使用其提高数据库性能；
+		ResultSet resultSet=null;        //结果，集；
+		try{
+			//加载数据驱动；
+			Class.forName("com.mysql.jdbc.Driver");      //驱动获取数据库链接
+			connection=DriverManager.getConnection("jdbc:mysql://10.66.191.63:3306");
+			String sql="select * from Medicine where name=? ";
+			preparedStatement=connection.prepareStatement(sql);
+			preparedStatement.setString(1,"头孢噻吩钠");
+			resultSet=preparedStatement.executeQuery();
+			
+			while(resultSet.next()){
+				System.out.println(resultSet.getString("id")+" "+resultSet.getString("name"));
+			}
+		}catch(Exception e){
+			e.printStackTrace();
+		}finally{
+			if(resultSet!=null){
+				try{
+					resultSet.close();
+				}catch(SQLException e){
+					e.printStackTrace();
+			}
+			}
+			if(preparedStatement!=null){
+				try{
+					preparedStatement.close();
+				}catch(SQLException e){
 					e.printStackTrace();
 				}
-				try {
-					con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=(local)\\SQLEXPRESS","sa","sa");
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
+			}
+			if(connection!=null){
+				try{
+					connection.close();
+				}catch(SQLException e){
 					e.printStackTrace();
-				}
-				/*if(con !=null)
-					System.out.println("Connect succeed!");*/
-				Statement st=null;
-				try {
-				 st=con.createStatement();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				String sqlselect = "select * from Drugs";
-				ResultSet rs = null;
-				try {
-					st.executeQuery(sqlselect);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					while(rs.next()){
-						System.out.println("药名："+rs.getString("username"));
-					}
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					st.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				/*String sql = "insert into student values" + "(1111,'liu','F','jungongRoad','010101010110',20)";
-				try {
-					st.executeUpdate(sql);
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				
-				try {
-					st.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
-				try {
-					con.close();
-				} catch (SQLException e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}*/
-
+			    }
+			}
+		}
 		
 
 			
