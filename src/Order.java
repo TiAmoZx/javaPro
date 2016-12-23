@@ -1,8 +1,4 @@
-<<<<<<< Updated upstream
-=======
 
-
->>>>>>> Stashed changes
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 

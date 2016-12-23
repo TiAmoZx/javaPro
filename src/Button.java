@@ -69,7 +69,7 @@ public class Button extends JFrame {
 	        DataOutputStream dos = null;  
 	        FileInputStream fis = null;  
 	        boolean bool = false;
-	        String filePath = "D:/temp/"+GetDate.getDate()+"SJ"+new Random().nextInt(10000)+".txt";  
+	        String filePath = "/Users/yuelei"+GetDate.getDate()+"SJ"+new Random().nextInt(10000)+".txt";  
 	        
 	        JTextArea textArea = new JTextArea();
 			textArea.setBounds(72, 36, 317, 122);
@@ -100,7 +100,7 @@ public class Button extends JFrame {
 	        FileInputStream fis = null;  
 	        boolean bool = false;  
 	        try {  
-	            File file = new File("H:/Test/word.txt"); //要传输的文件路径  
+	            File file = new File("/Users/yuelei/word.txt"); //要传输的文件路径  
 	            long l = file.length();   
 	            socket = new Socket();    
 	            socket.connect(new InetSocketAddress("10.40.70.133", 81));  
