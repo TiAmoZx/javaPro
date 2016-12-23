@@ -1,13 +1,15 @@
 package Screen;
 import javax.swing.*;
 
+import Screen.TimeTable.ShowTime;
+import Screen.TimeTable.TimePanel;
+
 import java.util.*;
 import java.awt.*;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 import java.util.Timer;
 import java.text.SimpleDateFormat;
-public class Screen extends JFrame implements ActionListener{
+import java.awt.geom.AffineTransform;
+public class Screen extends JFrame{
 	String time=null;
  private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
 	private JLabel bi=new JLabel();private JLabel ci=new JLabel();private JLabel di=new JLabel();
@@ -21,7 +23,7 @@ public class Screen extends JFrame implements ActionListener{
 	private JLabel ee=new JLabel();private JLabel ff=new JLabel();private JLabel gg=new JLabel();
 	private JLabel hh=new JLabel();private JLabel jj=new JLabel();private JLabel kk=new JLabel();
 	private JLabel zz=new JLabel();private JLabel xx=new JLabel();private JLabel xxxx=new JLabel();
-	private static Thread t,n,s,d,f,a,b,c,e,g,h,i,j,k,l,m,o,p,z;
+	private static Thread t,n,s,d,f,a,b,c,e,g,h,i,j,k,l,m,o,p;
 	private int count,xyz=0;	//xyz在这里刻有可无，如果没有，那么显示效果更好，供参考
 	private int prs=620;
 	private int abc=20;private int bcd=60;private int cde=100;
@@ -567,7 +569,7 @@ public class Screen extends JFrame implements ActionListener{
 		 t.start();
 		 container.add(ji);
 		 container.add(ai);
-			
+			li.setText("请张三到xxx就诊");
 			 li.setHorizontalAlignment(SwingConstants.LEFT);
 			 li.setBounds(500,200,10,50);
 			 li.setFont(new   java.awt.Font("Dialog",   1,   40));
@@ -595,30 +597,7 @@ public class Screen extends JFrame implements ActionListener{
 	container.add(xxxx);
 Timer timer = new Timer();
 timer.schedule(new RemindTask(), 0, 1000);	
-xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
-
-	
-	
-	
-
-    JButton button = new JButton("change");
-    button.addActionListener(this);
-    button.setBounds(80,480,100,50);
- add(button);
-    Font font = new Font("黑体",Font.PLAIN,40);
-    li.setFont(font);
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
-	}
-	
+xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));}
 	
 	   public String getTime() {
 	        Calendar calendar = Calendar.getInstance();
@@ -631,14 +610,6 @@ xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
 		Screen f=new Screen();	
 
 	}
-	public void actionPerformed(ActionEvent e)
-    {
-        if("change".equals(e.getActionCommand()))
-        {    int x=1+(int)(Math.random()*50);
-        String a=("请"+1+(int)((Math.random()*50))+"号病人前来就诊");
-            li.setText(a);
-        }
-    }
 	private class RemindTask extends TimerTask {
         public void run() {
             xxxx.setText(getTime());
