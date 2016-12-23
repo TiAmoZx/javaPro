@@ -15,6 +15,7 @@ import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
 
 public class AdministratorView extends JFrame {
 
@@ -41,7 +42,7 @@ public class AdministratorView extends JFrame {
 	 */
 	public AdministratorView() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 400, 500);
+		setBounds(100, 100, 402, 505);
 		contentPane =  new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
@@ -59,30 +60,6 @@ public class AdministratorView extends JFrame {
 		label_1.setBounds(221, 68, 54, 15);
 		contentPane.add(label_1);
 		
-		JLabel label_2 = new JLabel("\u8BF7\u9009\u62E9\u60A8\u7684\u64CD\u4F5C\uFF1A");
-		label_2.setHorizontalAlignment(SwingConstants.CENTER);
-		label_2.setBounds(140, 108, 104, 15);
-		contentPane.add(label_2);
-		
-		JRadioButton radioButton = new JRadioButton("\u7528\u6237\u7BA1\u7406");
-		radioButton.setHorizontalAlignment(SwingConstants.CENTER);
-		radioButton.setBounds(50, 129, 104, 23);
-		contentPane.add(radioButton);
-		
-		JRadioButton radioButton_1 = new JRadioButton("\u533B\u9662\u79D1\u5BA4\u7BA1\u7406");
-		radioButton_1.setHorizontalAlignment(SwingConstants.CENTER);
-		radioButton_1.setBounds(221, 129, 110, 23);
-		contentPane.add(radioButton_1);
-		
-		JRadioButton radioButton_2 = new JRadioButton("\u836F\u54C1\u7BA1\u7406");
-		radioButton_2.setHorizontalAlignment(SwingConstants.CENTER);
-		radioButton_2.setBounds(50, 154, 104, 23);
-		contentPane.add(radioButton_2);
-		
-		JRadioButton radioButton_3 = new JRadioButton("\u6536\u8D39\u9879\u76EE\u7BA1\u7406");
-		radioButton_3.setHorizontalAlignment(SwingConstants.CENTER);
-		radioButton_3.setBounds(221, 154, 110, 23);
-		contentPane.add(radioButton_3);
 		
 		JButton button = new JButton("\u63D0\u4EA4");
 		button.setBounds(89, 242, 93, 23);
@@ -96,5 +73,15 @@ public class AdministratorView extends JFrame {
 		});
 		button_1.setBounds(206, 242, 93, 23);
 		contentPane.add(button_1);
+		
+		String[] type={"用户管理","医院科室管理"};
+		JComboBox comboBox = new JComboBox(type);
+		comboBox.setBounds(89, 126, 210, 21);
+		contentPane.add(comboBox);
+		
+		JLabel label_2 = new JLabel("");
+		label_2.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\av.jpg"));
+		label_2.setBounds(-96, -76, 482, 542);
+		contentPane.add(label_2);
 	}
 }

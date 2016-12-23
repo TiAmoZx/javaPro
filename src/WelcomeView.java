@@ -51,17 +51,50 @@ public class WelcomeView extends JFrame {
 		});
 	}
 
-	/**
-	 * Create the frame.
-	 */
 	
-		public void ex(){
-		WelcomeView frame = new WelcomeView();
-		frame.setVisible(false);
-		AdministatorLogin adl= new AdministatorLogin();
-		adl.setVisible(true);
-		dispose();
-		}
+	//管理员页面跳转
+			public void ex(){
+			WelcomeView frame = new WelcomeView();
+			frame.setVisible(false);
+			AdministatorLogin adl= new AdministatorLogin();
+			adl.setVisible(true);
+			dispose();
+			}
+	//院长页面跳转
+			public void ex2(){
+				WelcomeView frame = new WelcomeView();
+				frame.setVisible(false);
+				//此处新建院长对象
+				//此处院长窗体可视化
+				dispose();
+				}
+	//药师页面跳转
+			public void ex3(){
+				WelcomeView frame = new WelcomeView();
+				frame.setVisible(false);
+				//此处新建药师对象
+				//此处药师窗体可视化
+				dispose();
+				}	
+	//收费人员页面跳转
+			public void ex4(){
+				WelcomeView frame = new WelcomeView();
+				frame.setVisible(false);
+				//此处新建收费人员对象
+				//此处收费人员窗体可视化
+				dispose();
+				}	
+	//医生页面跳转
+			public void ex5(){
+				WelcomeView frame = new WelcomeView();
+				frame.setVisible(false);
+				//此处新建医生对象
+				//此处医生窗体可视化
+				dispose();
+				}	
+	/**
+	 * Create the frame.（欢迎界面设计）
+	 */
 	
 	public  WelcomeView() {
 		
@@ -75,7 +108,7 @@ public class WelcomeView extends JFrame {
 		label_3.setBounds(51, 282, 80, 15);
 		label_3.setFont(new Font("宋体", Font.PLAIN, 14));
 		
-		String[] type = {"病人","医生","收费人员","药师","院长","管理员"};
+		String[] type = {"医生","收费人员","药师","院长","管理员"};
 		JComboBox comboBox = new JComboBox(type);
 		comboBox.setBounds(126, 279, 215, 21);
 		
@@ -87,8 +120,16 @@ public class WelcomeView extends JFrame {
 				selecttype = comboBox.getSelectedItem().toString();
 				switch(selecttype){
 				case "管理员":
-					ex();
-					
+					ex();break;
+				case "院长":
+					ex2();break;
+				case "药师":
+					ex3();break;
+				case "收费人员":
+					ex4();break;
+				case "医生":
+					ex5();break;
+				
 				}
 				
 				
@@ -107,13 +148,6 @@ public class WelcomeView extends JFrame {
 		});
 		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
 		
-		JLabel label_4 = new JLabel("\u6CA1\u6709\u7528\u6237\uFF1F\u90A3\u5C31\u6765\u521B\u5EFA\u4E00\u4E2A\u5427\uFF01");
-		label_4.setBounds(10, 404, 291, 15);
-		label_4.setHorizontalAlignment(SwingConstants.CENTER);
-		
-		JButton button_2 = new JButton("\u521B\u5EFA");
-		button_2.setBounds(248, 401, 93, 21);
-		
 		JLabel label = new JLabel("");
 		label.setBounds(-12, 0, 396, 472);
 		label.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\wel.jpg"));
@@ -122,8 +156,6 @@ public class WelcomeView extends JFrame {
 		contentPane.add(button_1);
 		contentPane.add(label_3);
 		contentPane.add(button);
-		contentPane.add(button_2);
-		contentPane.add(label_4);
 		contentPane.add(label);
 	
 	
