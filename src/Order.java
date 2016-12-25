@@ -1,24 +1,65 @@
 package yao;
 
 import java.awt.BorderLayout;
-import java.awt.Color;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.*;
 import java.awt.EventQueue;
-import java.awt.Font;
-import java.awt.SystemColor;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
 
+import javax.swing.JFrame;
+import javax.swing.JPanel;
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+import javax.swing.JLabel;
+import javax.swing.JTextField;
 import javax.swing.JButton;
 import javax.swing.JComboBox;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
+
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
+import java.awt.Font;
+import java.awt.SystemColor;
+import java.awt.Color;
 import javax.swing.JMenuBar;
-import javax.swing.JPanel;
-import javax.swing.border.EmptyBorder;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
 
 public class Order extends JFrame {
-
 	private JPanel contentPane;
+	private JTable table;
+	
+	
+   String num[];
+   int i=0;
+   public void dingdan(){
+	try{
+		Connection con = null;
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
+		/*if(con !=null)
+			System.out.println("Connect succeed!");*/
+		Statement st=null;
+		st=con.createStatement();
+		String sqlselect = "select 编号  from Drug" ;
+		ResultSet rs = null;
+		rs = st.executeQuery(sqlselect);
+		while(rs.next()){
+        	 num[i]=rs.getString("编号");
+        	 i++;
+		}
+	}catch(Exception e){
+		System.out.println(e);
+	}
+   }
+	
+
+
+	
 
 	/**
 	 * Launch the application.
@@ -35,7 +76,22 @@ public class Order extends JFrame {
 			}
 		});
 	}
-
+	/*public void Connectsql(){
+		//try{
+			//Connection con = null;
+			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
+			if(con !=null)
+				System.out.println("Connect succeed!");
+			Statement st=null;
+			st=con.createStatement();
+			
+			String sqlselect = "select * from "+ stype ;
+			ResultSet rs = null;
+			rs = st.executeQuery(sqlselect);
+			
+			再次，添加数据
+	}*/
 	/**
 	 * Create the frame.
 	 */
@@ -44,23 +100,39 @@ public class Order extends JFrame {
 		setBounds(100, 100, 900, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
-		contentPane.setLayout(new BorderLayout(0, 0));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JComboBox comboBox = new JComboBox();
+
+		dingdan();
+		
+		contentPane.setLayout(null);
+		JComboBox comboBox = new JComboBox(num);
 		comboBox.setBounds(160, 162, 168, 29);
 		contentPane.add(comboBox);
+		
+
+		JButton button_4 = new JButton("确定");
+		button_4.setFont(new Font("宋体", Font.PLAIN, 17));
+		button_4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			
+			
+		});
+		button_4.setBounds(239, 260, 89, 23);
+		contentPane.add(button_4);
 		
 		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u836F\u65B9\uFF1A");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 14));
 		lblNewLabel.setBounds(54, 162, 108, 29);
 		contentPane.add(lblNewLabel);
-		
-		JLabel label = new JLabel("");
-		label.setBackground(Color.GRAY);
-		label.setBounds(352, 198, 443, 518);
-		contentPane.add(label);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setBackground(SystemColor.info);
@@ -107,6 +179,10 @@ public class Order extends JFrame {
 		JMenuBar menuBar = new JMenuBar();
 		menuBar.setBounds(0, 0, 874, 40);
 		contentPane.add(menuBar);
+		
+		table = new JTable();
+		table.setBounds(417, 188, 436, 581);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+		contentPane.add(table);
 	}
-
 }

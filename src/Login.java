@@ -14,6 +14,7 @@ import java.awt.Font;
 import java.awt.Color;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
 
 public class Login extends JFrame {
 
@@ -83,11 +84,16 @@ public class Login extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel label_2 = new JLabel("欢迎登入医生系统！");
+		JLabel label_2 = new JLabel("欢迎登入药房系统！");
 		label_2.setForeground(new Color(123, 104, 238));
 		label_2.setFont(new Font("微软雅黑", Font.PLAIN, 15));
 		label_2.setHorizontalAlignment(SwingConstants.CENTER);
 		label_2.setBounds(90, 10, 234, 54);
 		contentPane.add(label_2);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\liuzi\\Desktop\\医院.jpg"));
+		lblNewLabel.setBounds(-21, -13, 461, 261);
+		contentPane.add(lblNewLabel);
 	}
 }

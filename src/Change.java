@@ -14,6 +14,10 @@ import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
@@ -24,6 +28,26 @@ public class Change extends JFrame {
 	private JTextField textField_1;
 	private JTextField textField_2;
 
+	public void tian(){
+		try{
+			Connection con=null;
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hospital","sa","sa");
+			//System.out.println("Connect succeed!");
+			Statement st=null;
+			st=con.createStatement();
+			String sqlselect="select * from Drug";
+			ResultSet rs=null;
+			rs=st.executeQuery(sqlselect);
+		}catch(Exception e){
+				System.out.println(e);
+			}
+		
+	}
+	
+	public void shan(){
+		
+	}
 	/**
 	 * Launch the application.
 	 */
@@ -120,9 +144,9 @@ public class Change extends JFrame {
 		label_4.setBounds(21, 246, 126, 29);
 		contentPane.add(label_4);
 		
-		JLabel label_5 = new JLabel("提示");
+		JLabel label_5 = new JLabel("提示:  添加新药品时需同时填写三个框\r\n ");
 		label_5.setFont(new Font("宋体", Font.PLAIN, 11));
-		label_5.setBounds(158, 408, 98, 29);
+		label_5.setBounds(134, 378, 200, 57);
 		contentPane.add(label_5);
 		
 		JButton button_2 = new JButton("确定");
@@ -130,9 +154,32 @@ public class Change extends JFrame {
 		button_2.setBounds(544, 739, 89, 29);
 		contentPane.add(button_2);
 		
-		JComboBox comboBox = new JComboBox();
+		String[] sexs = { "请选择","添加药品","删除药品" };
+		JComboBox comboBox = new JComboBox(sexs);
 		comboBox.setBounds(158, 304, 168, 29);
+		
 		contentPane.add(comboBox);
+		
+		JLabel lblNewLabel = new JLabel("删除药品信息时只需填写第一栏名字");
+		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 11));
+		lblNewLabel.setBounds(174, 429, 190, 29);
+		contentPane.add(lblNewLabel);
+		
+		JButton button_3 = new JButton("确定");
+		button_3.setFont(new Font("宋体", Font.PLAIN, 14));
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			switch(comboBox.getSelectedItem().toString()){
+			case "添加药品": tian();
+			break;
+			case "删除药品": shan();
+			break;
+			}
+		
+			}
+		});
+		button_3.setBounds(261, 365, 65, 21);
+		contentPane.add(button_3);
 	}
 }
 
