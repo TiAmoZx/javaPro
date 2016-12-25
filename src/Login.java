@@ -1,17 +1,4 @@
-<<<<<<< HEAD
 
-=======
-
-<<<<<<< HEAD
-package yao;
-=======
-<<<<<<< HEAD
-
-=======
-package yao;
->>>>>>> pr/27
->>>>>>> one
->>>>>>> pr/27
 
 import java.awt.EventQueue;
 
