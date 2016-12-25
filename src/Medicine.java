@@ -1,4 +1,16 @@
+<<<<<<< HEAD
 
+=======
+<<<<<<< HEAD
+package yao;
+=======
+<<<<<<< HEAD
+
+=======
+package yao;
+>>>>>>> pr/27
+>>>>>>> one
+>>>>>>> pr/27
 
 import java.awt.BorderLayout;
 import java.sql.Connection;
@@ -107,11 +119,23 @@ public class Medicine extends JFrame {
 			}
 		});
 		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
+<<<<<<< HEAD
 
 		button_2.setBounds(622, 770, 116, 29);
 
 		button_2.setBounds(630, 779, 116, 29);
 
+=======
+<<<<<<< HEAD
+		button_2.setBounds(630, 779, 116, 29);
+=======
+<<<<<<< HEAD
+		button_2.setBounds(445, 752, 116, 29);
+=======
+		button_2.setBounds(630, 779, 116, 29);
+>>>>>>> pr/27
+>>>>>>> one
+>>>>>>> pr/27
 		contentPane.add(button_2);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -128,11 +152,23 @@ public class Medicine extends JFrame {
 			}
 		});
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
+<<<<<<< HEAD
 
 		button.setBounds(293, 739, 116, 38);
 
 		button.setBounds(494, 779, 116, 29);
 
+=======
+<<<<<<< HEAD
+		button.setBounds(494, 779, 116, 29);
+=======
+<<<<<<< HEAD
+		button.setBounds(255, 752, 116, 29);
+=======
+		button.setBounds(494, 779, 116, 29);
+>>>>>>> pr/27
+>>>>>>> one
+>>>>>>> pr/27
 		contentPane.add(button);
 		/*button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -164,11 +200,23 @@ public class Medicine extends JFrame {
 		        
 		        
 		JTable table = new JTable(model);
+<<<<<<< HEAD
 
 		table.setBounds(21, 125, 745, 570);
 
 		table.setBounds(21, 125, 832, 633);
 
+=======
+<<<<<<< HEAD
+		table.setBounds(21, 125, 832, 633);
+=======
+<<<<<<< HEAD
+		table.setBounds(21, 125, 832, 615);
+=======
+		table.setBounds(21, 125, 832, 633);
+>>>>>>> pr/27
+>>>>>>> one
+>>>>>>> pr/27
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		contentPane.add(table);
 		}catch(Exception e){
