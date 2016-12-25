@@ -1,44 +1,72 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+package å„¿ç§‘é—¨è¯ŠåŒ»ç”Ÿè¯Šç–—æ“ä½œ;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.util.*;
+import java.util.Timer;
+import java.text.SimpleDateFormat;
 
 import javax.swing.*;
 
-import ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷.LoginDemo.B1;
+
 public class Yuanzhangdeanniu extends JFrame{
-private JButton myButton1,myButton2,myButton3,myButton4;
+	private Container container=getContentPane();
+	String time=null;
+	private JLabel xxxx=new JLabel();
+	 private JLabel ji=new JLabel();
+private JButton myButton1,myButton2,myButton3,myButton4,myButton5;
 public Yuanzhangdeanniu(){
-	super("Ôº³¤µÄ²éÑ¯°´Å¥");
+	super("åŸæ¥ä½ çœŸçš„æ˜¯é™¢é•¿å¤§äºº");
 	setBounds(0,0,1000,645);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setVisible(true);
-	myButton1=new JButton("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ğ¶î");
-	myButton2=new JButton("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ğ¶î(±ıÍ¼)");
-	myButton3=new JButton("¸÷Ò©Æ·¿â´æ");
-	myButton4=new JButton("¸÷Ò½Éú¾ÍÕïÊıÁ¿ºÍ½ğ¶î");
-	add(myButton1);
-	add(myButton2);
+	myButton5=new JButton("é™¢é•¿å¤§äºº\nä»Šå¤©çš„è¦é—»");
+	myButton1=new JButton("æŒ‚å·é‡å’Œæ€»é‡‘é¢");
+	myButton2=new JButton("æŒ‚å·é‡å’Œæ€»é‡‘é¢ï¼ˆé¥¼å›¾ï¼‰");
+	myButton3=new JButton("è¯å“åº“å­˜");
+	myButton4=new JButton("åŒ»ç”Ÿå°±è¯Šæ•°å’Œé‡‘é¢");
+    add(myButton1);
+    add(myButton2);
 	add(myButton3);
 	add(myButton4);
-	myButton1.setBounds(0,0,500,300);
-	myButton2.setBounds(500,0,500,300);
-	myButton3.setBounds(0,300,500,300);
-	myButton4.setBounds(500,300,500,300);
+	add(myButton5);
+    myButton1.setFont(new Font("",Font.BOLD,22));
+    myButton2.setFont(new Font("",Font.BOLD,22));
+    myButton3.setFont(new Font("",Font.BOLD,22));
+    myButton4.setFont(new Font("",Font.BOLD,22));
+    myButton5.setFont(new Font("",Font.BOLD,22));
+	myButton1.setBounds(0,0,400,200);
+	myButton2.setBounds(600,0,400,200);
+	myButton3.setBounds(0,400,400,200);
+	myButton4.setBounds(600,400,400,200);
+	myButton5.setBounds(400,200,200,200);
 	myButton1.addActionListener(new myButton1());
 	myButton3.addActionListener(new myButton3());
 	myButton4.addActionListener(new myButton4());
+    xxxx.setBounds(100,280,1000,50);	 
+    xxxx.setHorizontalAlignment(SwingConstants.LEFT);        
+container.add(xxxx);
+Timer timer = new Timer();
+timer.schedule(new RemindTask(), 0, 1000);	
+xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
+}
+public String getTime() {
+    Calendar calendar = Calendar.getInstance();
+    Date date = (Date) calendar.getTime();
+    SimpleDateFormat format = new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
+    time = format.format(date);
+     return time;
+}	
+class myButton3 implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		new Medicine().setVisible(true);
+		dispose();
+	}
 }
 class myButton1 implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		new guahaoliang().setVisible(true);
-		dispose();
-	}
-}
-class myButton3 implements ActionListener{
-	public void actionPerformed(ActionEvent e){
-		new yaopinkucun().setVisible(true);
 		dispose();
 	}
 }
@@ -49,8 +77,11 @@ class myButton4 implements ActionListener{
 	}
 }
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
 		Yuanzhangdeanniu f=new Yuanzhangdeanniu();
 	}
-
+	private class RemindTask extends TimerTask {
+        public void run() {
+            xxxx.setText(getTime());
+        }
+   }
 }

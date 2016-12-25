@@ -1,4 +1,4 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+package å„¿ç§‘é—¨è¯ŠåŒ»ç”Ÿè¯Šç–—æ“ä½œ;
 import javax.swing.*;
 import java.awt.event.*;
 import javax.swing.JButton;
@@ -7,17 +7,17 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 public class LoginDemo extends JFrame{
 public LoginDemo(){
-	super("µÇÂ¼");
+	super("ä½ çœŸçš„é™¢é•¿ä¹ˆ");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setBounds(50,50,950,850);
 	setLayout(null);
 	setVisible(true);
-	JLabel l1=new JLabel("ĞÕÃû:");
-	JLabel l2=new JLabel("ÃÜÂë:");
-	JTextField t1=new JTextField("ÕÅÈı");
+	JLabel l1=new JLabel("è´¦å·:");
+	JLabel l2=new JLabel("å¯†ç :");
+	JTextField t1=new JTextField("å²³ç£Š");
 	JTextField t2=new JTextField("***********");
-	JButton B1=new JButton("µÇÂ¼");
-	JButton B2=new JButton("ÍË³ö");
+	JButton B1=new JButton("ç™»å½•");
+	JButton B2=new JButton("é€€å‡º");
 	add(l1);add(l2);add(t1);add(t2);
 	add(B1);add(B2);
 	l1.setBounds(300,250,100,60);
@@ -41,7 +41,6 @@ class B1 implements ActionListener{
 	}
 }
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
 LoginDemo f=new LoginDemo();
 	}
 

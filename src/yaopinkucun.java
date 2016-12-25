@@ -1,18 +1,17 @@
-package 儿科门诊医生诊疗操作;
+package 鍎跨闂ㄨ瘖鍖荤敓璇婄枟鎿嶄綔;
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
+import sun.awt.*;
 import javax.swing.*;
 
-import 儿科门诊医生诊疗操作.Yuanzhangdeanniu.myButton1;
 public class yaopinkucun extends JFrame{
 	private JButton tuichu;
 	private JTextArea keshi,guahaoliang,jine;
 	public yaopinkucun(){	
-	super("药品库存");
+	super("鑽埧灏卞墿杩欎箞鐐逛簡");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	JButton tuichu=new JButton("返回");
+	JButton tuichu=new JButton("杩斿洖");
 	setBounds(0,0,1000,700);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -37,8 +36,7 @@ public class yaopinkucun extends JFrame{
 			f.setVisible(true);
 		}
 	}
-	public static void main(String[] args) {
-		// TODO 自动生成的方法存根
+
 yaopinkucun f=new yaopinkucun();
 	}
-}
+

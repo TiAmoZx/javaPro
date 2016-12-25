@@ -6,8 +6,45 @@ import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.util.Timer;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.text.SimpleDateFormat;
 public class Screen extends JFrame implements ActionListener{
+	Thread thread1 =new Thread();
+	 Connection conn;
+    Statement stmt;
+    ResultSet rs;
+    String url = "jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital;";
+    String sql = "select * from Yuyue";
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
+	
 	String time=null;
  private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
 	private JLabel bi=new JLabel();private JLabel ci=new JLabel();private JLabel di=new JLabel();
@@ -22,7 +59,9 @@ public class Screen extends JFrame implements ActionListener{
 	private JLabel hh=new JLabel();private JLabel jj=new JLabel();private JLabel kk=new JLabel();
 	private JLabel zz=new JLabel();private JLabel xx=new JLabel();private JLabel xxxx=new JLabel();
 	private static Thread t,n,s,d,f,a,b,c,e,g,h,i,j,k,l,m,o,p,z;
-	private int count,xyz=0;	//xyz在这里刻有可无，如果没有，那么显示效果更好，供参考
+	private int count,xyz=0;
+	private int uuuu;
+	private String iiii;
 	private int prs=620;
 	private int abc=20;private int bcd=60;private int cde=100;
 	private int def=140;private int efg=180;private int fgh=220;
@@ -32,64 +71,133 @@ public class Screen extends JFrame implements ActionListener{
 	private Container container=getContentPane();
 	public Screen(){
 		
-	setDefaultCloseOperation(EXIT_ON_CLOSE);
-	setBounds(10,10,600,700);
-	setLayout(null);
-	setVisible(true);
-	JLabel l1=new JLabel("姓名");
-	JTextField t1=new JTextField("王麻子");
-	JLabel l2=new JLabel("科室");
-	JTextField t2=new JTextField("消化科");
-	JLabel l3=new JLabel("就诊号码");
-	JTextField t3=new JTextField("02413175434");
-	l1.setBounds(50,0,100,50);
-	t1.setBounds(150,0,150,50);
-	l2.setBounds(50,50,100,50);
-	t2.setBounds(150,50,150,50);
-	l3.setBounds(50,100,100,50);
-    t3.setBounds(150,100,150,50);
-	add(l1);
-	add(l2);
-	add(l3);
-	add(t1);
-	add(t2);
-	add(t3);
-	JLabel l4=new JLabel("姓名");
-	JTextField t4=new JTextField("王麻子");
-	JLabel l5=new JLabel("科室");
-	JTextField t5=new JTextField("消化科");
-	JLabel l6=new JLabel("就诊号码");
-	JTextField t6=new JTextField("02413175434");
-	l4.setBounds(50,160,100,50);
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		
+		JButton button = new JButton("查询已预约人员信息");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				thread1.start();
+			}
+		});
+		button.setBounds(80, 580, 201, 23);
+		getContentPane().add(button);
+		
+		final JTextArea textArea = new JTextArea();
+
+		getContentPane().add(textArea);
+		thread1=new Thread(new Runnable(){
+			public void run(){
+				try {
+		            // 连接数据库
+		            conn = DriverManager.getConnection(url, "sa", "sa");
+		            // 建立Statement对象
+		            stmt = conn.createStatement();
+		            /**
+		             * Statement createStatement() 创建一个 Statement 对象来将 SQL 语句发送到数据库。
+		             */
+		            // 执行数据库查询语句
+		            rs = stmt.executeQuery(sql);
+		            /**
+		             * ResultSet executeQuery(String sql) throws SQLException 执行给定的 SQL
+		             * 语句，该语句返回单个 ResultSet 对象
+		             */
+		            while (rs.next()) {
+		                int numb = rs.getInt("预约号");
+		                String mmmm=rs.getString("预约科室");
+		                String iiii = rs.getString("姓名");
+		            	JTextField t3=new JTextField(""+numb);
+		                JTextField t1=new JTextField(iiii);
+	                    JTextField t2=new JTextField(mmmm);
+	                    t1.setBounds(150,0,150,50);
+	                    t2.setBounds(150,50,150,50);
+	                    t3.setBounds(150,100,150,50);
+	                    add(t1);
+	                    add(t2);
+	                    add(t3);
+	                    JTextField t4=new JTextField(iiii);
+	JTextField t5=new JTextField(mmmm);
+	JTextField t6=new JTextField(""+numb);
 	t4.setBounds(150,160,150,50);
-	l5.setBounds(50,210,100,50);
 	t5.setBounds(150,210,150,50);
-	l6.setBounds(50,260,100,50);
-    t6.setBounds(150,260,150,50);
-	add(l4);
-	add(l5);
-	add(l6);
+	t6.setBounds(150,260,150,50);
 	add(t4);
 	add(t5);
 	add(t6);
-	JLabel l7=new JLabel("姓名");
-	JTextField t7=new JTextField("王麻子");
-	JLabel l8=new JLabel("科室");
-	JTextField t8=new JTextField("消化科");
-	JLabel l9=new JLabel("就诊号码");
-	JTextField t9=new JTextField("02413175434");
-	l7.setBounds(50,320,100,50);
+	JTextField t7=new JTextField(iiii);
+	JTextField t8=new JTextField(mmmm);
+	JTextField t9=new JTextField(""+numb);
 	t7.setBounds(150,320,150,50);
-	l8.setBounds(50,370,100,50);
 	t8.setBounds(150,370,150,50);
-	l9.setBounds(50,420,100,50);
-    t9.setBounds(150,420,150,50);
+	t9.setBounds(150,420,150,50);
+	add(t7);
+	add(t8);
+	add(t9);	
+	
+	
+	
+	
+
+
+		            }
+		            if (rs != null) {
+		                rs.close();
+		                rs = null;
+		            }
+		            if (stmt != null) {
+		                stmt.close();
+		                stmt = null;
+		            }
+		            if (conn != null) {
+		                conn.close();
+		                conn = null;
+		            }
+		        } catch (SQLException e) {
+		            e.printStackTrace();
+		            System.out.println("数据库连接失败");
+		        }
+			}
+			
+		});
+		setDefaultCloseOperation(EXIT_ON_CLOSE);
+	setBounds(10,10,600,700);
+	setLayout(null);
+	setVisible(true);
+		               	JLabel l1=new JLabel("姓名");
+                        JLabel l2=new JLabel("科室");	                    
+	                    JLabel l3=new JLabel("就诊号码");
+                        l1.setBounds(50,0,100,50);	                    
+                     	l2.setBounds(50,50,100,50);                     	
+	                    l3.setBounds(50,100,100,50);                        
+	                    add(l1);
+	                    add(l2);
+	                    add(l3);
+	                    	JLabel l4=new JLabel("姓名");
+	JLabel l5=new JLabel("科室");
+	JLabel l6=new JLabel("就诊号码");		
+	l4.setBounds(50,160,100,50);
+	l5.setBounds(50,210,100,50);
+	l6.setBounds(50,260,100,50);
+	add(l4);
+	add(l5);
+	add(l6);	
+	JLabel l7=new JLabel("姓名");	
+	JLabel l8=new JLabel("科室");
+	JLabel l9=new JLabel("就诊号码");
+	l7.setBounds(50,320,100,50);
+	l8.setBounds(50,370,100,50);
+	l9.setBounds(50,420,100,50); 
 	add(l7);
 	add(l8);
 	add(l9);
-	add(t7);
-	add(t8);
-	add(t9);
 	zz.setText("当前排队xxxx人");
 	xx.setText("当前排队xxxx人");
 	 zz.setHorizontalAlignment(SwingConstants.LEFT);
@@ -601,10 +709,10 @@ xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
 	
 	
 
-    JButton button = new JButton("change");
-    button.addActionListener(this);
-    button.setBounds(80,480,100,50);
- add(button);
+    JButton buttonx = new JButton("change");
+    buttonx.addActionListener(this);
+    buttonx.setBounds(80,480,100,50);
+ add(buttonx);
     Font font = new Font("黑体",Font.PLAIN,40);
     li.setFont(font);
 	

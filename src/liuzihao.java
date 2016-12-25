@@ -1,17 +1,19 @@
 package 儿科门诊医生诊疗操作;
-import java.awt.Font;
-import java.awt.event.*;
+import java.awt.*;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+
+import sun.awt.*;
+import 儿科门诊医生诊疗操作.yisheng.tuichu1;
 
 import javax.swing.*;
-public class yisheng extends JFrame{
+
+import java.awt.event.*;
+public class liuzihao extends JFrame{
 	private JTextArea keshi,guahaoliang,jine;
-	public yisheng(){
+	public liuzihao(){
 		super("医生就诊数和金额");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		JButton tuichu1;
-		JButton tuichu11=new JButton("返回");
-		add(tuichu11);
-		tuichu11.setBounds(500,600,100,50);
 		setBounds(0,0,1000,700);
 		setLayout(null);
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -23,6 +25,18 @@ public class yisheng extends JFrame{
 		keshi.setBounds(0,0,500,300);
 		jine.setBounds(500,0,500,600);
 		guahaoliang.setBounds(0,300,500,300);
+		
+		
+		
+		
+		
+		
+		
+		
+		JButton tuichu1;
+		JButton tuichu11=new JButton("返回");
+		add(tuichu11);
+		tuichu11.setBounds(500,600,100,50);
 	 tuichu11.addActionListener(new tuichu1());
 	}
 	class tuichu1 implements ActionListener{
@@ -33,7 +47,7 @@ public class yisheng extends JFrame{
 			}
 		}
 		public static void main(String[] args) {
-	guahaoliang f=new guahaoliang();
+			liuzihao f=new liuzihao();
 		}
 
 	}

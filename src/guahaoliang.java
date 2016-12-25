@@ -1,4 +1,4 @@
-package ¶ù¿ÆÃÅÕïÒ½ÉúÕïÁÆ²Ù×÷;
+package å„¿ç§‘é—¨è¯ŠåŒ»ç”Ÿè¯Šç–—æ“ä½œ;
 import javax.swing.*;
 
 import java.awt.event.*;
@@ -6,12 +6,13 @@ import java.awt.*;
 public class guahaoliang extends JFrame{
 private JTextArea keshi,guahaoliang,jine;
 public guahaoliang(){
-	super("¿ÆÊÒ¹ÒºÅÁ¿ºÍ×Ü½ğ¶î");
+	super("æŒ‚å·é‡å’Œæ€»é‡‘é¢");
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	JButton tuichu1;
-	JButton tuichu11=new JButton("·µ»Ø");
+	JButton tuichu11=new JButton("è¿”å›");
 	add(tuichu11);
 	tuichu11.setBounds(500,600,100,50);
+    tuichu11.setFont(new Font("",Font.BOLD,22));
 	setBounds(0,0,1000,700);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
@@ -33,7 +34,7 @@ class tuichu1 implements ActionListener{
 		}
 	}
 	public static void main(String[] args) {
-		// TODO ×Ô¶¯Éú³ÉµÄ·½·¨´æ¸ù
+		// TODO ï¿½Ô¶ï¿½ï¿½ï¿½ÉµÄ·ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
 guahaoliang f=new guahaoliang();
 	}
 
