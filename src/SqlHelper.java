@@ -65,7 +65,7 @@ public class SqlHelper
           {  
            Connection conn=getCoonection();  
            System.out.println("---------------连接数据库成功");    
-           System.out.println("11");
+        
            Statement stmt = conn.createStatement();  
            int result = stmt.executeUpdate(SQL);  
            if(result>0)  
