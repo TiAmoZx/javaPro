@@ -1,8 +1,18 @@
+package yao;
+
 import java.awt.BorderLayout;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.sql.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+<<<<<<< HEAD:src/Order1.java
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
@@ -10,12 +20,18 @@ import javax.swing.table.DefaultTableModel;
 import com.mysql.jdbc.Statement;
 
 import java.awt.FlowLayout;
+=======
+import javax.swing.JTextArea;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+>>>>>>> one:src/Order.java
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JTextArea;
+import javax.swing.JComboBox;
+
 import java.awt.event.ActionListener;
+<<<<<<< HEAD:src/Order1.java
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -27,10 +43,13 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.Random;
+=======
+>>>>>>> one:src/Order.java
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import javax.swing.ImageIcon;
+import java.awt.SystemColor;
 import java.awt.Color;
+<<<<<<< HEAD:src/Order1.java
 import java.lang.Thread;
 
 
@@ -53,11 +72,48 @@ public class Order1 extends JFrame {
 	private JTextField innumber;
 
 	Thread thread=new Thread();
+=======
+import javax.swing.JMenuBar;
+import javax.swing.ImageIcon;
+import javax.swing.JTable;
+
+public class Order extends JFrame {
+	private JPanel contentPane;
+	private JTable table;
+	
+	
+   String num[];
+   int i=0;
+   public void dingdan(){
+	try{
+		Connection con = null;
+		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+		con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
+		/*if(con !=null)
+			System.out.println("Connect succeed!");*/
+		Statement st=null;
+		st=con.createStatement();
+		String sqlselect = "select 编号  from Drug" ;
+		ResultSet rs = null;
+		rs = st.executeQuery(sqlselect);
+		while(rs.next()){
+        	 num[i]=rs.getString("编号");
+        	 i++;
+		}
+	}catch(Exception e){
+		System.out.println(e);
+	}
+   }
+	
+
+
+	
+
+>>>>>>> one:src/Order.java
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
-		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -70,6 +126,25 @@ public class Order1 extends JFrame {
 		});
 	
 	}
+<<<<<<< HEAD:src/Order1.java
+=======
+	/*public void Connectsql(){
+		//try{
+			//Connection con = null;
+			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			//con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
+			if(con !=null)
+				System.out.println("Connect succeed!");
+			Statement st=null;
+			st=con.createStatement();
+			
+			String sqlselect = "select * from "+ stype ;
+			ResultSet rs = null;
+			rs = st.executeQuery(sqlselect);
+			
+			再次，添加数据
+	}*/
+>>>>>>> one:src/Order.java
 	/**
 	 * Create the frame.
 	 */
@@ -77,11 +152,12 @@ public class Order1 extends JFrame {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(200, 150, 462, 310);
+		setBounds(100, 100, 900, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
+<<<<<<< HEAD:src/Order1.java
 
 		JLabel label = new JLabel("\u6027\u522B");
 		label.setFont(new Font("微软雅黑", Font.PLAIN, 12));
@@ -127,52 +203,83 @@ public class Order1 extends JFrame {
 		sex.setBounds(74, 68, 106, 21);
 		contentPane.add(sex);
 		sex.setColumns(10);
+=======
+>>>>>>> one:src/Order.java
 		
-		age = new JTextField();
-		age.setBounds(321, 74, 100, 21);
-		contentPane.add(age);
-		age.setColumns(10);
+
+		dingdan();
 		
-		phonenumber = new JTextField();
-		phonenumber.setBounds(74, 109, 106, 24);
-		contentPane.add(phonenumber);
-		phonenumber.setColumns(10);
+		contentPane.setLayout(null);
+		JComboBox comboBox = new JComboBox(num);
+		comboBox.setBounds(160, 162, 168, 29);
+		contentPane.add(comboBox);
 		
-		orderroom = new JTextField();
-		orderroom.setBounds(74, 150, 106, 21);
-		contentPane.add(orderroom);
-		orderroom.setColumns(10);
-		
-		ordertime = new JTextField();
-		ordertime.setBounds(74, 187, 106, 21);
-		contentPane.add(ordertime);
-		ordertime.setColumns(10);
-		
+<<<<<<< HEAD:src/Order1.java
 			
 		innumber = new JTextField();
 		innumber.setBounds(321, 43, 100, 21);
 		contentPane.add(innumber);
 		innumber.setColumns(10);
+=======
+
+		JButton button_4 = new JButton("确定");
+		button_4.setFont(new Font("宋体", Font.PLAIN, 17));
+		button_4.addActionListener(new ActionListener() {
+
+			@Override
+			public void actionPerformed(ActionEvent arg0) {
+				// TODO Auto-generated method stub
+				
+			}
+			
+			
+			
+			
+		});
+		button_4.setBounds(239, 260, 89, 23);
+		contentPane.add(button_4);
 		
-		JLabel label_6 = new JLabel("\u533B\u9662\u9884\u7EA6\u754C\u9762");
-		label_6.setForeground(new Color(204, 0, 102));
-		label_6.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		label_6.setBounds(214, 10, 106, 15);
-		contentPane.add(label_6);
+		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u836F\u65B9\uFF1A");
+		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 14));
+		lblNewLabel.setBounds(54, 162, 108, 29);
+		contentPane.add(lblNewLabel);
 		
-		JButton button_1 = new JButton("\u5173\u95ED");
-		button_1.setForeground(new Color(102, 0, 102));
-		button_1.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		JLabel label_1 = new JLabel("");
+		label_1.setBackground(SystemColor.info);
+		label_1.setBounds(73, 188, 108, 29);
+		contentPane.add(label_1);
+		
+		JButton button = new JButton("\u9000\u51FA");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				System.exit(0);
+			}
+		});
+		button.setFont(new Font("宋体", Font.PLAIN, 14));
+		button.setBounds(706, 779, 89, 29);
+		contentPane.add(button);
+>>>>>>> one:src/Order.java
+		
+		JButton button_1 = new JButton("\u8FD4\u56DE");
 		button_1.addActionListener(new ActionListener() {
+<<<<<<< HEAD:src/Order1.java
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
 				Log lo=new Log();
 				lo.setVisible(true);
+=======
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				 Medicine a=new Medicine();
+				 a.setVisible(true);
+>>>>>>> one:src/Order.java
 			}
 		});
-		button_1.setBounds(328, 232, 93, 23);
+		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
+		button_1.setBounds(596, 779, 89, 29);
 		contentPane.add(button_1);
 		
+<<<<<<< HEAD:src/Order1.java
 		
 	
 		
@@ -250,3 +357,30 @@ public class Order1 extends JFrame {
 		}
 		}
 
+=======
+		JButton button_2 = new JButton("\u53D6\u836F");
+		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
+		button_2.setBounds(134, 433, 89, 29);
+		contentPane.add(button_2);
+		
+		JButton button_3 = new JButton("\u5220\u9664\u6B64\u836F\u65B9");
+		button_3.setFont(new Font("宋体", Font.PLAIN, 11));
+		button_3.setBounds(134, 526, 89, 29);
+		contentPane.add(button_3);
+		
+		JLabel label_2 = new JLabel("\u836F\u623F\u7BA1\u7406\u7CFB\u7EDF");
+		label_2.setBackground(Color.WHITE);
+		label_2.setBounds(367, 53, 149, 29);
+		contentPane.add(label_2);
+		
+		JMenuBar menuBar = new JMenuBar();
+		menuBar.setBounds(0, 0, 874, 40);
+		contentPane.add(menuBar);
+		
+		table = new JTable();
+		table.setBounds(417, 188, 436, 581);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+		contentPane.add(table);
+	}
+}
+>>>>>>> one:src/Order.java

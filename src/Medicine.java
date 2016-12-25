@@ -7,11 +7,14 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.sql.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
+import javax.swing.JTextArea;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import javax.swing.JTextField;
 import javax.swing.JButton;
@@ -21,10 +24,15 @@ import java.awt.Font;
 import java.awt.Color;
 import javax.swing.JMenuBar;
 import javax.swing.ImageIcon;
+import javax.swing.JTable;
 
 public class Medicine extends JFrame {
 
+
+
+
 	private JPanel contentPane;
+	private JTable table;
 
 	/**
 	 * Launch the application.
@@ -32,46 +40,9 @@ public class Medicine extends JFrame {
 
 
 	public static void main(String[] args) {
-		Connection connection=null;        //数据库链接；
-		PreparedStatement preparedStatement=null;        //预编译的Statement,使用其提高数据库性能；
-		ResultSet resultSet=null;        //结果，集；
-		try{
-			//加载数据驱动；
-			Class.forName("com.mysql.jdbc.Driver");      //驱动获取数据库链接
-			connection=DriverManager.getConnection("jdbc:mysql://10.66.191.63:3306");
-			String sql="select * from Medicine where name=? ";
-			preparedStatement=connection.prepareStatement(sql);
-			preparedStatement.setString(1,"头孢噻吩钠");
-			resultSet=preparedStatement.executeQuery();
-			
-			while(resultSet.next()){
-				System.out.println(resultSet.getString("id")+" "+resultSet.getString("name"));
-			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}finally{
-			if(resultSet!=null){
-				try{
-					resultSet.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-			}
-			}
-			if(preparedStatement!=null){
-				try{
-					preparedStatement.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-				}
-			}
-			if(connection!=null){
-				try{
-					connection.close();
-				}catch(SQLException e){
-					e.printStackTrace();
-			    }
-			}
-		}
+		// TODO Auto-generated method stub
+		
+
 		
 
 			
@@ -96,17 +67,19 @@ public class Medicine extends JFrame {
 	 * Create the frame.
 	 */
 	public Medicine() {
+		
+		
+		
+		
+		
+		
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 900);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-		
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBackground(Color.WHITE);
-		lblNewLabel.setBounds(21, 180, 832, 560);
-		contentPane.add(lblNewLabel);
 		
 		JButton button_1 = new JButton("\u9000\u51FA");
 		button_1.addActionListener(new ActionListener() {
@@ -142,6 +115,7 @@ public class Medicine extends JFrame {
 		contentPane.add(menuBar);
 		
 		JButton button = new JButton("修改药品信息");
+		getContentPane().setLayout(null);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
@@ -152,9 +126,41 @@ public class Medicine extends JFrame {
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
 		button.setBounds(494, 779, 116, 29);
 		contentPane.add(button);
+		/*button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+				thread1.start();
+			}
+		});*/
 		
-		JLabel label = new JLabel("药房库存");
-		label.setBounds(38, 130, 108, 29);
-		contentPane.add(label);
+		try{
+				Connection con=null;
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
+				//System.out.println("Connect succeed!");
+				Statement st=null;
+				st=con.createStatement();
+				String sqlselect="select * from Drug";
+				ResultSet rs=null;
+				rs=st.executeQuery(sqlselect);
+			
+				
+		        DefaultTableModel model=new DefaultTableModel();
+		        model.setColumnIdentifiers(new Object[]{"序号","药品名","库存","价格"});
+		        while(rs.next()){
+		        	String num=rs.getString("序号");
+		        	String name=rs.getString("药品名");
+		        	String kc=rs.getString("库存");
+		        	String price=rs.getString("价格");
+		        	model.addRow(new Object[]{num,name,kc,price});
+		        }
+		        
+		        
+		JTable table = new JTable(model);
+		table.setBounds(21, 125, 832, 633);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+		contentPane.add(table);
+		}catch(Exception e){
+			System.out.println(e);
+		}
 	}
 }
