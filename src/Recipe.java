@@ -42,9 +42,9 @@ public class Recipe extends JFrame {
 	 * Create the frame.
 	 */
 	public Recipe() {
-		setTitle("医生诊断界面");
+		setTitle("医生开处方界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 474, 334);
+		setBounds(500, 200, 450, 300);
 		
 		JMenuBar menuBar = new JMenuBar();
 		setJMenuBar(menuBar);
@@ -76,14 +76,19 @@ public class Recipe extends JFrame {
 		contentPane.setLayout(null);
 		
 		JButton btnNewButton_1 = new JButton("保存");
-		btnNewButton_1.setBounds(219, 223, 76, 23);
+		btnNewButton_1.setBounds(218, 213, 76, 23);
 		contentPane.add(btnNewButton_1);
 		
 		JLabel label = new JLabel("处方");
 		label.setForeground(new Color(106, 90, 205));
 		label.setFont(new Font("微软雅黑", Font.PLAIN, 15));
-		label.setBounds(24, 20, 108, 29);
+		label.setBounds(24, 10, 108, 29);
 		contentPane.add(label);
+		textField = new JTextField();
+		textField.setText("点击添加药品或添加项目……");
+		textField.setBounds(24, 49, 300, 154);
+		contentPane.add(textField);
+		textField.setColumns(10);
 		
 		JButton button = new JButton("添加药品");
 		button.addActionListener(new ActionListener() {
@@ -108,16 +113,14 @@ public class Recipe extends JFrame {
 		JButton button_2 = new JButton("下一个");
 		button_2.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				//连接到大屏
+				Test ts=new Test();
+				ts.setVisible(true);
+				dispose();
 			}
 		});
-		button_2.setBounds(305, 223, 93, 23);
+		button_2.setBounds(305, 213, 93, 23);
 		contentPane.add(button_2);
 		
-		textField = new JTextField();
-		textField.setText("点击添加药品或添加项目……");
-		textField.setBounds(24, 59, 300, 154);
-		contentPane.add(textField);
-		textField.setColumns(10);
+	
 	}
 }

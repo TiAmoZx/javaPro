@@ -8,15 +8,23 @@ import javax.swing.JMenu;
 import javax.swing.JMenuBar;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+
 import javax.swing.JLabel;
 import java.awt.Font;
 import javax.swing.JTextField;
 import java.awt.event.ActionListener;
 import java.io.File;
 import java.io.FileWriter;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import java.util.ArrayList;
 import java.awt.event.ActionEvent;
 import javax.swing.UIManager;
 import javax.swing.JMenuItem;
+import javax.swing.JOptionPane;
 
 public class Diagnose extends JFrame {
 
@@ -26,15 +34,45 @@ public class Diagnose extends JFrame {
 	private JTextField textField_2;
 	private JTextField textField_3;
 	private JTextField textField_4;
-
+	private Statement st = null;
+	Test te=new Test();
+	private String sickId;
+	Sick si=new  Sick();
 	/**
 	 * Launch the application.
 	 */
+
+	public Diagnose(String sickId) {
+		this.sickId = sickId;
+		initLayout();
+		Connection con = null;
+	     try {
+	       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+	     } catch (ClassNotFoundException e) {
+	    
+	        e.printStackTrace();
+	      }
+	     try {
+	         con = DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial", "sa", "sa");
+	     } catch (SQLException e) {
+	         // TODO Auto-generated catch block
+	         e.printStackTrace();
+	      }
+	    try {
+	          st = con.createStatement();
+	    } catch (SQLException e) {
+	         
+	        e.printStackTrace();
+	      }
+	    }
+	
+	
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
-					Diagnose frame = new Diagnose();
+					Diagnose frame = new Diagnose("");
 					frame.setVisible(true);
 				} catch (Exception e) {
 					e.printStackTrace();
@@ -46,7 +84,7 @@ public class Diagnose extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Diagnose() {
+	public void initLayout(){
 		setTitle("医生诊断界面");
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 474, 334);
@@ -80,10 +118,75 @@ public class Diagnose extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
+		JLabel label_1 = new JLabel("病人编号：");
+		label_1.setBounds(27, 10, 65, 15);
+		contentPane.add(label_1);
+		
+		//病人预约号栏
+		textField_2 = new JTextField();
+		textField_2.setBackground(UIManager.getColor("Button.background"));
+		textField_2.setEditable(false);
+		textField_2.setBounds(92, 7, 66, 21);
+		contentPane.add(textField_2);
+		textField_2.setColumns(10);
+		textField_2.setText(sickId);
+		
+		
+		JLabel label_2 = new JLabel("姓名：");
+		label_2.setBounds(168, 10, 47, 15);
+		contentPane.add(label_2);
+		
+	
+        java.util.List<Sick> searchResult = new ArrayList<>();
+            ResultSet resultSet = null;
+			try {
+				resultSet = st.executeQuery(
+				        "SELECT 姓名,年龄 FROM Yuyue WHERE 预约号= "+sickId
+				);
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+
+            try {
+				while (resultSet.next()) {
+				   
+				    si.name= resultSet.getString(1);
+				    si.age= resultSet.getString(2);
+				    searchResult.add(si);
+				}
+			} catch (SQLException e2) {
+				// TODO Auto-generated catch block
+				e2.printStackTrace();
+			}
+
+		
+		//姓名栏
+		textField_3 = new JTextField();
+		textField_3.setEditable(false);
+		textField_3.setBackground(UIManager.getColor("Button.background"));
+		textField_3.setBounds(215, 7, 66, 21);
+		contentPane.add(textField_3);
+		textField_3.setColumns(10);
+		textField_3.setText(si.name);
+		
+		JLabel label_3 = new JLabel("年龄：");
+		label_3.setBounds(291, 10, 54, 15);
+		contentPane.add(label_3);
+		
+		//年龄栏
+		textField_4 = new JTextField();
+		textField_4.setEditable(false);
+		textField_4.setBackground(UIManager.getColor("Button.background"));
+		textField_4.setBounds(338, 7, 66, 21);
+		contentPane.add(textField_4);
+		textField_4.setColumns(10);
+		textField_4.setText(si.age);
+				
 		JButton btnNewButton_1 = new JButton("保存");
 		btnNewButton_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
-				File file = new File("Diagnose.txt");
+				File file = new File("病历.txt");
 				try {
 					FileWriter out = new FileWriter(file);
 					String s = textField.getText();
@@ -134,37 +237,11 @@ public class Diagnose extends JFrame {
 		contentPane.add(textField_1);
 		textField_1.setColumns(10);
 		
-		JLabel label_1 = new JLabel("病人编号：");
-		label_1.setBounds(27, 10, 65, 15);
-		contentPane.add(label_1);
 		
-		textField_2 = new JTextField();
-		textField_2.setBackground(UIManager.getColor("Button.background"));
-		textField_2.setEditable(false);
-		textField_2.setBounds(92, 7, 66, 21);
-		contentPane.add(textField_2);
-		textField_2.setColumns(10);
-		
-		JLabel label_2 = new JLabel("姓名：");
-		label_2.setBounds(168, 10, 47, 15);
-		contentPane.add(label_2);
-		
-		textField_3 = new JTextField();
-		textField_3.setEditable(false);
-		textField_3.setBackground(UIManager.getColor("Button.background"));
-		textField_3.setBounds(215, 7, 66, 21);
-		contentPane.add(textField_3);
-		textField_3.setColumns(10);
-		
-		textField_4 = new JTextField();
-		textField_4.setEditable(false);
-		textField_4.setBackground(UIManager.getColor("Button.background"));
-		textField_4.setBounds(338, 7, 66, 21);
-		contentPane.add(textField_4);
-		textField_4.setColumns(10);
-		
-		JLabel label_3 = new JLabel("性别：");
-		label_3.setBounds(291, 10, 54, 15);
-		contentPane.add(label_3);
 	}
 }
+	class Sick{
+		String id;
+		String name;
+		String age;	
+	}
