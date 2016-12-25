@@ -1,4 +1,12 @@
+<<<<<<< HEAD
 package yao;
+=======
+<<<<<<< HEAD
+
+=======
+package yao;
+>>>>>>> pr/27
+>>>>>>> one
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
