@@ -208,12 +208,17 @@ public class Order1 extends JFrame {
 					String m;
 					String n;
 					t=name.getText();
-					b=innumber.getText();
-					d=sex.getText();
+					t.matches("^[\u4e00-\u9fa5]+$");
+					b=innumber.getText();b.matches("^[\u4e00-\u9fa5]+$");
+					d=sex.getText();d.matches("^[\u4e00-\u9fa5]+$");
 					p=age.getText();
+					p.matches("\\d");
 					l=phonenumber.getText();
+					l.matches("\\d");
 					m=orderroom.getText();
+					m.matches("^[\u4e00-\u9fa5]+$");
 					n=ordertime.getText();
+					n.matches("\\d");
 					System.out.println("11"+t);
 					String SQL = " insert into Yuyue values('"+t+"','"+b+"','"+d+"','"+p+"','"+l+"','"+m+"','"+n+"') "; 
 			
