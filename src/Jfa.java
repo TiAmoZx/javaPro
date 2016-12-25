@@ -101,8 +101,7 @@ public class Jfa extends JFrame {
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
-				WelcomeView frame = new WelcomeView();
-				frame.setVisible(true);
+				
 			}
 		});
 		
