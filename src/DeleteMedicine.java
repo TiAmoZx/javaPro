@@ -6,6 +6,8 @@ import java.awt.EventQueue;
 import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
 import java.sql.ResultSet;  
 import java.sql.SQLException;  
 
@@ -16,6 +18,7 @@ import javax.swing.JMenuBar;
 import javax.swing.JLabel;
 import java.awt.Color;
 import javax.swing.JRadioButton;
+import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.Font;
 import javax.swing.JTextField;
@@ -27,23 +30,18 @@ import java.sql.Statement;
 import java.awt.event.ActionEvent;
 import javax.swing.JComboBox;
 
-public class Change extends JFrame {
+public class DeleteMedicine extends JFrame {
+	
 
 	private JPanel contentPane;
 	private static JTextField textField;
-	private static JTextField textField_1;
-	private static JTextField textField_2;
 	static String selectt;
 
 	  private static void testInsert()  
 	    {  
 		    String name=textField.getText().toString();
-		    String kc1=textField_1.getText().toString();
-		    String p=textField_2.getText();
-		    int kc,price;
-		    kc=Integer.parseInt(kc1);
-		    price=Integer.parseInt(p);
-	         String SQL = "  insert into drug values('0','"+name+"','"+kc+"','"+price+"') ";  
+		    
+	         String SQL = " DELETE FROM drug WHERE 药品名 = '"+name+"'";  
 	         sqlHelper.executeUpdate(SQL); 
 	       
 	    }  
@@ -69,7 +67,7 @@ public class Change extends JFrame {
 	/**
 	 * Create the frame.
 	 */
-	public Change() {
+	public DeleteMedicine() {
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 900, 900);
 		
@@ -108,42 +106,20 @@ public class Change extends JFrame {
 		button_1.setBounds(654, 739, 89, 29);
 		contentPane.add(button_1);
 		
-		JLabel label_1 = new JLabel("名字：");
-		label_1.setFont(new Font("宋体", Font.PLAIN, 15));
-		label_1.setBounds(233, 243, 65, 29);
+		JLabel label_1 = new JLabel("请输入要删除的药品名字：");
+		label_1.setFont(new Font("宋体", Font.PLAIN, 21));
+		label_1.setBounds(280, 516, 259, 44);
 		contentPane.add(label_1);
-		
-		JLabel label_2 = new JLabel("库存：");
-		label_2.setFont(new Font("宋体", Font.PLAIN, 15));
-		label_2.setBounds(233, 356, 65, 29);
-		contentPane.add(label_2);
-		
-		JLabel label_3 = new JLabel("单价：");
-		label_3.setFont(new Font("宋体", Font.PLAIN, 15));
-		label_3.setBounds(233, 492, 65, 29);
-		contentPane.add(label_3);
 		
 		textField = new JTextField();
 		textField.setFont(new Font("宋体", Font.PLAIN, 13));
-		textField.setBounds(434, 246, 126, 21);
+		textField.setBounds(295, 581, 227, 44);
 		contentPane.add(textField);
 		textField.setColumns(10);
 		
-		textField_1 = new JTextField();
-		textField_1.setFont(new Font("宋体", Font.PLAIN, 13));
-		textField_1.setColumns(10);
-		textField_1.setBounds(434, 359, 126, 21);
-		contentPane.add(textField_1);
-		
-		textField_2 = new JTextField();
-		textField_2.setFont(new Font("宋体", Font.PLAIN, 13));
-		textField_2.setColumns(10);
-		textField_2.setBounds(434, 495, 126, 21);
-		contentPane.add(textField_2);
-		
-		JLabel label_4 = new JLabel("添加新药品");
+		JLabel label_4 = new JLabel("删除库房药品");
 		label_4.setFont(new Font("宋体", Font.PLAIN, 15));
-		label_4.setBounds(344, 155, 126, 29);
+		label_4.setBounds(382, 50, 126, 29);
 		contentPane.add(label_4);
 		
 		JButton button_2 = new JButton("确定");
@@ -159,6 +135,38 @@ public class Change extends JFrame {
 		button_2.setBounds(544, 739, 89, 29);
 		
 		contentPane.add(button_2);
+		
+		
+		try{
+			Connection con=null;
+			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+			con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
+			//System.out.println("Connect succeed!");
+			Statement st=null;
+			st=con.createStatement();
+			String sqlselect="select * from Drug";
+			ResultSet rs=null;
+			rs=st.executeQuery(sqlselect);
+		
+			
+	        DefaultTableModel model=new DefaultTableModel();
+	        model.setColumnIdentifiers(new Object[]{"序号","药品名","库存","价格"});
+	        while(rs.next()){
+	        	String num=rs.getString("序号");
+	        	String name=rs.getString("药品名");
+	        	String kc=rs.getString("库存");
+	        	String price=rs.getString("价格");
+	        	model.addRow(new Object[]{num,name,kc,price});
+	        }
+	        
+	        
+	JTable table = new JTable(model);
+	table.setBounds(21, 106, 832, 390);
+	table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
+	contentPane.add(table);
+	}catch(Exception e){
+		System.out.println(e);
+	}
 		
 	}
 }

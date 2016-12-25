@@ -114,7 +114,7 @@ public class Medicine extends JFrame {
 		menuBar.setBounds(0, 0, 874, 40);
 		contentPane.add(menuBar);
 		
-		JButton button = new JButton("修改药品信息");
+		JButton button = new JButton("添加药品信息");
 		getContentPane().setLayout(null);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -159,6 +159,18 @@ public class Medicine extends JFrame {
 		table.setBounds(21, 125, 832, 633);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		contentPane.add(table);
+		
+		JButton button_3 = new JButton("删除药品信息");
+		button_3.setFont(new Font("宋体", Font.PLAIN, 14));
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+				 DeleteMedicine a=new DeleteMedicine();
+				 a.setVisible(true);
+			}
+		});
+		button_3.setBounds(357, 779, 116, 29);
+		contentPane.add(button_3);
 		}catch(Exception e){
 			System.out.println(e);
 		}
