@@ -1,4 +1,4 @@
-package 儿科门诊医生诊疗操作;
+
 import javax.swing.*;
 
 import java.awt.event.*;

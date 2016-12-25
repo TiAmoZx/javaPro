@@ -1,4 +1,4 @@
-package 儿科门诊医生诊疗操作;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
