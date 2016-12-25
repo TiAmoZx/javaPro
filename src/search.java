@@ -88,12 +88,12 @@ Thread thread1=new Thread();
 				try{
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://10.20.171.139:1433;DatabaseName=hospital","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
 					st=con.createStatement();
-					String sqlselect = "select * from doctor";
+					String sqlselect = "select * from drug";
 					ResultSet rs = null;
 					rs = st.executeQuery(sqlselect);
 					

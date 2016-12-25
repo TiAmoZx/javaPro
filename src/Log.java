@@ -54,7 +54,7 @@ public class Log extends JFrame {
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Order1 or=new Order1();
+				Order or=new Order();
 				or.setVisible(true);
 			}
 		});
