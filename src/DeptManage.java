@@ -18,6 +18,10 @@ import javax.swing.JTextPane;
 import javax.swing.JTable;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.ImageIcon;
+import javax.swing.JComboBox;
+import javax.swing.JButton;
+import java.awt.event.ActionListener;
+import java.awt.event.ActionEvent;
 
 public class DeptManage extends JFrame {
 
@@ -25,6 +29,11 @@ public class DeptManage extends JFrame {
 	private JTable table;
 	private JLabel label_1;
 	private JLabel label_2;
+	private JComboBox comboBox;
+	private JButton button;
+	private JButton button_1;
+	private JButton button_2;
+	private JButton button_3;
 
 	
 		
@@ -112,6 +121,8 @@ public class DeptManage extends JFrame {
 		
 	}
 
+	
+
 	/**
 	 * Create the frame.
 	 */
@@ -125,7 +136,7 @@ public class DeptManage extends JFrame {
 		
 		JLabel label = new JLabel("选择您要进行的操作：");
 		label.setFont(new Font("宋体", Font.PLAIN, 14));
-		label.setBounds(276, 43, 174, 15);
+		label.setBounds(20, 226, 174, 15);
 		contentPane.add(label);
 		
 		label_1 = new JLabel("科室名称");
@@ -153,11 +164,43 @@ public class DeptManage extends JFrame {
 			}
 		));
 		table.setBounds(20, 68, 754, 128);
+		table.setEnabled(false);
 		contentPane.add(table);
 		
-		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\av.jpg"));
-		label_3.setBounds(0, 0, 784, 452);
-		contentPane.add(label_3);
+		String[] type = {"外科","内科","皮肤科","骨科","妇产科"};
+		comboBox = new JComboBox(type);
+		comboBox.setBounds(97, 251, 239, 21);
+		contentPane.add(comboBox);
+		
+		button = new JButton("浏览人员信息");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			}
+		});
+		button.setBounds(20, 309, 141, 23);
+		contentPane.add(button);
+		
+		button_1 = new JButton("增加人员信息");
+		button_1.setBounds(224, 309, 141, 23);
+		contentPane.add(button_1);
+		
+		button_2 = new JButton("修改人员信息");
+		button_2.setBounds(431, 309, 141, 23);
+		contentPane.add(button_2);
+		
+		button_3 = new JButton("删除人员信息");
+		button_3.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent arg0) {
+			}
+		});
+		button_3.setBounds(633, 309, 141, 23);
+		contentPane.add(button_3);
+		
+		JLabel label_4 = new JLabel("");
+		label_4.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
+		label_4.setBounds(0, 0, 784, 462);
+		contentPane.add(label_4);
+		
+		
 	}
 }
