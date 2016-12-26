@@ -1,41 +1,167 @@
+
+
+import java.awt.BorderLayout;
+import java.awt.EventQueue;
+
 import javax.swing.JFrame;
-import javax.swing.GroupLayout;
-import javax.swing.GroupLayout.Alignment;
-import java.awt.Label;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
-import javax.swing.ImageIcon;
-import java.awt.Button;
+import java.awt.Font;
+import java.sql.Connection;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
+import javax.swing.JTable;
 import javax.swing.JButton;
-import javax.swing.LayoutStyle.ComponentPlacement;
-import javax.swing.SwingConstants;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
+import javax.swing.JTextField;
 
 public class 收费 extends JFrame {
-	public 收费() {
-		setBounds(165, 180, 400, 300);
-		JLabel lblNewLabel = new JLabel("");
-		lblNewLabel.setBounds(6, 6, 438, 298);
-		lblNewLabel.setHorizontalAlignment(SwingConstants.RIGHT);
-		lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
-		getContentPane().setLayout(null);
+	
+	
+	private JPanel contentPane;
+	private JTable table;
+Thread thread1=new Thread();
+private JTextField textField;
+private JTextField textField_1;
+	
+					
 		
-		JButton btnNewButton = new JButton("welcome");
-		btnNewButton.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				Jfa j=new Jfa();
-				j.setVisible(true);//注意 只有加了这个页面调用才会显示
+		
+	    
+		
+
+	/**
+	 * Launch the application.
+	 */
+	public static void main(String[] args) {
+	
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					收费 frame = new 收费();
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 			}
 		});
-		btnNewButton.setBounds(165, 180, 117, 29);
-		getContentPane().add(btnNewButton);
-		getContentPane().add(lblNewLabel);
 	}
-
-	public static void main(String[] args) {
-		// TODO Auto-generated method stub
-   收费 收费1=new 收费();
-   收费1.setVisible(true);
+	
+	/**
+	 * Create the frame.
+	 */
+	public 收费() {
+		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
+		setBounds(100, 100, 800, 500);
+		contentPane = new JPanel();
+		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
+		setContentPane(contentPane);
+		contentPane.setLayout(null);
+		
+		JLabel label = new JLabel("预约情况");
+		label.setBounds(300, 43, 246, 15);
+		label.setFont(new Font("宋体", Font.PLAIN, 14));
+		contentPane.add(label);
+		DefaultTableModel model=new DefaultTableModel();
+		//创建表头
+		model.setColumnIdentifiers(new Object[]{"工号","姓名","密码","科室"});
+		JTable table=new JTable(model);
+		table.setBounds(94, 288, 607, 150);
+		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
+		JScrollPane scrollPane=new JScrollPane();
+		table.add(scrollPane);
+		contentPane.add(table);
+		
+		JButton btnNewButton = new JButton("查询");
+		btnNewButton.setBounds(147, 247, 117, 29);
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thread1.start();
+			}
+		});
+		contentPane.add(btnNewButton);
+		
+		JButton button = new JButton("返回首页");
+		button.setBounds(6, 6, 176, 29);
+		button.setBackground(Color.DARK_GRAY);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			dispose();
+				Jfa j=new Jfa();
+			j.setVisible(true);
+			}
+		});
+		contentPane.add(button);
+		
+		JButton button_1 = new JButton("重置");
+		button_1.setBounds(278, 247, 117, 29);
+		contentPane.add(button_1);
+		
+		JLabel lblNewLabel = new JLabel("预约号码");
+		lblNewLabel.setBounds(62, 118, 61, 16);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("姓名");
+		lblNewLabel_1.setBounds(62, 174, 61, 16);
+		contentPane.add(lblNewLabel_1);
+		
+		textField = new JTextField();
+		textField.setBounds(219, 169, 176, 26);
+		contentPane.add(textField);
+		textField.setColumns(10);
+		
+		textField_1 = new JTextField();
+		textField_1.setBounds(219, 113, 176, 26);
+		contentPane.add(textField_1);
+		textField_1.setColumns(10);
+		String m;
+		m=textField_1.getText();
+		JLabel label_1 = new JLabel("");
+		label_1.setBounds(6, 6, 796, 446);
+		label_1.setIcon(new ImageIcon("/Users/yuelei/Desktop/5.jpg"));
+		contentPane.add(label_1);
+		thread1=new Thread(new Runnable(){
+			public void run(){
+				try{System.out.println(m);
+					Connection con = null;
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+					/*if(con !=null)
+						System.out.println("Connect succeed!");*/
+					Statement st=null;
+					st=con.createStatement();
+					String sqlselect = "select * from item";
+					ResultSet rs = null;
+					rs = st.executeQuery(sqlselect);
+					
+					//再次，添加数据
+					while(rs.next())
+					{
+					String wn=rs.getString("项目名称");
+									String name=rs.getString("价格");
+									
+					//把以上数据添加到表格模型的一行中
+									
+									model.addRow(new Object[]{wn,name});
+					}
+					//最后，用模型生成表格
+					
+						}catch(Exception e){
+							System.out.println(e);
+						}
+			}
+			
+		});
+		
+		
+		
 	}
 }

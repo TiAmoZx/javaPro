@@ -19,6 +19,8 @@ import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import java.awt.Color;
 
 public class search extends JFrame {
 	
@@ -62,8 +64,8 @@ Thread thread1=new Thread();
 		contentPane.setLayout(null);
 		
 		JLabel label = new JLabel("预约情况");
+		label.setBounds(300, 43, 246, 15);
 		label.setFont(new Font("宋体", Font.PLAIN, 14));
-		label.setBounds(298, 18, 246, 15);
 		contentPane.add(label);
 		DefaultTableModel model=new DefaultTableModel();
 		//创建表头
@@ -76,34 +78,51 @@ Thread thread1=new Thread();
 		contentPane.add(table);
 		
 		JButton btnNewButton = new JButton("查询");
+		btnNewButton.setBounds(176, 408, 117, 29);
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thread1.start();
 			}
 		});
-		btnNewButton.setBounds(176, 408, 117, 29);
 		contentPane.add(btnNewButton);
+		
+		JButton button = new JButton("返回首页");
+		button.setBounds(6, 6, 176, 29);
+		button.setBackground(Color.DARK_GRAY);
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			dispose();
+				Jfa j=new Jfa();
+			j.setVisible(true);
+			}
+		});
+		contentPane.add(button);
+		
+		JLabel label_1 = new JLabel("");
+		label_1.setBounds(6, 6, 796, 466);
+		label_1.setIcon(new ImageIcon("/Users/yuelei/Desktop/111.jpg"));
+		contentPane.add(label_1);
 		thread1=new Thread(new Runnable(){
 			public void run(){
 				try{
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.20.178.155:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
 					st=con.createStatement();
-					String sqlselect = "select * from drug";
+					String sqlselect = "select * from Yuyue";
 					ResultSet rs = null;
 					rs = st.executeQuery(sqlselect);
 					
 					//再次，添加数据
 					while(rs.next())
 					{
-					String wn=rs.getString("worknum");
-									String name=rs.getString("name");
-									String psword=rs.getString("password");
-									String dept=rs.getString("dept");
+					String wn=rs.getString("姓名");
+									String name=rs.getString("性别");
+									String psword=rs.getString("年龄");
+									String dept=rs.getString("预约号");
 					//把以上数据添加到表格模型的一行中
 									
 									model.addRow(new Object[]{wn,name,psword,dept});

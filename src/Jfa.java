@@ -76,7 +76,7 @@ public class Jfa extends JFrame {
 		setBounds(200, 150, 400, 400);
 		
 		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBackground(Color.LIGHT_GRAY);
+		menuBar.setBackground(new Color(153, 255, 255));
 		menuBar.setSize(new Dimension(4, 2));
 		setJMenuBar(menuBar);
 		
@@ -142,25 +142,13 @@ public class Jfa extends JFrame {
 		 JPanel imagePanel1 = (JPanel) this.getContentPane();  
 	        imagePanel.setOpaque(false);
 	        contentPane.setLayout(null);
-	        
-	        JLabel lblNewLabel = new JLabel("");
-	        lblNewLabel.setLabelFor(this);
-	        lblNewLabel.setBounds(6, 36, 388, 340);
-	        lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
-	        contentPane.add(lblNewLabel);
 	        contentPane.add(label123);
 	        
-	        JButton btnNewButton_1 = new JButton("New button");
-	        btnNewButton_1.setBounds(6, 168, 117, 29);
-	        contentPane.add(btnNewButton_1);
-	        
-	        ScrollPane scrollPane = new ScrollPane();
-	        scrollPane.setBounds(16, 65, 378, 267);
-	        contentPane.add(scrollPane);
-	        
-	        JButton btnNewButton_2 = new JButton("New button");
-	        btnNewButton_2.setBounds(53, 168, 117, 29);
-	        contentPane.add(btnNewButton_2);
+	        JLabel lblNewLabel = new JLabel("");
+	        lblNewLabel.setBounds(6, 6, 388, 346);
+	        lblNewLabel.setLabelFor(this);
+	        lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
+	        contentPane.add(lblNewLabel);
 	        setVisible(true);
 		
 	
@@ -175,11 +163,13 @@ public class Jfa extends JFrame {
         public void actionPerformed(ActionEvent e) {
             // 可以监听不同事件
             if (e.getSource() == menu_zxyygh) {
-               System.exit(0);;
+              
+            	search s=new search();
+              s.setVisible(true);
             }
             if(e.getSource()==menu_wzxyy){
             	dispose();
-            	现场挂号 f=new 现场挂号();
+            	Order1 f=new Order1();
             	f.setVisible(true);
             }
         }

@@ -7,7 +7,7 @@ import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.mysql.jdbc.Statement;
+
 
 import java.awt.FlowLayout;
 import javax.swing.JLabel;
@@ -166,7 +166,7 @@ public class Order1 extends JFrame {
 		button_1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Log lo=new Log();
+				Jfa lo=new Jfa();
 				lo.setVisible(true);
 			}
 		});
@@ -249,8 +249,8 @@ public class Order1 extends JFrame {
 		
 		
 		JLabel label_8 = new JLabel("");
-		label_8.setIcon(new ImageIcon("C:\\Users\\lenovo\\Desktop\\新建文件夹\\QQ图片20161214215736.jpg"));
-		label_8.setBounds(10, 10, 436, 261);
+		label_8.setIcon(new ImageIcon("/Users/yuelei/Desktop/3.jpg"));
+		label_8.setBounds(6, 6, 440, 276);
 		contentPane.add(label_8);
 		}
 		}
