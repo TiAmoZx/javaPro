@@ -224,7 +224,8 @@ public class Order1 extends JFrame {
 			
 			         if(SqlHelper.executeUpdate(SQL))  
 			         {  
-			             System.out.println("插入成功 ");  
+			             System.out.println("插入成功 "); 
+			             JOptionPane.showMessageDialog(contentPane, "预约成功", "标题",JOptionPane.WARNING_MESSAGE); 
 			         }else  
 			         {  
 			             System.out.println("插入失败 ");  

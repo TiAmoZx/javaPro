@@ -111,7 +111,7 @@ public class Jfa extends JFrame {
 				
 				if(e.getActionCommand().equals("收费系统")){
 				dispose();//销毁当前窗口
-				price sf=new price();
+				收费 sf=new 收费();
 			        sf.setVisible(true);
 				}
 				
