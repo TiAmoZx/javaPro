@@ -34,10 +34,30 @@ public class DeptManage extends JFrame {
 	private JButton button_1;
 	private JButton button_2;
 	private JButton button_3;
+	private JButton button_4;
 
-	
+	public void ex(){
+		DeptManage frame = new DeptManage();
+		frame.setVisible(false);
+		AdministratorView av = new AdministratorView();
+		av.setVisible(true);
+		dispose();
+	}
+	public void ex2(){
+		DeptManage frame = new DeptManage();
+		frame.setVisible(false);
+		AddMember am = new AddMember();
+		am.setVisible(true);
+		dispose();
+	}
 		
-		
+	public void ex3(){
+		DeptManage frame = new DeptManage();
+		frame.setVisible(false);
+		DeleteMember dm = new DeleteMember();
+		dm.setVisible(true);
+		dispose();
+	}
 	
 	
 	
@@ -181,6 +201,11 @@ public class DeptManage extends JFrame {
 		contentPane.add(button);
 		
 		button_1 = new JButton("增加人员信息");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ex2();
+			}
+		});
 		button_1.setBounds(224, 309, 141, 23);
 		contentPane.add(button_1);
 		
@@ -191,10 +216,18 @@ public class DeptManage extends JFrame {
 		button_3 = new JButton("删除人员信息");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-			}
+ex3();}
 		});
 		button_3.setBounds(633, 309, 141, 23);
 		contentPane.add(button_3);
+		
+		button_4 = new JButton("返回");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			ex();}
+		});
+		button_4.setBounds(681, 377, 93, 23);
+		contentPane.add(button_4);
 		
 		JLabel label_4 = new JLabel("");
 		label_4.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));

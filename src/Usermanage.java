@@ -33,7 +33,28 @@ public class Usermanage extends JFrame {
 		
 		
 	    
+	public void ex(){
+		Usermanage frame = new Usermanage();
+		frame.setVisible(false);
+		AdministratorView av= new AdministratorView();
+		av.setVisible(true);
+		dispose();
+	}
+	public void ex2(){
+		Usermanage frame = new Usermanage();
+		frame.setVisible(false);
+		AddMember am = new AddMember();
+		am.setVisible(true);
+		dispose();
 		
+	}
+	public void ex3(){
+		Usermanage frame = new Usermanage();
+		frame.setVisible(true);
+		DeleteMember dm = new DeleteMember();
+		dm.setVisible(true);
+		dispose();
+	}
 
 	/**
 	 * Launch the application.
@@ -51,7 +72,6 @@ public class Usermanage extends JFrame {
 			}
 		});
 	}
-	
 
 	public void Connectsql(){
 		try{
@@ -72,7 +92,7 @@ public class Usermanage extends JFrame {
 			model.setColumnIdentifiers(new String[]{"worknum","name","password","dept"});}
 			else if(stype == "cashier" || stype == "phar"){
 				model.setColumnIdentifiers(new Object[]{"工号","姓名","密码"});
-			}else{
+			}else if(stype == "sicker"){
 				model.setColumnIdentifiers(new Object[]{"预约号","姓名","性别","年龄","预约时间","电话"});
 			}
 			//再次，添加数据
@@ -91,7 +111,7 @@ public class Usermanage extends JFrame {
 								String name=rs.getString("name");
 								String psword=rs.getString("password");
 								model.addRow(new Object[]{wn,name,psword});
-							}else{
+							}else if(stype == "sicker"){
 								String on = rs.getString("ordernum");
 								String name = rs.getString("name");
 								String sex = rs.getString("sex");
@@ -115,10 +135,12 @@ public class Usermanage extends JFrame {
 		
 		
 	
+		
 	/**
 	 * Create the frame.
 	 */
 	public Usermanage() {
+		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -136,6 +158,7 @@ public class Usermanage extends JFrame {
 		comboBox.setBounds(32, 283, 499, 21);
 		contentPane.add(comboBox);
 		
+		
 		JTable table_1=new JTable();
 		table_1.setBounds(22, 25, 739, 211);
 		table_1.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
@@ -147,13 +170,13 @@ public class Usermanage extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				model.setRowCount(0);
 				table_1.setModel(model);	
-			switch(comboBox.getSelectedItem().toString()){
-			
-			case "病人": stype = "sicker";break;
-			case "医生": stype = "doctor";break;
-			case "收费人员":stype = "cashier";break;
-			case "药师":stype = "phar";break;
-			}
+				switch(comboBox.getSelectedItem().toString()){
+				
+				case "病人": stype = "sicker";break;
+				case "医生": stype = "doctor";break;
+				case "收费人员":stype = "cashier";break;
+				case "药师":stype = "phar";break;
+				}
 			Connectsql();
 			table_1.setModel(model);
 			}
@@ -161,12 +184,41 @@ public class Usermanage extends JFrame {
 		button.setBounds(32, 344, 147, 23);
 		contentPane.add(button);
 		
+		JButton button_1 = new JButton("添加人员信息");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			ex2();}
+		});
+		button_1.setBounds(224, 344, 147, 23);
+		contentPane.add(button_1);
+		
+		JButton button_2 = new JButton("删除人员信息");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+			ex3();}
+		});
+		button_2.setBounds(417, 344, 147, 23);
+		contentPane.add(button_2);
+		
+		JButton button_3 = new JButton("查找人员信息");
+		button_3.setBounds(614, 344, 147, 23);
+		contentPane.add(button_3);
+		
+		JButton button_4 = new JButton("返回");
+		button_4.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				ex();
+			}
+		});
+		button_4.setBounds(668, 405, 93, 23);
+		contentPane.add(button_4);
+		
 		
 		
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
-		label_1.setBounds(0, 10, 828, 451);
+		label_1.setBounds(0, 0, 828, 461);
 		contentPane.add(label_1);
 		
 		
