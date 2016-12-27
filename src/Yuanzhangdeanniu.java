@@ -16,14 +16,14 @@ public class Yuanzhangdeanniu extends JFrame{
 	 private JLabel ji=new JLabel();
 private JButton myButton1,myButton2,myButton3,myButton4,myButton5;
 public Yuanzhangdeanniu(){
-	super("原来你真的是院长大人");
+	super("医院信息预览");
 	setBounds(0,0,1000,645);
 	setLayout(null);
 	setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setVisible(true);
-	myButton5=new JButton("院长大人\n今天的要闻");
+	myButton5=new JButton("关闭");
 	myButton1=new JButton("挂号量和总金额");
-	myButton2=new JButton("挂号量和总金额（饼图）");
+	myButton2=new JButton(getTime());
 	myButton3=new JButton("药品库存");
 	myButton4=new JButton("医生就诊数和金额");
     add(myButton1);
@@ -44,9 +44,10 @@ public Yuanzhangdeanniu(){
 	myButton1.addActionListener(new myButton1());
 	myButton3.addActionListener(new myButton3());
 	myButton4.addActionListener(new myButton4());
+	myButton5.addActionListener(new myButton5());
     xxxx.setBounds(100,280,1000,50);	 
     xxxx.setHorizontalAlignment(SwingConstants.LEFT);        
-container.add(xxxx);
+
 Timer timer = new Timer();
 timer.schedule(new RemindTask(), 0, 1000);	
 xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
@@ -58,6 +59,11 @@ public String getTime() {
     time = format.format(date);
      return time;
 }	
+class myButton5 implements ActionListener{
+	public void actionPerformed(ActionEvent e){
+		System.exit(0);
+	}
+}
 class myButton3 implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		new Medicine().setVisible(true);

@@ -13,11 +13,11 @@ public class Yourenmaochongyuanzhangdaren extends JFrame{
 
 	
 	public Yourenmaochongyuanzhangdaren(){
-		super("这里有人冒充院长大人");
+		super("口令输入不正确");
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
-		setBounds(50,50,500,100);
+		setBounds(50,50,300,100);
 		setVisible(true);
-		JLabel l1=new JLabel("快来人呐，这里有人冒充院长大人！");
+		JLabel l1=new JLabel("请重新输入口令");
 		add(l1);
 		l1.setBounds(300,250,100,60);
 	}

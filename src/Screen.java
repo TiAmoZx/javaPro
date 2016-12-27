@@ -1,4 +1,4 @@
-package Screen;
+package 实验;
 import javax.swing.*;
 
 import java.util.*;
@@ -17,34 +17,8 @@ public class Screen extends JFrame implements ActionListener{
 	 Connection conn;
     Statement stmt;
     ResultSet rs;
-    String url = "jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital;";
-    String sql = "select * from Yuyue";
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
+    String url = "jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial;";
+    String sql = "select * from sicker";
 	String time=null;
  private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
 	private JLabel bi=new JLabel();private JLabel ci=new JLabel();private JLabel di=new JLabel();
@@ -70,18 +44,7 @@ public class Screen extends JFrame implements ActionListener{
 	private int mno=500;private int nop=540;private int opq=580;
 	private Container container=getContentPane();
 	public Screen(){
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
-		
+		int sUty=0;
 		JButton button = new JButton("查询已预约人员信息");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -111,36 +74,36 @@ public class Screen extends JFrame implements ActionListener{
 		             * 语句，该语句返回单个 ResultSet 对象
 		             */
 		            while (rs.next()) {
-		                int numb = rs.getInt("预约号");
-		                String mmmm=rs.getString("预约科室");
-		                String iiii = rs.getString("姓名");
+		                int numb = rs.getInt("ordernum");
+		                String mmmm=rs.getString("dept");
+		                String iiii = rs.getString("name");
 		            	JTextField t3=new JTextField(""+numb);
 		                JTextField t1=new JTextField(iiii);
 	                    JTextField t2=new JTextField(mmmm);
 	                    t1.setBounds(150,0,150,50);
 	                    t2.setBounds(150,50,150,50);
 	                    t3.setBounds(150,100,150,50);
-	                    add(t1);
-	                    add(t2);
-	                    add(t3);
+	                    getContentPane().add(t1);
+	                    getContentPane().add(t2);
+	                    getContentPane().add(t3);
 	                    JTextField t4=new JTextField(iiii);
 	JTextField t5=new JTextField(mmmm);
 	JTextField t6=new JTextField(""+numb);
 	t4.setBounds(150,160,150,50);
 	t5.setBounds(150,210,150,50);
 	t6.setBounds(150,260,150,50);
-	add(t4);
-	add(t5);
-	add(t6);
+	getContentPane().add(t4);
+	getContentPane().add(t5);
+	getContentPane().add(t6);
 	JTextField t7=new JTextField(iiii);
 	JTextField t8=new JTextField(mmmm);
 	JTextField t9=new JTextField(""+numb);
 	t7.setBounds(150,320,150,50);
 	t8.setBounds(150,370,150,50);
 	t9.setBounds(150,420,150,50);
-	add(t7);
-	add(t8);
-	add(t9);	
+	getContentPane().add(t7);
+	getContentPane().add(t8);
+	getContentPane().add(t9);	
 	
 	
 	
@@ -169,35 +132,35 @@ public class Screen extends JFrame implements ActionListener{
 		});
 		setDefaultCloseOperation(EXIT_ON_CLOSE);
 	setBounds(10,10,600,700);
-	setLayout(null);
+	getContentPane().setLayout(null);
 	setVisible(true);
 		               	JLabel l1=new JLabel("姓名");
                         JLabel l2=new JLabel("科室");	                    
 	                    JLabel l3=new JLabel("就诊号码");
                         l1.setBounds(50,0,100,50);	                    
-                     	l2.setBounds(50,50,100,50);                     	
+                     	l2.setBounds(50,51,100,50);                     	
 	                    l3.setBounds(50,100,100,50);                        
-	                    add(l1);
-	                    add(l2);
-	                    add(l3);
+	                    getContentPane().add(l1);
+	                    getContentPane().add(l2);
+	                    getContentPane().add(l3);
 	                    	JLabel l4=new JLabel("姓名");
 	JLabel l5=new JLabel("科室");
 	JLabel l6=new JLabel("就诊号码");		
 	l4.setBounds(50,160,100,50);
 	l5.setBounds(50,210,100,50);
 	l6.setBounds(50,260,100,50);
-	add(l4);
-	add(l5);
-	add(l6);	
+	getContentPane().add(l4);
+	getContentPane().add(l5);
+	getContentPane().add(l6);	
 	JLabel l7=new JLabel("姓名");	
 	JLabel l8=new JLabel("科室");
 	JLabel l9=new JLabel("就诊号码");
 	l7.setBounds(50,320,100,50);
 	l8.setBounds(50,370,100,50);
 	l9.setBounds(50,420,100,50); 
-	add(l7);
-	add(l8);
-	add(l9);
+	getContentPane().add(l7);
+	getContentPane().add(l8);
+	getContentPane().add(l9);
 	zz.setText("当前排队xxxx人");
 	xx.setText("当前排队xxxx人");
 	 zz.setHorizontalAlignment(SwingConstants.LEFT);
@@ -647,8 +610,6 @@ public class Screen extends JFrame implements ActionListener{
 	 container.add(bi);
 	 container.add(ci);
 	 container.setLayout(null);
-		ji.setText("当前排队xxxx人");
-		ai.setText("当前排队xxxx人");
 		 ji.setHorizontalAlignment(SwingConstants.LEFT);
 		 ai.setHorizontalAlignment(SwingConstants.LEFT);
 		 ji.setBounds(400,200,10,50);
@@ -674,8 +635,7 @@ public class Screen extends JFrame implements ActionListener{
 		 );
 		 t.start();
 		 container.add(ji);
-		 container.add(ai);
-			
+		 container.add(ai);		
 			 li.setHorizontalAlignment(SwingConstants.LEFT);
 			 li.setBounds(500,200,10,50);
 			 li.setFont(new   java.awt.Font("Dialog",   1,   40));
@@ -704,30 +664,18 @@ public class Screen extends JFrame implements ActionListener{
 Timer timer = new Timer();
 timer.schedule(new RemindTask(), 0, 1000);	
 xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
-
-	
-	
-	
-
     JButton buttonx = new JButton("change");
     buttonx.addActionListener(this);
     buttonx.setBounds(80,480,100,50);
- add(buttonx);
+ getContentPane().add(buttonx);
     Font font = new Font("黑体",Font.PLAIN,40);
     li.setFont(font);
-	
-	
-	
-	
-	
-	
-	
-
-	
-	
+    
+    JLabel label = new JLabel("");
+    label.setIcon(new ImageIcon("ddc3ccb70acd61907d1035894d445b10.jpg"));
+    label.setBounds(0, 0, 584, 661);
+    getContentPane().add(label);
 	}
-	
-	
 	   public String getTime() {
 	        Calendar calendar = Calendar.getInstance();
 	        Date date = (Date) calendar.getTime();
@@ -737,14 +685,49 @@ xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
 	    }	
 	public static void main(String[] atgs){
 		Screen f=new Screen();	
-
 	}
 	public void actionPerformed(ActionEvent e)
     {
         if("change".equals(e.getActionCommand()))
         {    int x=1+(int)(Math.random()*50);
-        String a=("请"+1+(int)((Math.random()*50))+"号病人前来就诊");
-            li.setText(a);
+         String aaaa=("请"+1+(int)((Math.random()*50))+"号病人前来就诊");
+            li.setText(aaaa);
+            ji.setText("当前排队"+x+"人");
+		    ai.setText("当前排队"+x+"人");
+		    bi.setText("当前排队"+x+"人");
+		    ci.setText("当前排队"+x+"人");
+		    di.setText("当前排队"+x+"人");
+		    ei.setText("当前排队"+x+"人");
+		    fi.setText("当前排队"+x+"人");
+		    gi.setText("当前排队"+x+"人");
+		    hi.setText("当前排队"+x+"人");
+		    ii.setText("当前排队"+x+"人");
+		    gi.setText("当前排队"+x+"人");
+		    ki.setText("当前排队"+x+"人");
+		    mi.setText("当前排队"+x+"人");
+		    ni.setText("当前排队"+x+"人");
+		    oi.setText("当前排队"+x+"人");
+		    pi.setText("当前排队"+x+"人");
+		    qi.setText("当前排队"+x+"人");
+		    ri.setText("当前排队"+x+"人");
+		    si.setText("当前排队"+x+"人");
+		    xi.setText("当前排队"+x+"人");
+		    yi.setText("当前排队"+x+"人");
+		    zi.setText("当前排队"+x+"人");
+		    wi.setText("当前排队"+x+"人");		    
+		    aa.setText("当前排队"+x+"人");
+		    bb.setText("当前排队"+x+"人");
+		    cc.setText("当前排队"+x+"人");
+		    dd.setText("当前排队"+x+"人");
+		    ee.setText("当前排队"+x+"人");
+		    ff.setText("当前排队"+x+"人");
+		    gg.setText("当前排队"+x+"人");
+		    jj.setText("当前排队"+x+"人");
+		    hh.setText("当前排队"+x+"人");
+		    kk.setText("当前排队"+x+"人");
+		    xx.setText("当前排队"+x+"人");
+		    ii.setText("当前排队"+x+"人");
+		    zz.setText("当前排队"+x+"人");
         }
     }
 	private class RemindTask extends TimerTask {
@@ -753,3 +736,4 @@ xxxx.setFont(new   java.awt.Font("Dialog",   1,   25));
         }
    }
 }
+

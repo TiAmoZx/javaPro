@@ -22,20 +22,20 @@ public class yisheng extends JFrame{
 		try{
 			Connection con=null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
 			//System.out.println("Connect succeed!");
 			Statement st=null;
 			st=con.createStatement();
-			String sqlselect="select * from Drug";
+			String sqlselect="select * from sicker";
 			ResultSet rs=null;
 			rs=st.executeQuery(sqlselect);			
 	        DefaultTableModel model=new DefaultTableModel();
 	        model.setColumnIdentifiers(new Object[]{"序号","药品名","库存","价格"});
 	        while(rs.next()){
-	        	String num=rs.getString("序号");
-	        	String name=rs.getString("药品名");
-	        	String kc=rs.getString("库存");
-	        	String price=rs.getString("价格");
+	        	String num=rs.getString("innum");
+	        	String name=rs.getString("name");
+	        	String kc=rs.getString("dept");
+	        	String price=rs.getString("age");
 	        	model.addRow(new Object[]{num,name,kc,price});
 	        }		    	        
 	JTable table = new JTable(model);
