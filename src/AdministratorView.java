@@ -20,16 +20,17 @@ import javax.swing.JComboBox;
 public class AdministratorView extends JFrame {
 
 	private JPanel contentPane;
-	static String selecttype  ;
-//跳转用户管理界面
+	static String selecttype  ;//用于存储选择跳转的页面（用户管理和医院科室管理）
+
+	//跳转用户管理界面
 	public void ex(){
-		
 		AdministratorView frame = new AdministratorView();
 		frame.setVisible(false);
 		DeptManage dm = new DeptManage();
 		dm.setVisible(true);
 		dispose();
 	}
+	
 	//跳转科室管理
 	public void ex2(){
 		AdministratorView frame = new AdministratorView();
@@ -38,6 +39,7 @@ public class AdministratorView extends JFrame {
 		um.setVisible(true);
 		dispose();
 	}
+	//跳转返回界面
 	public void ex3(){
 		AdministratorView frame = new AdministratorView();
 		frame.setVisible(false);

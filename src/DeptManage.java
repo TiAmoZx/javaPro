@@ -29,10 +29,8 @@ public class DeptManage extends JFrame {
 	private JTable table;
 	private JLabel label_1;
 	private JLabel label_2;
-	private JComboBox comboBox;
 	private JButton button;
 	private JButton button_1;
-	private JButton button_2;
 	private JButton button_3;
 	private JButton button_4;
 
@@ -59,7 +57,15 @@ public class DeptManage extends JFrame {
 		dispose();
 	}
 	
-	
+	public void ex4(){
+		
+		DeptManage frame = new DeptManage();
+		frame.setVisible(false);
+		ReadDept rd = new ReadDept();
+		rd.setVisible(true);
+		dispose();
+		
+	}
 	
 	/**
 	 * Launch the application.
@@ -188,13 +194,11 @@ public class DeptManage extends JFrame {
 		contentPane.add(table);
 		
 		String[] type = {"外科","内科","皮肤科","骨科","妇产科"};
-		comboBox = new JComboBox(type);
-		comboBox.setBounds(97, 251, 239, 21);
-		contentPane.add(comboBox);
 		
 		button = new JButton("浏览人员信息");
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
+				ex4();
 			}
 		});
 		button.setBounds(20, 309, 141, 23);
@@ -209,16 +213,12 @@ public class DeptManage extends JFrame {
 		button_1.setBounds(224, 309, 141, 23);
 		contentPane.add(button_1);
 		
-		button_2 = new JButton("修改人员信息");
-		button_2.setBounds(431, 309, 141, 23);
-		contentPane.add(button_2);
-		
 		button_3 = new JButton("删除人员信息");
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
 ex3();}
 		});
-		button_3.setBounds(633, 309, 141, 23);
+		button_3.setBounds(429, 309, 141, 23);
 		contentPane.add(button_3);
 		
 		button_4 = new JButton("返回");
@@ -226,7 +226,7 @@ ex3();}
 			public void actionPerformed(ActionEvent e) {
 			ex();}
 		});
-		button_4.setBounds(681, 377, 93, 23);
+		button_4.setBounds(626, 309, 148, 23);
 		contentPane.add(button_4);
 		
 		JLabel label_4 = new JLabel("");

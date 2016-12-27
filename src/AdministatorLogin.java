@@ -42,15 +42,19 @@ public class AdministatorLogin extends JFrame {
 			}
 		});
 	}
-
-	public void ex(){  //返回首页跳转
+	
+	
+	//返回首页跳转
+	public void ex(){  
 		AdministatorLogin adl = new AdministatorLogin();
 		adl.setVisible(false);
 		WelcomeView frame = new WelcomeView();
 		frame.setVisible(true);
 		dispose();
 	}
-	public void ex2(){ //管理员登陆成功跳转
+	
+	//管理员登陆成功跳转
+	public void ex2(){ 
 		String name = textField.getText();
 		String password = passwordField_1.getText();
 		

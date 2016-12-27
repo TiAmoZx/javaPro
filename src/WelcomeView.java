@@ -32,7 +32,7 @@ import javax.swing.GroupLayout.Alignment;
 public class WelcomeView extends JFrame {
 
 	private JPanel contentPane;
-	static String selecttype;
+	static String selecttype; //定义一个全局变量用来存储跳转哪个页面
 	/**
 	 * Launch the application.
 	 */
@@ -117,7 +117,7 @@ public class WelcomeView extends JFrame {
 		button.setBounds(51, 336, 93, 23);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
-				selecttype = comboBox.getSelectedItem().toString();
+				selecttype = comboBox.getSelectedItem().toString();//跳转页面用comobobox的选择项
 				switch(selecttype){
 				case "管理员":
 					ex();break;

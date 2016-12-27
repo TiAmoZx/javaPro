@@ -28,8 +28,9 @@ public class AddMember extends JFrame {
 	private JTextField textField_1;
 	private JPasswordField passwordField;
 	private JTextField textField_2;
-	static String stype;
+	static String stype;        //     定义一个变量 stype用于选择添加信息到那个数据库表
 	
+	//跳转返回界面
 	public void ex(){
 		AddMember frame = new AddMember();
 		frame.setVisible(false);
