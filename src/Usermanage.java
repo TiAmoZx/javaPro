@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -77,7 +77,7 @@ public class Usermanage extends JFrame {
 		try{
 			Connection con = null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hospital","sa","sa");
 			/*if(con !=null)
 				System.out.println("Connect succeed!");*/
 			Statement st=null;

@@ -1,5 +1,5 @@
 
-
+import java.io.IOException; 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
 
@@ -7,6 +7,8 @@ import javax.swing.JFrame;
 import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.border.EmptyBorder;
+import javax.swing.event.ListSelectionEvent;
+import javax.swing.event.ListSelectionListener;
 import javax.swing.table.DefaultTableModel;
 import javax.swing.JLabel;
 import java.awt.Font;
@@ -18,10 +20,18 @@ import java.sql.Statement;
 import javax.swing.JTable;
 import javax.swing.JButton;
 import java.awt.event.ActionListener;
+import java.io.File;
+import java.io.FileWriter;
+import java.io.IOException;
+import java.io.PrintWriter;
+import java.net.DatagramPacket;
+import java.net.InetAddress;
+import java.net.MulticastSocket;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
 import java.awt.Color;
 import javax.swing.JTextField;
+import javax.swing.ListSelectionModel;
 
 public class 收费 extends JFrame {
 	
@@ -31,10 +41,12 @@ public class 收费 extends JFrame {
 Thread thread1=new Thread();
 private JTextField textField;
 private JTextField textField_1;
-	
-					
+	Thread thread2=new Thread();
+	int port =9898;    
+    InetAddress address;  
+    MulticastSocket socket; 				
 		
-		
+    JLabel lblNewLabel_2 = new JLabel("");
 	    
 		
 
@@ -58,7 +70,56 @@ private JTextField textField_1;
 	/**
 	 * Create the frame.
 	 */
+	public static void newFile(String filePathAndName, String fileContent) {
+        try {
+            File myFilePath = new File(filePathAndName.toString());
+            if (!myFilePath.exists()) { // 如果该文件不存在,则创建
+                myFilePath.createNewFile();
+            }
+            // FileWriter(myFilePath, true); 实现不覆盖追加到文件里
+             //FileWriter(myFilePath); 覆盖掉原来的内容
+            FileWriter resultFile = new FileWriter(myFilePath, true);
+            PrintWriter myFile = new PrintWriter(resultFile);
+            // 给文件里面写内容,原来的会覆盖掉
+            myFile.println(fileContent);
+            resultFile.close();
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+    }
+	
 	public 收费() {
+		thread2=new Thread(new Runnable(){
+			public void run(){
+				 
+			    	 
+			    		   String info =textField.getText();
+			    		   try{  
+			    		   lblNewLabel_2.setText(info);
+			    		       address=InetAddress.getByName("233.0.0.0");    
+			    		       socket=new MulticastSocket(port);    
+			    		       socket.setTimeToLive(1);    
+			    		       socket.joinGroup(address);    
+			    		       }catch(IOException e){  
+			    		           e.printStackTrace();  
+			    		       } 
+			    		   
+			    		        while(true){    
+			    		            byte[] data=info.getBytes();    
+			    		            DatagramPacket packet=new DatagramPacket(data,data.length,address,port);    
+			    		              
+			    		            try {    
+			    		                socket.send(packet);   
+			    		                Thread.sleep(3000);  
+			    		            } catch (Exception e) {    
+			    		                e.printStackTrace();    
+			    		            }    
+			    		            System.out.println("消息已发送：");    
+			    		        }    
+			    
+			}
+			
+		});
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
 		setBounds(100, 100, 800, 500);
 		contentPane = new JPanel();
@@ -74,12 +135,18 @@ private JTextField textField_1;
 		//创建表头
 		model.setColumnIdentifiers(new Object[]{"工号","姓名","密码","科室"});
 		JTable table=new JTable(model);
-		table.setBounds(94, 288, 607, 150);
+		table.setBounds(94, 288, 319, 150);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 		JScrollPane scrollPane=new JScrollPane();
 		table.add(scrollPane);
 		contentPane.add(table);
-		
+		ListSelectionModel model1 = table.getSelectionModel();
+	    model1.addListSelectionListener(new ListSelectionListener() {
+	      public void valueChanged(ListSelectionEvent e) {
+	    	 thread2.start();
+	        //行选中事件处理代码
+	      }
+	    });
 		JButton btnNewButton = new JButton("查询");
 		btnNewButton.setBounds(147, 247, 117, 29);
 		btnNewButton.addActionListener(new ActionListener() {
@@ -124,16 +191,31 @@ private JTextField textField_1;
 		textField_1.setColumns(10);
 		String m;
 		m=textField_1.getText();
+		
+		JButton btnNewButton_1 = new JButton("缴费");
+		btnNewButton_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thread2.start();
+			}
+		});
+		btnNewButton_1.setBounds(504, 247, 117, 29);
+		contentPane.add(btnNewButton_1);
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(6, 6, 796, 446);
 		label_1.setIcon(new ImageIcon("/Users/yuelei/Desktop/5.jpg"));
 		contentPane.add(label_1);
+		lblNewLabel_2.setBounds(452, 118, 61, 16);
+		contentPane.add(lblNewLabel_2);
+		
+		JButton button_2 = new JButton("");
+		button_2.setBounds(429, 174, 117, 29);
+		contentPane.add(button_2);
 		thread1=new Thread(new Runnable(){
 			public void run(){
 				try{System.out.println(m);
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.40.229.251:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
