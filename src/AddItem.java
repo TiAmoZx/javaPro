@@ -10,7 +10,7 @@ import javax.swing.JSpinner;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
+import domain.Item;
 
 import java.awt.event.ActionListener;
 import java.sql.Connection;

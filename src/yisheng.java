@@ -1,4 +1,4 @@
-package 儿科门诊医生诊疗操作;
+
 import java.awt.Font;
 import java.awt.event.*;
 import java.sql.Connection;

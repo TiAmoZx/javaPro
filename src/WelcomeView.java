@@ -121,18 +121,25 @@ public class WelcomeView extends JFrame {
 				case "管理员":
 					ex();break;
 				case "院长":
-					ex2();break;
+					
+					dispose();
+					Man m=new Man();
+					
+					 
+					 
+					 break;
 				case "药师":
 					ex3();break;
 				case "收费人员":
 					dispose();
-					pricestart a=new pricestart();
-					a.setVisible(true);
+					pricestart j=new pricestart();
+					j.setVisible(true);
+					
 					break;
 				case "医生":
 					dispose();
-					Start b=new Start();
-					b.setVisible(true);
+					Start s=new Start();
+		s.setVisible(true);
 					break;
 				
 				}

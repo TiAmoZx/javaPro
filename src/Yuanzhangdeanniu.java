@@ -1,4 +1,4 @@
-package 儿科门诊医生诊疗操作;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -66,7 +66,9 @@ class myButton5 implements ActionListener{
 }
 class myButton3 implements ActionListener{
 	public void actionPerformed(ActionEvent e){
-		new Medicine().setVisible(true);
+		
+		Medicine m=new Medicine();
+		m.setVisible(true);
 		dispose();
 	}
 }

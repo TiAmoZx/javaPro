@@ -2,7 +2,7 @@ import javax.swing.*;
 import javax.swing.event.ChangeEvent;
 import javax.swing.event.ChangeListener;
 
-
+import domain.Medicine;
 
 import java.awt.*;
 import java.awt.event.ActionEvent;

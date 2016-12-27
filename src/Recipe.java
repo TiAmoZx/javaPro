@@ -17,7 +17,8 @@ import javax.swing.JPanel;
 import javax.swing.JTextField;
 import javax.swing.border.EmptyBorder;
 
-
+import domain.Item;
+import domain.Medicine;
 
 public class Recipe extends JFrame {
 

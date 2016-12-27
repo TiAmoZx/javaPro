@@ -1,6 +1,6 @@
-package 儿科门诊医生诊疗操作;
+
 import javax.swing.*;
-public class $ {
+public class Man{
   
     public static void main(String[] args) {
   

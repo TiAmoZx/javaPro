@@ -1,25 +1,25 @@
 
 
-public class Medicine {
-	public int id;
-	public String name;
-	public String stock;
-	public String price;
-	public String amount;
-
-<<<<<<< HEAD
-	@Override
-	public String toString() {
-		return  name + "数量:   "+amount+"价格: " + price;
-=======
 import java.awt.event.ActionListener;
+import java.sql.DriverManager;
+import java.sql.ResultSet;
 import java.awt.event.ActionEvent;
 import java.awt.Font;
 import java.awt.Color;
+import java.awt.EventQueue;
 
 import javax.swing.JMenuBar;
+import javax.swing.JPanel;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JTable;
+import javax.swing.border.EmptyBorder;
+import javax.swing.table.DefaultTableModel;
+
+import com.mysql.jdbc.Connection;
+import com.mysql.jdbc.Statement;
 
 public class Medicine extends JFrame {
 	private JPanel contentPane;
@@ -78,10 +78,10 @@ public class Medicine extends JFrame {
 		try{
 				Connection con=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				con=(Connection) DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement st=null;
-				st=con.createStatement();
+				st=(Statement) con.createStatement();
 				String sqlselect="select * from Drug";
 				ResultSet rs=null;
 				rs=st.executeQuery(sqlselect);			
@@ -101,6 +101,6 @@ public class Medicine extends JFrame {
 		}catch(Exception e){
 			System.out.println(e);
 		}
->>>>>>> pr/40
+
 	}
 }

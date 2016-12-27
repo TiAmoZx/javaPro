@@ -1,8 +1,5 @@
-<<<<<<< HEAD
 
-=======
-package 实验;
->>>>>>> pr/40
+
 import javax.swing.*;
 
 import java.util.*;
@@ -21,9 +18,7 @@ public class Screen extends JFrame implements ActionListener{
 	 Connection conn;
     Statement stmt;
     ResultSet rs;
-<<<<<<< HEAD
-    String url = "jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hospital;";
-    String sql = "select * from Yuyue";
+
 	
 	
 	
@@ -49,11 +44,10 @@ public class Screen extends JFrame implements ActionListener{
 	
 	
 	
-	
-=======
+
     String url = "jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial;";
     String sql = "select * from sicker";
->>>>>>> pr/40
+
 	String time=null;
  private JLabel ji=new JLabel();private JLabel li=new JLabel();private JLabel ai=new JLabel();
 	private JLabel bi=new JLabel();private JLabel ci=new JLabel();private JLabel di=new JLabel();
