@@ -10,29 +10,24 @@ public class Start extends JFrame {
     private JPanel contentPane;
     private JTextField textFieldId;
     private JTextField textFieldPwd;
+    public String id;
     private JLabel labelId;
     private JLabel labelPassword;
     private Statement validateIdPwdStmt;
-    private Connection con = null;
 
+    public String getId(){
+    	return id;
+    }
 
     public Start() {
-        // 初始化布局
-        initLayout();
-        // 初始化数据库连接
-        String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String dbURL = "jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial";
-        String userName = "sa";
-        String userPwd = "sa";
-
-        try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial", "sa", "sa");
-            validateIdPwdStmt = con.createStatement();
-        } catch (ClassNotFoundException | SQLException e) {
-            System.out.println("数据库初始化失败！");
-            e.printStackTrace();
-        }
+	        // 初始化布局
+	        initLayout();
+            try {
+				validateIdPwdStmt = DatabaseHelper.con.createStatement();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
     }
 
     public static void main(String[] args) {
@@ -78,18 +73,21 @@ public class Start extends JFrame {
         button.addActionListener(new ActionListener() {
             public void actionPerformed(ActionEvent e) {
                 //验证工号和密码
-                String id = textFieldId.getText();
-                String password = textFieldPwd.getText();
+                 id = textFieldId.getText();
+                 String name = "";
+               String pwd = textFieldPwd.getText();
                 boolean isValid = false;
                 try {
                     ResultSet resultSet = validateIdPwdStmt.executeQuery(
-                            "SELECT 密码 FROM yisheng WHERE 工号 = " + id
+                            "SELECT password, name FROM doctor WHERE worknum = " + id
                     );
 
                     // 用户存在
                     if (resultSet.next()) {
-                        String pwd = resultSet.getString("密码");
-                        isValid = pwd.equals(password);
+                        String pwde = resultSet.getString("password");
+                        pwde = pwde.trim();
+                        name = resultSet.getString(2);
+                        isValid = pwd.equals(pwde);
                     }
 
                 } catch (SQLException e1) {
@@ -100,7 +98,7 @@ public class Start extends JFrame {
 
                 if (isValid) {
                     // TODO: 登录成功的逻辑
-                	  Test frame = new Test();
+                	  Test frame = new Test(name);
                 	  frame.setVisible(true);
 
                 } else {

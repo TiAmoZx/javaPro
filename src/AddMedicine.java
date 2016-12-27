@@ -1,4 +1,9 @@
 import javax.swing.*;
+import javax.swing.event.ChangeEvent;
+import javax.swing.event.ChangeListener;
+
+import domain.Medicine;
+
 import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -6,169 +11,171 @@ import java.sql.*;
 import java.util.ArrayList;
 
 public class AddMedicine extends JFrame {
-    private JTextField textField;
-    private JPanel contentPane;
-    private JTextField textField_1;
-    private JTextField textField_2;
-    private Statement st = null;
-    Medicine medicine = new Medicine();
-    /**
-     * Launch the application.
-     */
+	private JTextField textField;
+	private JPanel contentPane;
+	private JTextField textField_drugname;
+	private JTextField textField_drugprice;
+	private JTextField textField_drugamount;
+	private Recipe recipe;
+	private Statement st = null;
+	Medicine medicine = new Medicine();
+	java.util.List<Medicine> searchResult = new ArrayList<>();
+	
+	/**
+	 * Launch the application.
+	 */
+	public void medicineInsert() {
+		
+		String drugname = textField_drugname.getText().toString();
+		String drugprice = textField_drugprice.getText().toString();
+		String drugamount = textField_drugamount.getText().toString();
 
-    public AddMedicine() {
-      initLayout();
-      Connection con = null;
-     try {
-       Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-     } catch (ClassNotFoundException e) {
-    
-        e.printStackTrace();
-      }
-     try {
-         con = DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial", "sa", "sa");
-     } catch (SQLException e) {
-         // TODO Auto-generated catch block
-         e.printStackTrace();
-      }
-    try {
-          st = con.createStatement();
-    } catch (SQLException e) {
-         
-        e.printStackTrace();
-      }
-    }
+	}
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    AddMedicine frame = new AddMedicine();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
+	public AddMedicine(Recipe recipe) {
+		this.recipe = recipe;
+		try {
+			st = DatabaseHelper.con.createStatement();
+		} catch (SQLException e) {
 
-    /**
-     * Create the frame.
-     */
-    public void initLayout() {
-        setTitle("添加药品");
-        setBounds(500, 200, 450, 300);
-        getContentPane().setLayout(null);
+			e.printStackTrace();
+		}
+		initLayout();
+		
+	}
 
-        JLabel label = new JLabel("输入拼音首字母");
-        label.setBounds(10, 10, 98, 15);
-        getContentPane().add(label);
+	public static void main(String[] args) {
+		EventQueue.invokeLater(new Runnable() {
+			public void run() {
+				try {
+					AddMedicine frame = new AddMedicine(null);
+					frame.setVisible(true);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+			}
+		});
+	}
 
-        textField = new JTextField();
-        textField.setBounds(106, 7, 202, 21);
-        getContentPane().add(textField);
-        textField.setColumns(10);
+	/**
+	 * Create the frame.
+	 */
+	public void initLayout() {
+		setTitle("添加药品");
+		setBounds(500, 200, 479, 321);
+		getContentPane().setLayout(null);
 
-        JButton button = new JButton("查询");
-        button.addActionListener(new ActionListener() {
-                                     public void actionPerformed(ActionEvent e) {
-                                         String general = textField.getText().trim();
-                                         if (general.length() == 0) {
-                                             JOptionPane.showMessageDialog(null, "请输入搜索关键字！", "友情提示", JOptionPane.INFORMATION_MESSAGE);
-                                             return;
-                                         }
-                                         java.util.List<Medicine> searchResult = new ArrayList<>();
-                                         try {
-                                             ResultSet resultSet = st.executeQuery(
-                                                     "SELECT * FROM drug WHERE 药品名 LIKE '" + general + "%'"
-                                             );
+		JLabel label = new JLabel("输入拼音首字母");
+		label.setBounds(10, 10, 98, 15);
+		getContentPane().add(label);
 
-                                             while (resultSet.next()) {
-                                                
-                                                 medicine.id = resultSet.getInt(1);
-                                                 medicine.name = resultSet.getString(2);
-                                                 medicine.stock = resultSet.getString(3);
-                                                 medicine.price = resultSet.getString(4);
-                                                 searchResult.add(medicine);
-                                             }
+		textField = new JTextField();
+		textField.setBounds(106, 7, 202, 21);
+		getContentPane().add(textField);
+		textField.setColumns(10);
 
-                                         } catch (SQLException e1) {
-                                             e1.printStackTrace();
-                                         }
+		JButton button = new JButton("查询");
+		button.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				String general = textField.getText().trim();
 
+				if (general.length() == 0) {
+					JOptionPane.showMessageDialog(null, "请输入搜索关键字！", "友情提示", JOptionPane.INFORMATION_MESSAGE);
+					return;
+				}
+				
+				try {
+					ResultSet resultSet = st.executeQuery("SELECT * FROM drug WHERE 药品名 LIKE '" + general + "%'");
 
-                                         if (searchResult.size() == 0) {
-                                             JOptionPane.showMessageDialog(null, "没有符合条件的药品！", "友情提示", JOptionPane.INFORMATION_MESSAGE);
-                                         } else {
-                                             //有符合条件的打印结果
-                                        	 textField_1.setText(medicine.name);
-                                        	 textField_2.setText(medicine.price);
-                                         }
-                                     }
-                                 }
-        );
+					while (resultSet.next()) {
+								
+						medicine.id = resultSet.getInt(1);
+						medicine.name = resultSet.getString(2);
+						medicine.stock = resultSet.getString(3);
+						medicine.price = resultSet.getString(4);
+						searchResult.add(medicine);
+					}
 
-        button.setBounds(319, 6, 93, 23);
-        getContentPane().add(button);
+				} catch (SQLException e1) {
+					e1.printStackTrace();
+				}
 
-        JButton button_1 = new JButton("保存");
+				if (searchResult.size() == 0) {
+					JOptionPane.showMessageDialog(null, "没有符合条件的药品！", "友情提示", JOptionPane.INFORMATION_MESSAGE);
+				} else {
+					// 有符合条件的打印结果
+					textField_drugname.setText(medicine.name);
+					textField_drugprice.setText(medicine.price);
+				}
+			}
+		});
 
-        button_1.setBounds(238, 238, 70, 23);
-        getContentPane().add(button_1);
+		button.setBounds(319, 6, 93, 23);
+		getContentPane().add(button);
 
-        JButton button_2 = new JButton("返回");
-        button_2.addActionListener(new ActionListener() {
-            public void actionPerformed(ActionEvent e) {
-                dispose();
-            }
-        });
-        button_2.setBounds(318, 238, 70, 23);
-        getContentPane().add(button_2);
+		JButton button_1 = new JButton("保存并返回");
+		button_1.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+					medicine.amount = textField_drugamount.getText();
+					ResultSet resultSet = null;
+					try {
+						resultSet = st.executeQuery("Insert into list values('1',"+medicine.name+")");
+					} catch (SQLException e2) {
+						// TODO Auto-generated catch block
+						e2.printStackTrace();
+					}
+					recipe.setMedicineList(medicine);
+					dispose();
+			}
+		});
 
-        JPanel panel = new JPanel();
-        panel.setBounds(25, 38, 363, 190);
-        getContentPane().add(panel);
-        panel.setLayout(null);
+		button_1.setBounds(210, 238, 98, 23);
+		getContentPane().add(button_1);
 
-        JLabel label_1 = new JLabel("药品名称");
-        label_1.setBounds(36, 10, 72, 15);
-        panel.add(label_1);
+		JButton button_2 = new JButton("取消");
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				dispose();
+			}
+		});
+		button_2.setBounds(318, 238, 70, 23);
+		getContentPane().add(button_2);
 
-        JLabel label_2 = new JLabel("价格");
-        label_2.setBounds(197, 10, 33, 15);
-        panel.add(label_2);
+		JPanel panel = new JPanel();
+		panel.setBounds(25, 38, 363, 190);
+		getContentPane().add(panel);
+		panel.setLayout(null);
 
-        JLabel label_3 = new JLabel("数量");
-        label_3.setBounds(301, 10, 33, 15);
-        panel.add(label_3);
+		JLabel label_1 = new JLabel("药品名称");
+		label_1.setBounds(36, 10, 72, 15);
+		panel.add(label_1);
 
-        JSpinner spinner = new JSpinner();
-        spinner.setBounds(301, 37, 29, 22);
-        panel.add(spinner);
+		JLabel label_2 = new JLabel("价格");
+		label_2.setBounds(197, 10, 33, 15);
+		panel.add(label_2);
 
-        textField_1 = new JTextField();
-        textField_1.setEditable(false);
-        textField_1.setBounds(10, 37, 126, 21);
-        panel.add(textField_1);
-        textField_1.setColumns(10);
+		JLabel label_3 = new JLabel("数量");
+		label_3.setBounds(301, 10, 33, 15);
+		panel.add(label_3);
 
-        textField_2 = new JTextField();
-        textField_2.setEditable(false);
-        textField_2.setBounds(173, 37, 88, 21);
-        panel.add(textField_2);
-        textField_2.setColumns(10);
+		textField_drugname = new JTextField();
+		textField_drugname.setEditable(false);
+		textField_drugname.setBounds(10, 37, 126, 21);
+		panel.add(textField_drugname);
+		textField_drugname.setColumns(10);
 
-    }
+		textField_drugprice = new JTextField();
+		textField_drugprice.setEditable(false);
+		textField_drugprice.setBounds(173, 37, 88, 21);
+		panel.add(textField_drugprice);
+		textField_drugprice.setColumns(10);
 
-    class Medicine {
-        int id;
-        String name;
-        String stock;
-        String price;
+		textField_drugamount = new JTextField();
+		textField_drugamount.setBounds(287, 37, 66, 21);
+		panel.add(textField_drugamount);
+		textField_drugamount.setColumns(10);
 
-        @Override
-        public String toString() {
-            return id + ", 药品名:" + name + ", 库存:" + stock + ", 价格:" + price;
-        }
-    }
+	}
+
+	
 }

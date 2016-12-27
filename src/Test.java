@@ -12,52 +12,37 @@ public class Test extends JFrame {
     private JTextField textField;
     private Statement st = null;
     private Statement validateIdPwdStmt;
+    private String doctorName;
+    
+    public void setDocName(String name)
+    {
+    	doctorName = name;
+    }
+    
+    String doctorID;
     /**
      * Launch the application.
      */
-    public Test() {
+    
+    public Test(String name){
+    	doctorName = name;
         initLayout();
-        Connection con = null;
         try {
-            Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-        } catch (ClassNotFoundException e) {
-
-            e.printStackTrace();
-        }
-        try {
-            con = DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial", "sa", "sa");
-        } catch (SQLException e) {
-            // TODO Auto-generated catch block
-            e.printStackTrace();
-        }
-       
-        
-        try {
-            st = con.createStatement();
-        } catch (SQLException e) {
-
-            e.printStackTrace();
-        }
+			validateIdPwdStmt = DatabaseHelper.con.createStatement();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
     }
 
-    public static void main(String[] args) {
-        EventQueue.invokeLater(new Runnable() {
-            public void run() {
-                try {
-                    Test frame = new Test();
-                    frame.setVisible(true);
-                } catch (Exception e) {
-                    e.printStackTrace();
-                }
-            }
-        });
-    }
 
     /**
      * Create the frame.
      */
 
     public void initLayout() {
+    	Start sr=new Start();
+      
         setVisible(true);
         setTitle("医生界面");
         setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
@@ -112,23 +97,19 @@ public class Test extends JFrame {
                     String sickerid = textField.getText();
                     boolean isValid = false;
                     ResultSet resultSet = null;
+                    
 					try {
-						resultSet = validateIdPwdStmt.executeQuery("SELECT 预约号 FROM Yuyue="+sickerid);
+						resultSet = validateIdPwdStmt.executeQuery("SELECT * FROM sicker where innum ="+sickerid);
 					} catch (SQLException e1) {
 						// TODO Auto-generated catch block
 						e1.printStackTrace();
+						return;
 					}
-                    String id = null;
-					try {
-						id = resultSet.getString("预约号");
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
-                    isValid=sickerid.equals(id);
+					
                     try {
 						if(resultSet.next()){
 							 Diagnose frame = new Diagnose(sickerid);
+							 frame.setDocName(doctorName);
 						     frame.setVisible(true);
 						     dispose();
 						}else{
@@ -147,7 +128,18 @@ public class Test extends JFrame {
         btnNewButton.setBounds(284, 103, 82, 23);
         btnNewButton.setBackground(new Color(211, 211, 211));
         panel.add(btnNewButton);
+        
+        JLabel lblHello = new JLabel("Hello");
+        lblHello.setFont(new Font("宋体", Font.PLAIN, 14));
+        lblHello.setBounds(37, 20, 42, 24);
+        panel.add(lblHello);
+        
 
+
+        JLabel doctorNameLabel = new JLabel();
+        doctorNameLabel.setText(doctorName);
+        doctorNameLabel.setBounds(89, 25, 54, 15);
+        panel.add(doctorNameLabel);
+        
     }
-
 }
