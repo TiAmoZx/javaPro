@@ -49,13 +49,14 @@ public class Log extends JFrame {
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
 		
-		JButton btnNewButton = new JButton("点此跳转！");
+		JButton btnNewButton = new JButton("点这里！");
 		btnNewButton.setForeground(new Color(0, 102, 204));
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
+				
 				dispose();
-				Order1 or=new Order1();
-				or.setVisible(true);
+				Innum in=new Innum();
+				in.setVisible(true);
 			}
 		});
 		btnNewButton.setFont(new Font("微软雅黑", Font.PLAIN, 14));
