@@ -101,6 +101,8 @@ public class Jfa extends JFrame {
 		button1.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				dispose();
+				WelcomeView w=new WelcomeView();
+				w.setVisible(true);
 				
 			}
 		});
@@ -169,7 +171,7 @@ public class Jfa extends JFrame {
             }
             if(e.getSource()==menu_wzxyy){
             	dispose();
-            	Order1 f=new Order1();
+            	Order2 f=new Order2();
             	f.setVisible(true);
             }
         }

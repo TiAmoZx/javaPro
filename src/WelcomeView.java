@@ -1,4 +1,3 @@
-package cn.edu.usst.sixline;
 
 import java.awt.BorderLayout;
 
@@ -126,7 +125,8 @@ public class WelcomeView extends JFrame {
 				case "药师":
 					ex3();break;
 				case "收费人员":
-					ex4();break;
+					dispose();
+					Jfa j=new Jfa();break;
 				case "医生":
 					ex5();break;
 				
@@ -150,7 +150,7 @@ public class WelcomeView extends JFrame {
 		
 		JLabel label = new JLabel("");
 		label.setBounds(-12, 0, 396, 472);
-		label.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\wel.jpg"));
+		label.setIcon(new ImageIcon("/Users/yuelei/Desktop/wel.jpg"));
 		contentPane.setLayout(null);
 		contentPane.add(comboBox);
 		contentPane.add(button_1);

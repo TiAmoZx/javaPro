@@ -135,7 +135,7 @@ private JTextField textField_1;
 		//创建表头
 		model.setColumnIdentifiers(new Object[]{"工号","姓名","密码","科室"});
 		JTable table=new JTable(model);
-		table.setBounds(94, 288, 319, 150);
+		table.setBounds(100, 318, 446, 134);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 		JScrollPane scrollPane=new JScrollPane();
 		table.add(scrollPane);
@@ -154,6 +154,10 @@ private JTextField textField_1;
 				thread1.start();
 			}
 		});
+		
+		JLabel lblNewLabel_7 = new JLabel("姓名");
+		lblNewLabel_7.setBounds(219, 290, 61, 16);
+		contentPane.add(lblNewLabel_7);
 		contentPane.add(btnNewButton);
 		
 		JButton button = new JButton("返回首页");
@@ -166,6 +170,10 @@ private JTextField textField_1;
 			j.setVisible(true);
 			}
 		});
+		
+		JLabel lblNewLabel_6 = new JLabel("总价（元）");
+		lblNewLabel_6.setBounds(335, 288, 93, 16);
+		contentPane.add(lblNewLabel_6);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("重置");
@@ -179,6 +187,10 @@ private JTextField textField_1;
 		JLabel lblNewLabel_1 = new JLabel("姓名");
 		lblNewLabel_1.setBounds(62, 174, 61, 16);
 		contentPane.add(lblNewLabel_1);
+		
+		JLabel lblNewLabel_5 = new JLabel("预约号");
+		lblNewLabel_5.setBounds(121, 290, 61, 16);
+		contentPane.add(lblNewLabel_5);
 		
 		textField = new JTextField();
 		textField.setBounds(219, 169, 176, 26);
@@ -210,29 +222,40 @@ private JTextField textField_1;
 		JButton button_2 = new JButton("");
 		button_2.setBounds(429, 174, 117, 29);
 		contentPane.add(button_2);
+		
+		JLabel lblNewLabel_3 = new JLabel("New label");
+		lblNewLabel_3.setBounds(109, 290, 61, 16);
+		contentPane.add(lblNewLabel_3);
+		
+		JLabel lblNewLabel_4 = new JLabel("New label");
+		lblNewLabel_4.setBounds(288, 290, 61, 16);
+		contentPane.add(lblNewLabel_4);
 		thread1=new Thread(new Runnable(){
 			public void run(){
+				String t;
+				t=textField_1.getText();
 				try{System.out.println(m);
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://10.40.229.251:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
 					st=con.createStatement();
-					String sqlselect = "select * from item";
+					String sqlselect = "select * from list where 病人编号='"+t+"'";
 					ResultSet rs = null;
 					rs = st.executeQuery(sqlselect);
 					
 					//再次，添加数据
 					while(rs.next())
 					{
-					String wn=rs.getString("项目名称");
-									String name=rs.getString("价格");
+					String wn=rs.getString("病人编号");
+									String price=rs.getString("金额");
+									String name=textField.getText();
 									
 					//把以上数据添加到表格模型的一行中
 									
-									model.addRow(new Object[]{wn,name});
+									model.addRow(new Object[]{wn,name,price});
 					}
 					//最后，用模型生成表格
 					

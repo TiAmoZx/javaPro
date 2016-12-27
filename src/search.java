@@ -28,6 +28,7 @@ public class search extends JFrame {
 	private JPanel contentPane;
 	private JTable table;
 Thread thread1=new Thread();
+Thread thread2=new Thread();
 	
 					
 		
@@ -71,7 +72,7 @@ Thread thread1=new Thread();
 		//创建表头
 		model.setColumnIdentifiers(new Object[]{"工号","姓名","密码","科室"});
 		JTable table=new JTable(model);
-		table.setBounds(34, 70, 725, 314);
+		table.setBounds(34, 96, 725, 272);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
 		JScrollPane scrollPane=new JScrollPane();
 		table.add(scrollPane);
@@ -82,12 +83,13 @@ Thread thread1=new Thread();
 		btnNewButton.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				thread1.start();
+				thread2.start();
 			}
 		});
 		contentPane.add(btnNewButton);
 		
 		JButton button = new JButton("返回首页");
-		button.setBounds(6, 6, 176, 29);
+		button.setBounds(34, 38, 176, 29);
 		button.setBackground(Color.DARK_GRAY);
 		button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
@@ -97,6 +99,14 @@ Thread thread1=new Thread();
 			}
 		});
 		contentPane.add(button);
+		
+		JLabel lblNewLabel = new JLabel("当前预约人数");
+		lblNewLabel.setBounds(44, 370, 138, 26);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setBounds(176, 375, 61, 16);
+		contentPane.add(lblNewLabel_1);
 		
 		JLabel label_1 = new JLabel("");
 		label_1.setBounds(6, 6, 796, 466);
@@ -112,21 +122,55 @@ Thread thread1=new Thread();
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
 					st=con.createStatement();
-					String sqlselect = "select * from Yuyue";
+					String sqlselect = "select * from sicker";
+					
 					ResultSet rs = null;
 					rs = st.executeQuery(sqlselect);
 					
 					//再次，添加数据
 					while(rs.next())
 					{
-					String wn=rs.getString("姓名");
-									String name=rs.getString("性别");
-									String psword=rs.getString("年龄");
-									String dept=rs.getString("预约号");
+					String wn=rs.getString("name");
+									String innum=rs.getString("innum");
+									String sex=rs.getString("sex");
+									String age=rs.getString("age");
+									String telphone=rs.getString("telphone");
+									String dept=rs.getString("dept");
+									String ordertime=rs.getString("ordertime");
 					//把以上数据添加到表格模型的一行中
 									
-									model.addRow(new Object[]{wn,name,psword,dept});
+									model.addRow(new Object[]{wn,innum,sex,age,telphone,dept,ordertime});
 					}
+					//最后，用模型生成表格
+					
+						}catch(Exception e){
+							System.out.println(e);
+						}
+			}
+			
+		});
+		thread2=new Thread(new Runnable(){
+			public void run(){
+				try{
+					Connection con = null;
+					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+					con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+					/*if(con !=null)
+						System.out.println("Connect succeed!");*/
+					Statement st=null;
+					st=con.createStatement();
+					String sqlselect = "SELECT COUNT(*) as count  from sicker";
+					
+					ResultSet rs = null;
+					rs = st.executeQuery(sqlselect);
+					if(rs.next()){
+						int aa = rs.getInt("count");
+						lblNewLabel_1.setText(aa+"");
+						}
+
+					
+					//再次，添加数据
+					
 					//最后，用模型生成表格
 					
 						}catch(Exception e){

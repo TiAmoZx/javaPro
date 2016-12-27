@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -98,7 +98,7 @@ public class DeptManage extends JFrame {
 			e.printStackTrace();
 		}
 		try {
-			con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hospital","sa","sa");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
@@ -230,7 +230,7 @@ ex3();}
 		contentPane.add(button_4);
 		
 		JLabel label_4 = new JLabel("");
-		label_4.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
+		label_4.setIcon(new ImageIcon("/Users/yuelei/Desktop/av.jpg"));
 		label_4.setBounds(0, 0, 784, 462);
 		contentPane.add(label_4);
 		

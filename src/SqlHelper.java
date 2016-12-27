@@ -10,7 +10,7 @@ public class SqlHelper
       
     private static String driverName="com.microsoft.sqlserver.jdbc.SQLServerDriver";  
   
-    private static String dbURL="jdbc:sqlserver://10.40.229.251:1433;DatabaseName=hosptial";  
+    private static String dbURL="jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial";  
   
     private static String userName="sa";  
   

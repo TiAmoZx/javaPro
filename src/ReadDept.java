@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -42,7 +42,7 @@ public class ReadDept extends JFrame {
 		try{
 			Connection con = null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hospital","sa","sa");
 			/*if(con !=null)
 				System.out.println("Connect succeed!");*/
 			Statement st=null;
@@ -129,7 +129,7 @@ public class ReadDept extends JFrame {
 		contentPane.add(label_1);
 		
 		JLabel label = new JLabel("");
-		label.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
+		label.setIcon(new ImageIcon("/Users/yuelei/Desktop/av.jpg"));
 		label.setBounds(0, 0, 784, 460);
 		contentPane.add(label);
 	}

@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.Color;
@@ -182,8 +182,8 @@ public class AddMember extends JFrame {
 		contentPane.add(label_4);
 		
 		JLabel label_6 = new JLabel("");
-		label_6.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
-		label_6.setBounds(0, 0, 382, 459);
+		label_6.setIcon(new ImageIcon("/Users/yuelei/Desktop/avlogin.jpg"));
+		label_6.setBounds(6, -50, 382, 520);
 		contentPane.add(label_6);
 		
 		

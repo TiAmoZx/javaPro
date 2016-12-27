@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -81,7 +81,7 @@ public class Usermanage extends JFrame {
 		try{
 			Connection con = null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hospital","sa","sa");
 			/*if(con !=null)
 				System.out.println("Connect succeed!");*/
 			Statement st=null;
@@ -232,7 +232,7 @@ public class Usermanage extends JFrame {
 		
 		
 		JLabel label_1 = new JLabel("");
-		label_1.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
+		label_1.setIcon(new ImageIcon("/Users/yuelei/Desktop/av.jpg"));
 		label_1.setBounds(0, 0, 828, 461);
 		contentPane.add(label_1);
 		

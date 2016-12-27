@@ -1,4 +1,4 @@
-package cn.edu.usst.sixline;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -124,7 +124,7 @@ public class AdministratorView extends JFrame {
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("");
-		label_3.setIcon(new ImageIcon("C:\\Users\\15036\\Desktop\\LLiu\\av.jpg"));
+		label_3.setIcon(new ImageIcon("/Users/yuelei/Desktop/av.jpg"));
 		label_3.setBounds(0, 0, 386, 466);
 		contentPane.add(label_3);
 	}
