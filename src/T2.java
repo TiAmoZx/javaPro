@@ -329,8 +329,8 @@ public class T2 extends JFrame {
 		button_3.setBounds(50, 232, 93, 23);
 		contentPane.add(button_3);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lenovo\\Desktop\\新建文件夹\\QQ图片20161214215736.jpg"));
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
 		lblNewLabel.setBounds(0, 10, 446, 261);
 		contentPane.add(lblNewLabel);
 		}

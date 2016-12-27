@@ -81,9 +81,9 @@ public class Query extends JFrame {
 		button_1.setBounds(293, 209, 93, 23);
 		contentPane.add(button_1);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lenovo\\Desktop\\新建文件夹\\QQ图片20161214215736.jpg"));
-		lblNewLabel.setBounds(0, 0, 434, 251);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/111.jpg"));
+		lblNewLabel.setBounds(0, 0, 434, 272);
 		contentPane.add(lblNewLabel);
 	}
 }

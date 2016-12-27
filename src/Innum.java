@@ -71,9 +71,9 @@ public class Innum extends JFrame {
 		button.setBounds(252, 197, 93, 23);
 		contentPane.add(button);
 		
-		JLabel lblNewLabel = new JLabel("New label");
-		lblNewLabel.setIcon(new ImageIcon("C:\\Users\\lenovo\\Desktop\\新建文件夹\\QQ图片20161214215736.jpg"));
-		lblNewLabel.setBounds(10, 10, 414, 241);
+		JLabel lblNewLabel = new JLabel("");
+		lblNewLabel.setIcon(new ImageIcon("/Users/yuelei/Desktop/医院.jpg"));
+		lblNewLabel.setBounds(10, 6, 434, 245);
 		contentPane.add(lblNewLabel);
 		
 		Thread thread1=new Thread();
