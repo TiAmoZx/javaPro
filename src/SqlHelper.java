@@ -1,10 +1,11 @@
+
+
 import java.sql.Connection;  
 import java.sql.DriverManager;  
-import java.sql.ResultSet;
-import java.sql.SQLException;
+import java.sql.ResultSet;  
 import java.sql.Statement;  
   
-public class SqlHelper  
+public class sqlHelper 
 {  
   
       
@@ -17,7 +18,7 @@ public class SqlHelper
     private static String userPwd="sa";  
         
         
-    public static Connection  getCoonection()  
+    private static Connection  getCoonection()  
       {  
           try  
           {  
@@ -34,10 +35,6 @@ public class SqlHelper
           return null;  
       }  
         
-    public static void close() throws SQLException{
-    	 Connection conn=getCoonection(); 
-    	 conn.close();
-    }
     public static ResultSet  executeQuery(String SQL)  
     {    
           try  
@@ -70,21 +67,17 @@ public class SqlHelper
           {  
            Connection conn=getCoonection();  
            System.out.println("---------------连接数据库成功");    
-        
+            
            Statement stmt = conn.createStatement();  
            int result = stmt.executeUpdate(SQL);  
            if(result>0)  
                return true;  
-         
           }  
           catch(Exception e)  
           {  
            e.printStackTrace();  
            System.out.print("----------------更新失败");  
-           
           }  
           return false;  
-          
     }  
-    
 }  

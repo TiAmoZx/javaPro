@@ -262,7 +262,7 @@ public class T2 extends JFrame {
 					System.out.println("11"+t);
 					String SQL = " insert into sicker values('"+t+"','"+d+"','"+p+"','"+l+"','"+m+"','"+n+"') "; 
 			
-			         if(SqlHelper.executeUpdate(SQL))  
+			         if(sqlHelper.executeUpdate(SQL))  
 			         {  
 			             System.out.println("插入成功 ");  
 			             JOptionPane.showMessageDialog(contentPane, "预约成功", "标题", JOptionPane.WARNING_MESSAGE);

@@ -252,13 +252,13 @@ public class Order2 extends JFrame {
 					String SQL = " insert into  sicker  values ('"+t+"','"+d+"','"+p+"','"+l+"','"+m+"','"+n+"') "; 
 					
 
-			         if(SqlHelper.executeUpdate(SQL))  
+			         if(sqlHelper.executeUpdate(SQL))  
 			         {  
 			             System.out.println("插入成功 "); 
-			             SqlHelper s=new SqlHelper();
+			             sqlHelper s=new sqlHelper();
 			           
 			             JOptionPane.showMessageDialog(contentPane, "预约成功", "标题",JOptionPane.WARNING_MESSAGE); 
-			             s.close();
+			             
 			             
 			         }else  
 			         {  

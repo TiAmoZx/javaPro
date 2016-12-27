@@ -67,7 +67,7 @@ class myButton5 implements ActionListener{
 class myButton3 implements ActionListener{
 	public void actionPerformed(ActionEvent e){
 		
-		Medicine m=new Medicine();
+		Medicine1 m=new Medicine1();
 		m.setVisible(true);
 		dispose();
 	}
