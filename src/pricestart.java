@@ -5,7 +5,7 @@ import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.sql.*;
 
-public class Start extends JFrame {
+public class pricestart extends JFrame {
 
     private JPanel contentPane;
     private JTextField textFieldId;
@@ -19,7 +19,7 @@ public class Start extends JFrame {
     	return id;
     }
 
-    public Start() {
+    public pricestart() {
 
         // 初始化布局
         initLayout();
@@ -56,7 +56,7 @@ public class Start extends JFrame {
         EventQueue.invokeLater(new Runnable() {
             public void run() {
                 try {
-                    Start frame = new Start();
+                    pricestart frame = new pricestart();
                     frame.setVisible(true);
                 } catch (Exception e) {
                     e.printStackTrace();
@@ -106,7 +106,7 @@ public class Start extends JFrame {
                     ResultSet resultSet = validateIdPwdStmt.executeQuery(
 
                             
-                            "SELECT password, name FROM doctor WHERE worknum = " + id
+                            "SELECT password, name FROM cashier WHERE worknum = " + id
 
                     );
 
@@ -131,11 +131,12 @@ public class Start extends JFrame {
                 if (isValid) {
                     // TODO: 登录成功的逻辑
 
-                	
+                	dispose();
+                	Jfa j=new Jfa();
+                	j.setVisible(true);
                 	  
 
-                	  Test frame = new Test(name);
-                	  frame.setVisible(true);
+                	  
 
 
                 } else {

@@ -126,9 +126,14 @@ public class WelcomeView extends JFrame {
 					ex3();break;
 				case "收费人员":
 					dispose();
-					Jfa j=new Jfa();break;
+					pricestart a=new pricestart();
+					a.setVisible(true);
+					break;
 				case "医生":
-					ex5();break;
+					dispose();
+					Start b=new Start();
+					b.setVisible(true);
+					break;
 				
 				}
 				
