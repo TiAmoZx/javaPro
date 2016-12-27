@@ -14,13 +14,13 @@ public class Start extends JFrame {
     private JLabel labelId;
     private JLabel labelPassword;
     private Statement validateIdPwdStmt;
-    private Connection con = null;
 
     public String getId(){
     	return id;
     }
 
     public Start() {
+<<<<<<< HEAD
         // 初始化布局
         initLayout();
         // 初始化数据库连接
@@ -37,6 +37,16 @@ public class Start extends JFrame {
             System.out.println("数据库初始化失败！");
             e.printStackTrace();
         }
+=======
+	        // 初始化布局
+	        initLayout();
+            try {
+				validateIdPwdStmt = DatabaseHelper.con.createStatement();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+>>>>>>> pr/38
     }
 
     public static void main(String[] args) {
@@ -84,17 +94,31 @@ public class Start extends JFrame {
             public void actionPerformed(ActionEvent e) {
                 //验证工号和密码
                  id = textFieldId.getText();
+<<<<<<< HEAD
+=======
+                 String name = "";
+>>>>>>> pr/38
                String pwd = textFieldPwd.getText();
                 boolean isValid = false;
                 try {
                     ResultSet resultSet = validateIdPwdStmt.executeQuery(
+<<<<<<< HEAD
                             "SELECT password FROM cashier WHERE worknum = " + id
+=======
+                            "SELECT password, name FROM doctor WHERE worknum = " + id
+>>>>>>> pr/38
                     );
 
                     // 用户存在
                     if (resultSet.next()) {
                         String pwde = resultSet.getString("password");
+<<<<<<< HEAD
                         isValid = pwd.equals(pwd);
+=======
+                        pwde = pwde.trim();
+                        name = resultSet.getString(2);
+                        isValid = pwd.equals(pwde);
+>>>>>>> pr/38
                     }
 
                 } catch (SQLException e1) {
@@ -105,9 +129,14 @@ public class Start extends JFrame {
 
                 if (isValid) {
                     // TODO: 登录成功的逻辑
+<<<<<<< HEAD
                 	 Jfa j=new Jfa();
                 	 j.setVisible(true);
                 	  
+=======
+                	  Test frame = new Test(name);
+                	  frame.setVisible(true);
+>>>>>>> pr/38
 
                 } else {
                     JOptionPane.showMessageDialog(null, "密码输入错误！请重新输入", "友情提示", JOptionPane.INFORMATION_MESSAGE);
