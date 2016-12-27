@@ -26,6 +26,7 @@ import java.awt.Font;
 import java.awt.SystemColor;
 import java.awt.Color;
 import javax.swing.JMenuBar;
+import javax.swing.JOptionPane;
 import javax.swing.ImageIcon;
 import javax.swing.JTable;
 
@@ -40,6 +41,222 @@ public class Order extends JFrame {
 	         sqlHelper.executeUpdate(SQL); 
 	       
 	    }  
+	  private static void testInsert1(){
+		  String name=textField.getText().toString();
+		 if("1"=="select 状态 from list where 病人编号='"+name+"'"){
+			  System.out.println("aaaaaaaaaaaaaaaaaaaaaaa");
+			  JOptionPane.showMessageDialog(null, "密码输入错误！请重新输入", "友情提示", JOptionPane.INFORMATION_MESSAGE);}
+			  else{
+		  
+		  try{
+		    
+		    
+	         String SQL = " UPDATE list SET 状态 = '1' WHERE 病人编号 = '"+name+"'";  
+	         sqlHelper.executeUpdate(SQL); 
+	        /* String a0="select 药品1 from list where 病人编号='"+name+"'".toString();
+	         String a1="select 药品2 from list where 病人编号='"+name+"'".trim();
+	         String a2="select 药品3 from list where 病人编号='"+name+"'".trim();
+	         String a3="select 药品4 from list where 病人编号='"+name+"'".trim();
+	         String a4="select 药品5 from list where 病人编号='"+name+"'".trim();
+	         String a5="select 药品6 from list where 病人编号='"+name+"'".trim();
+	         String a6="select 药品7 from list where 病人编号='"+name+"'".trim();
+	         String a7="select 药品8 from list where 病人编号='"+name+"'".trim();
+	         String p0="select 价格 from drug where 药品名='"+a0+"'".trim();
+	         String p1="select 价格 from drug where 药品名='"+a1+"'".trim();
+	         String p2="select 价格 from drug where 药品名='"+a2+"'".trim();
+	         String p3="select 价格 from drug where 药品名='"+a3+"'".trim();
+	         String p4="select 价格 from drug where 药品名='"+a4+"'".trim();
+	         String p5="select 价格 from drug where 药品名='"+a5+"'".trim();
+	         String p6="select 价格 from drug where 药品名='"+a6+"'".trim();
+	         String p7="select 价格 from drug where 药品名='"+a7+"'".trim();*/
+	         Connection con=null;
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				//System.out.println("Connect succeed!");
+				Statement st=null;
+				st=con.createStatement();
+				String sqlselect="select * from list where 病人编号='"+name+"'";
+				ResultSet rs=null;
+				rs=st.executeQuery(sqlselect);
+			
+				
+		     
+		        while(rs.next()){
+		        	
+		        	String a0=rs.getString("药品1");
+		        	String a1=rs.getString("药品2");
+		        	String a2=rs.getString("药品3");
+		        	String a3=rs.getString("药品4");
+		        	String a4=rs.getString("药品5");
+		        	String a5=rs.getString("药品6");
+		        	String a6=rs.getString("药品7");
+		        	String a7=rs.getString("药品8");
+		        	Statement st1=null;
+					st1=con.createStatement();
+					String sqlselect99="UPDATE list SET 金额=0";
+					sqlHelper.executeUpdate(sqlselect99);
+		        	String sqlselect1="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品1";
+		        	String sqlselect2="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品2";
+		        	String sqlselect3="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品3";
+		        	String sqlselect4="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品4";
+		        	String sqlselect5="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品5";
+		        	String sqlselect6="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品6";
+		        	String sqlselect7="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品7";
+		        	String sqlselect8="UPDATE list SET 金额 = 金额+drug.价格 from drug,list WHERE  drug.药品名=list.药品8";
+					
+					sqlHelper.executeUpdate(sqlselect1);
+					sqlHelper.executeUpdate(sqlselect2);
+					sqlHelper.executeUpdate(sqlselect3);
+					sqlHelper.executeUpdate(sqlselect4);
+					sqlHelper.executeUpdate(sqlselect5);
+					sqlHelper.executeUpdate(sqlselect6);
+					sqlHelper.executeUpdate(sqlselect7);
+					sqlHelper.executeUpdate(sqlselect8);
+			        /*while(rs1.next()){
+			        	
+			        	String p0=rs.getString("药品1");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 =金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1); 
+			        }
+			        Statement st2=null;
+					st2=con.createStatement();
+			        String sqlselect2="select * from drug where 药品名='"+a1+"'";
+					ResultSet rs2=null;
+					rs2=st2.executeQuery(sqlselect2);
+				    while(rs2.next()){
+				    	String p0=rs.getString("药品2");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1); 
+			        	
+				    }
+				    Statement st3=null;
+					st3=con.createStatement();
+				    String sqlselect3="select * from drug where 药品名='"+a2+"'";
+					ResultSet rs3=null;
+					rs3=st3.executeQuery(sqlselect3);
+				    while(rs3.next()){
+				    	String p0=rs.getString("药品3");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }
+				    Statement st4=null;
+					st4=con.createStatement();
+				    String sqlselect4="select * from drug where 药品名='"+a3+"'";
+					ResultSet rs4=null;
+					rs4=st4.executeQuery(sqlselect4);
+				    while(rs4.next()){
+				    	String p0=rs.getString("药品4");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }
+				    Statement st5=null;
+					st5=con.createStatement();
+				    String sqlselect5="select * from drug where 药品名='"+a4+"'";
+					ResultSet rs5=null;
+					rs5=st5.executeQuery(sqlselect5);
+				    while(rs5.next()){
+				    	String p0=rs.getString("药品2");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }
+				    Statement st6=null;
+					st6=con.createStatement();
+				    String sqlselect6="select * from drug where 药品名='"+a5+"'";
+					ResultSet rs6=null;
+					rs6=st6.executeQuery(sqlselect6);
+				    while(rs6.next()){
+				    	String p0=rs.getString("药品2");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }
+				    Statement st7=null;
+					st7=con.createStatement();
+				    String sqlselect7="select * from drug where 药品名='"+a6+"'";
+					ResultSet rs7=null;
+					rs7=st7.executeQuery(sqlselect7);
+				    while(rs7.next()){
+				    	String p0=rs.getString("药品2");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 = 金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }
+				    Statement st8=null;
+					st8=con.createStatement();
+				    String sqlselect8="select * from drug where 药品名='"+a7+"'";
+					ResultSet rs8=null;
+					rs8=st8.executeQuery(sqlselect8);
+				    while(rs8.next()){
+				    	String p0=rs.getString("药品2");
+			        	int price0=Integer.parseInt(p0);
+			        	String SQL1 = " UPDATE list SET 金额 =金额+'+price0+' WHERE 病人编号 = '"+name+"'"; 
+				         sqlHelper.executeUpdate(SQL1);
+				    }*/
+				    
+			         
+				    
+				        	
+				        
+				        
+		        }
+		  
+	        
+	         
+	         
+	         Connection cona=null;
+				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
+				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				//System.out.println("Connect succeed!");
+				Statement sta=null;
+				st=con.createStatement();
+				String sqlselecta="select * from list where 病人编号='"+name+"'";
+				ResultSet rsa=null;
+				rs=st.executeQuery(sqlselect);
+			
+				
+		     
+		        while(rs.next()){
+		        	
+		        	String b0=rs.getString("药品1");
+		        	String b1=rs.getString("药品2");
+		        	String b2=rs.getString("药品3");
+		        	String b3=rs.getString("药品4");
+		        	String b4=rs.getString("药品5");
+		        	String b5=rs.getString("药品6");
+		        	String b6=rs.getString("药品7");
+		        	String b7=rs.getString("药品8");
+		        	String sqlselect12="update drug set 库存= 库存-1  WHERe 药品名 = '"+b0+"'";
+		        	String sqlselect22="update drug set 库存= 库存-1  WHERe 药品名 = '"+b1+"'";
+		        	String sqlselect32="update drug set 库存= 库存-1  WHERe 药品名 = '"+b2+"'";
+		        	String sqlselect42="update drug set 库存= 库存-1  WHERe 药品名 = '"+b3+"'";
+		        	String sqlselect52="update drug set 库存= 库存-1  WHERe 药品名 = '"+b4+"'";
+		        	String sqlselect62="update drug set 库存= 库存-1  WHERe 药品名 = '"+b5+"'";
+		        	String sqlselect72="update drug set 库存= 库存-1  WHERe 药品名 = '"+b6+"'";
+		        	String sqlselect82="update drug set 库存= 库存-1  WHERe 药品名 = '"+b7+"'";
+		        	sqlHelper.executeUpdate(sqlselect12);
+		        	sqlHelper.executeUpdate(sqlselect22);
+		        	sqlHelper.executeUpdate(sqlselect32);
+		        	sqlHelper.executeUpdate(sqlselect42);
+		        	sqlHelper.executeUpdate(sqlselect52);
+		        	sqlHelper.executeUpdate(sqlselect62);
+		        	sqlHelper.executeUpdate(sqlselect72);
+		        	sqlHelper.executeUpdate(sqlselect82);
+		        }
+		        
+	         
+		  }catch(Exception e){
+				System.out.println(e);
+			}
+			  }
+	       
+	         
+	    }  
+	  
 
 	
 
@@ -125,6 +342,14 @@ public class Order extends JFrame {
 		
 		JButton button_2 = new JButton("\u53D6\u836F");
 		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
+		button_2.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				testInsert1();
+				dispose();
+				 Order a=new Order();
+				 a.setVisible(true);
+			}
+		});
 		button_2.setBounds(249, 779, 89, 29);
 		contentPane.add(button_2);
 		
@@ -133,6 +358,9 @@ public class Order extends JFrame {
 		button_3.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent e) {
 				testInsert();
+				dispose();
+				 Order a=new Order();
+				 a.setVisible(true);
 			}
 		});
 		button_3.setBounds(359, 779, 103, 29);
@@ -150,7 +378,7 @@ public class Order extends JFrame {
 		try{
 			Connection con=null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hosptial","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
 			//System.out.println("Connect succeed!");
 			Statement st=null;
 			st=con.createStatement();
@@ -160,7 +388,7 @@ public class Order extends JFrame {
 		
 			
 	        DefaultTableModel model=new DefaultTableModel();
-	        model.setColumnIdentifiers(new Object[]{"序号","1","2","3","4","5","6","7","8"});
+	        model.setColumnIdentifiers(new Object[]{"序号","1","2","3","4","5","6","7","8","状态","金额"});
 	        while(rs.next()){
 	        	String num=rs.getString("病人编号");
 	        	String n1=rs.getString("药品1");
@@ -171,7 +399,9 @@ public class Order extends JFrame {
 	        	String n6=rs.getString("药品6");
 	        	String n7=rs.getString("药品7");
 	        	String n8=rs.getString("药品8");
-	        	model.addRow(new Object[]{num,n1,n2,n3,n4,n5,n6,n7,n8});
+	        	String n9=rs.getString("状态");
+	        	String n10=rs.getString("金额");
+	        	model.addRow(new Object[]{num,n1,n2,n3,n4,n5,n6,n7,n8,n9,n10});
 	        }
 	        
 	        
