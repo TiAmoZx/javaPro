@@ -1,4 +1,4 @@
-package yao;
+
 
 import java.awt.BorderLayout;
 import java.sql.Connection;
@@ -163,4 +163,4 @@ public class Medicine extends JFrame {
 			System.out.println(e);
 		}
 	}
-}
+} 

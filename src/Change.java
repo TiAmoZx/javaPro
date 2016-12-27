@@ -1,4 +1,4 @@
-package yao;
+
 
 import java.awt.BorderLayout;
 import java.awt.EventQueue;
@@ -32,7 +32,7 @@ public class Change extends JFrame {
 		try{
 			Connection con=null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://10.20.177.139:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://176.16.0.77:1433;DatabaseName=hospital","sa","sa");
 			//System.out.println("Connect succeed!");
 			Statement st=null;
 			st=con.createStatement();

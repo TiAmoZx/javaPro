@@ -1,37 +1,23 @@
-package yao;
-
 import java.awt.BorderLayout;
-import java.sql.Connection;
-import java.sql.DriverManager;
-import java.sql.PreparedStatement;
-import java.sql.ResultSet;
-import java.sql.SQLException;
-import java.sql.Statement;
-import java.sql.*;
 import java.awt.EventQueue;
 
 import javax.swing.JFrame;
 import javax.swing.JPanel;
-<<<<<<< HEAD:src/Order1.java
 import javax.swing.JTable;
 import javax.swing.border.EmptyBorder;
 import javax.swing.table.DefaultTableModel;
 
-import com.mysql.jdbc.Statement;
+
 
 import java.awt.FlowLayout;
-=======
-import javax.swing.JTextArea;
-import javax.swing.border.EmptyBorder;
-import javax.swing.table.DefaultTableModel;
->>>>>>> one:src/Order.java
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.JButton;
-import javax.swing.JComboBox;
-
+import javax.swing.JTextArea;
 import java.awt.event.ActionListener;
-<<<<<<< HEAD:src/Order1.java
+import java.awt.event.KeyAdapter;
+import java.awt.event.KeyEvent;
 import java.io.DataOutputStream;
 import java.io.File;
 import java.io.FileInputStream;
@@ -43,13 +29,10 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.util.Random;
-=======
->>>>>>> one:src/Order.java
 import java.awt.event.ActionEvent;
 import java.awt.Font;
-import java.awt.SystemColor;
+import javax.swing.ImageIcon;
 import java.awt.Color;
-<<<<<<< HEAD:src/Order1.java
 import java.lang.Thread;
 
 
@@ -72,48 +55,12 @@ public class Order1 extends JFrame {
 	private JTextField innumber;
 
 	Thread thread=new Thread();
-=======
-import javax.swing.JMenuBar;
-import javax.swing.ImageIcon;
-import javax.swing.JTable;
-
-public class Order extends JFrame {
-	private JPanel contentPane;
-	private JTable table;
-	
-	
-   String num[];
-   int i=0;
-   public void dingdan(){
-	try{
-		Connection con = null;
-		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
-		/*if(con !=null)
-			System.out.println("Connect succeed!");*/
-		Statement st=null;
-		st=con.createStatement();
-		String sqlselect = "select 编号  from Drug" ;
-		ResultSet rs = null;
-		rs = st.executeQuery(sqlselect);
-		while(rs.next()){
-        	 num[i]=rs.getString("编号");
-        	 i++;
-		}
-	}catch(Exception e){
-		System.out.println(e);
-	}
-   }
-	
-
-
-	
-
->>>>>>> one:src/Order.java
+	Thread thread1=new Thread();
 	/**
 	 * Launch the application.
 	 */
 	public static void main(String[] args) {
+		
 		EventQueue.invokeLater(new Runnable() {
 			public void run() {
 				try {
@@ -126,38 +73,21 @@ public class Order extends JFrame {
 		});
 	
 	}
-<<<<<<< HEAD:src/Order1.java
-=======
-	/*public void Connectsql(){
-		//try{
-			//Connection con = null;
-			//Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			//con= DriverManager.getConnection("jdbc:sqlserver://10.20.181.203:1433;DatabaseName=hospital","sa","sa");
-			if(con !=null)
-				System.out.println("Connect succeed!");
-			Statement st=null;
-			st=con.createStatement();
-			
-			String sqlselect = "select * from "+ stype ;
-			ResultSet rs = null;
-			rs = st.executeQuery(sqlselect);
-			
-			再次，添加数据
-	}*/
->>>>>>> one:src/Order.java
 	/**
 	 * Create the frame.
 	 */
+
+			
+		
 	public Order1() {
 		
 		
 		setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		setBounds(100, 100, 900, 900);
+		setBounds(200, 150, 462, 310);
 		contentPane = new JPanel();
 		contentPane.setBorder(new EmptyBorder(5, 5, 5, 5));
 		setContentPane(contentPane);
 		contentPane.setLayout(null);
-<<<<<<< HEAD:src/Order1.java
 
 		JLabel label = new JLabel("\u6027\u522B");
 		label.setFont(new Font("微软雅黑", Font.PLAIN, 12));
@@ -171,7 +101,7 @@ public class Order extends JFrame {
 		
 		JLabel label_2 = new JLabel("\u5E74\u9F84");
 		label_2.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		label_2.setBounds(288, 71, 54, 15);
+		label_2.setBounds(252, 71, 54, 15);
 		contentPane.add(label_2);
 		
 		JLabel label_3 = new JLabel("\u8054\u7CFB\u65B9\u5F0F");
@@ -186,13 +116,32 @@ public class Order extends JFrame {
 		
 		JLabel label_5 = new JLabel("\u9884\u7EA6\u65F6\u95F4");
 		label_5.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		label_5.setBounds(24, 190, 54, 15);
+		label_5.setBounds(252, 113, 54, 15);
 		contentPane.add(label_5);
 		
 		JLabel label_7 = new JLabel("预约号");
 		label_7.setFont(new Font("微软雅黑", Font.PLAIN, 12));
-		label_7.setBounds(277, 46, 54, 15);
+		label_7.setBounds(252, 46, 54, 15);
 		contentPane.add(label_7);
+		
+		JButton btnNewButton = new JButton("检测");
+		btnNewButton.addActionListener(new ActionListener() {
+			public void actionPerformed(ActionEvent e) {
+				thread1.start();
+			}
+		});
+		
+		JLabel lblNewLabel_3 = new JLabel("");
+		lblNewLabel_3.setForeground(Color.RED);
+		lblNewLabel_3.setBounds(311, 90, 129, 16);
+		contentPane.add(lblNewLabel_3);
+		btnNewButton.setBounds(110, 201, 106, 24);
+		contentPane.add(btnNewButton);
+		
+		JLabel lblNewLabel_1 = new JLabel("");
+		lblNewLabel_1.setForeground(Color.RED);
+		lblNewLabel_1.setBounds(74, 90, 61, 11);
+		contentPane.add(lblNewLabel_1);
 		
 		name = new JTextField();
 		name.setBounds(74, 40, 106, 21);
@@ -200,86 +149,85 @@ public class Order extends JFrame {
 		name.setColumns(10);
 		
 		sex = new JTextField();
+		
 		sex.setBounds(74, 68, 106, 21);
 		contentPane.add(sex);
 		sex.setColumns(10);
-=======
->>>>>>> one:src/Order.java
 		
-
-		dingdan();
+		age = new JTextField();
+		age.setBounds(311, 67, 100, 21);
+		contentPane.add(age);
+		age.setColumns(10);
+		age.addKeyListener(new KeyAdapter(){  
+            public void keyTyped(KeyEvent e) {  
+                int keyChar = e.getKeyChar();                 
+                if(keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9){  
+                      
+                }else{  
+                    e.consume(); //关键，屏蔽掉非法输入  
+                }  
+            }  
+        });  
+		phonenumber = new JTextField();
+		phonenumber.setBounds(74, 109, 106, 24);
+		contentPane.add(phonenumber);
+		phonenumber.setColumns(10);
+		//限制只能输入数字
+		phonenumber.addKeyListener(new KeyAdapter(){  
+		            public void keyTyped(KeyEvent e) {  
+		                int keyChar = e.getKeyChar();                 
+		                if(keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9){  
+		                      
+		                }else{  
+		                    e.consume(); //关键，屏蔽掉非法输入  
+		                }  
+		            }  
+		        });  
+		orderroom = new JTextField();
+		orderroom.setBounds(74, 150, 106, 21);
+		contentPane.add(orderroom);
+		orderroom.setColumns(10);
 		
-		contentPane.setLayout(null);
-		JComboBox comboBox = new JComboBox(num);
-		comboBox.setBounds(160, 162, 168, 29);
-		contentPane.add(comboBox);
+		ordertime = new JTextField();
+		ordertime.setBounds(321, 109, 106, 21);
+		contentPane.add(ordertime);
+		ordertime.setColumns(10);
 		
-<<<<<<< HEAD:src/Order1.java
 			
 		innumber = new JTextField();
-		innumber.setBounds(321, 43, 100, 21);
+		innumber.setBounds(311, 42, 100, 21);
 		contentPane.add(innumber);
 		innumber.setColumns(10);
-=======
-
-		JButton button_4 = new JButton("确定");
-		button_4.setFont(new Font("宋体", Font.PLAIN, 17));
-		button_4.addActionListener(new ActionListener() {
-
-			@Override
-			public void actionPerformed(ActionEvent arg0) {
-				// TODO Auto-generated method stub
-				
-			}
-			
-			
-			
-			
-		});
-		button_4.setBounds(239, 260, 89, 23);
-		contentPane.add(button_4);
+		innumber.addKeyListener(new KeyAdapter(){  
+            public void keyTyped(KeyEvent e) {  
+                int keyChar = e.getKeyChar();                 
+                if(keyChar >= KeyEvent.VK_0 && keyChar <= KeyEvent.VK_9){  
+                      
+                }else{  
+                    e.consume(); //关键，屏蔽掉非法输入  
+                }  
+            }  
+        });  
 		
-		JLabel lblNewLabel = new JLabel("\u9009\u62E9\u836F\u65B9\uFF1A");
-		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 14));
-		lblNewLabel.setBounds(54, 162, 108, 29);
-		contentPane.add(lblNewLabel);
+		JLabel label_6 = new JLabel("\u533B\u9662\u9884\u7EA6\u754C\u9762");
+		label_6.setForeground(new Color(204, 0, 102));
+		label_6.setFont(new Font("微软雅黑", Font.PLAIN, 12));
+		label_6.setBounds(214, 10, 106, 15);
+		contentPane.add(label_6);
 		
-		JLabel label_1 = new JLabel("");
-		label_1.setBackground(SystemColor.info);
-		label_1.setBounds(73, 188, 108, 29);
-		contentPane.add(label_1);
-		
-		JButton button = new JButton("\u9000\u51FA");
-		button.addActionListener(new ActionListener() {
-			public void actionPerformed(ActionEvent e) {
-				System.exit(0);
-			}
-		});
-		button.setFont(new Font("宋体", Font.PLAIN, 14));
-		button.setBounds(706, 779, 89, 29);
-		contentPane.add(button);
->>>>>>> one:src/Order.java
-		
-		JButton button_1 = new JButton("\u8FD4\u56DE");
+		JButton button_1 = new JButton("\u5173\u95ED");
+		button_1.setForeground(new Color(102, 0, 102));
+		button_1.setFont(new Font("微软雅黑", Font.PLAIN, 12));
 		button_1.addActionListener(new ActionListener() {
-<<<<<<< HEAD:src/Order1.java
 			public void actionPerformed(ActionEvent arg0) {
 				dispose();
-				Log lo=new Log();
+				Jfa lo=new Jfa();
 				lo.setVisible(true);
-=======
-			public void actionPerformed(ActionEvent e) {
-				dispose();
-				 Medicine a=new Medicine();
-				 a.setVisible(true);
->>>>>>> one:src/Order.java
 			}
 		});
-		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_1.setBounds(596, 779, 89, 29);
+		button_1.setBounds(6, 7, 93, 23);
 		contentPane.add(button_1);
 		
-<<<<<<< HEAD:src/Order1.java
 		
 	
 		
@@ -299,13 +247,25 @@ public class Order extends JFrame {
 				
 			}
 		});
-		button_2.setBounds(202, 232, 93, 23);
+		button_2.setBounds(252, 201, 93, 24);
 		contentPane.add(button_2);
+		thread1=new Thread(new Runnable(){
+			public void run(){
+				
+				if("男".equals(sex.getText())||"女".equals(sex.getText())) {lblNewLabel_1.setText("合法");}else
+				{lblNewLabel_1.setText("不合法");}
+
+				if("".equals(age.getText())) { lblNewLabel_3.setForeground(Color.black);lblNewLabel_3.setText("年龄不合法");}else
+				{lblNewLabel_3.setText("年龄合法");}
+			}
+			
 		
+		});
 		
 	
 		thread=new Thread(new Runnable(){
 			public void run(){
+				 
 				  try{
 					String t;
 					String b;
@@ -315,18 +275,29 @@ public class Order extends JFrame {
 					String m;
 					String n;
 					t=name.getText();
-					b=innumber.getText();
-					d=sex.getText();
+					t.matches("^[\u4e00-\u9fa5]+$");
+					b=innumber.getText();b.matches("^[\u4e00-\u9fa5]+$");
+					d=sex.getText();d.matches("^[\u4e00-\u9fa5]+$");
 					p=age.getText();
+					p.matches("\\d");
 					l=phonenumber.getText();
+					l.matches("\\d");
 					m=orderroom.getText();
+					m.matches("^[\u4e00-\u9fa5]+$");
 					n=ordertime.getText();
+					n.matches("\\d");
 					System.out.println("11"+t);
 					String SQL = " insert into Yuyue values('"+t+"','"+b+"','"+d+"','"+p+"','"+l+"','"+m+"','"+n+"') "; 
-			
+					
+
 			         if(SqlHelper.executeUpdate(SQL))  
 			         {  
-			             System.out.println("插入成功 ");  
+			             System.out.println("插入成功 "); 
+			             SqlHelper s=new SqlHelper();
+			           
+			             JOptionPane.showMessageDialog(contentPane, "预约成功", "标题",JOptionPane.WARNING_MESSAGE); 
+			             s.close();
+			             
 			         }else  
 			         {  
 			             System.out.println("插入失败 ");  
@@ -345,42 +316,23 @@ public class Order extends JFrame {
 				}
 			
 		});
-		button_3.setBounds(50, 232, 93, 23);
+		button_3.setBounds(104, 231, 278, 23);
 		contentPane.add(button_3);
 		
 		
 		
 		JLabel label_8 = new JLabel("");
-		label_8.setIcon(new ImageIcon("C:\\Users\\lenovo\\Desktop\\新建文件夹\\QQ图片20161214215736.jpg"));
-		label_8.setBounds(10, 10, 436, 261);
+		label_8.setIcon(new ImageIcon("/Users/yuelei/Desktop/3.jpg"));
+		label_8.setBounds(6, 6, 440, 276);
 		contentPane.add(label_8);
+		
+		JLabel lblNewLabel = new JLabel("New label");
+		lblNewLabel.setBounds(192, 70, 61, 16);
+		contentPane.add(lblNewLabel);
+		
+		JLabel lblNewLabel_2 = new JLabel("New label");
+		lblNewLabel_2.setBounds(311, 90, 61, 16);
+		contentPane.add(lblNewLabel_2);
 		}
 		}
 
-=======
-		JButton button_2 = new JButton("\u53D6\u836F");
-		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_2.setBounds(134, 433, 89, 29);
-		contentPane.add(button_2);
-		
-		JButton button_3 = new JButton("\u5220\u9664\u6B64\u836F\u65B9");
-		button_3.setFont(new Font("宋体", Font.PLAIN, 11));
-		button_3.setBounds(134, 526, 89, 29);
-		contentPane.add(button_3);
-		
-		JLabel label_2 = new JLabel("\u836F\u623F\u7BA1\u7406\u7CFB\u7EDF");
-		label_2.setBackground(Color.WHITE);
-		label_2.setBounds(367, 53, 149, 29);
-		contentPane.add(label_2);
-		
-		JMenuBar menuBar = new JMenuBar();
-		menuBar.setBounds(0, 0, 874, 40);
-		contentPane.add(menuBar);
-		
-		table = new JTable();
-		table.setBounds(417, 188, 436, 581);
-		table.setAutoResizeMode(JTable.AUTO_RESIZE_SUBSEQUENT_COLUMNS);
-		contentPane.add(table);
-	}
-}
->>>>>>> one:src/Order.java
