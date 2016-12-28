@@ -71,7 +71,7 @@ public class Order extends JFrame {
 	         String p7="select 价格 from drug where 药品名='"+a7+"'".trim();*/
 	         Connection con=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement st=null;
 				st=con.createStatement();
@@ -210,7 +210,7 @@ public class Order extends JFrame {
 	         
 	         Connection cona=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement sta=null;
 				st=con.createStatement();
@@ -310,7 +310,7 @@ public class Order extends JFrame {
 		
 		JLabel lblNewLabel = new JLabel("填写病人预约号：");
 		lblNewLabel.setFont(new Font("宋体", Font.PLAIN, 14));
-		lblNewLabel.setBounds(21, 744, 115, 29);
+		lblNewLabel.setBounds(21, 683, 115, 29);
 		contentPane.add(lblNewLabel);
 		
 		JLabel label_1 = new JLabel("");
@@ -325,7 +325,7 @@ public class Order extends JFrame {
 			}
 		});
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
-		button.setBounds(706, 779, 89, 29);
+		button.setBounds(693, 723, 89, 29);
 		contentPane.add(button);
 		
 		JButton button_1 = new JButton("\u8FD4\u56DE");
@@ -337,7 +337,7 @@ public class Order extends JFrame {
 			}
 		});
 		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_1.setBounds(596, 779, 89, 29);
+		button_1.setBounds(592, 723, 89, 29);
 		contentPane.add(button_1);
 		
 		JButton button_2 = new JButton("\u53D6\u836F");
@@ -350,7 +350,7 @@ public class Order extends JFrame {
 				 a.setVisible(true);
 			}
 		});
-		button_2.setBounds(249, 779, 89, 29);
+		button_2.setBounds(234, 723, 89, 29);
 		contentPane.add(button_2);
 		
 		JButton button_3 = new JButton("\u5220\u9664\u6B64\u836F\u65B9");
@@ -363,7 +363,7 @@ public class Order extends JFrame {
 				 a.setVisible(true);
 			}
 		});
-		button_3.setBounds(359, 779, 103, 29);
+		button_3.setBounds(350, 725, 103, 29);
 		contentPane.add(button_3);
 		
 		JLabel label_2 = new JLabel("\u836F\u623F\u7BA1\u7406\u7CFB\u7EDF");
@@ -378,7 +378,7 @@ public class Order extends JFrame {
 		try{
 			Connection con=null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 			//System.out.println("Connect succeed!");
 			Statement st=null;
 			st=con.createStatement();
@@ -406,7 +406,7 @@ public class Order extends JFrame {
 	        
 	        
 	JTable table = new JTable(model);
-	table.setBounds(21, 125, 832, 608);
+	table.setBounds(21, 125, 832, 546);
 	table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 	contentPane.add(table);
 		}catch(Exception e){
@@ -414,7 +414,7 @@ public class Order extends JFrame {
 		}
 		
 		textField = new JTextField();
-		textField.setBounds(10, 781, 126, 26);
+		textField.setBounds(0, 724, 126, 26);
 		contentPane.add(textField);
 		textField.setColumns(10);
 	}

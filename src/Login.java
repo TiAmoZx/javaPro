@@ -32,7 +32,7 @@ public class Login extends JFrame {
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial", "sa", "sa");
+            con = DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial", "sa", "sa");
             validateIdPwdStmt = con.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("数据库初始化失败！");

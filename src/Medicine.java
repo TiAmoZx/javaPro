@@ -88,7 +88,7 @@ public class Medicine extends JFrame {
 			}
 		});
 		button_1.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_1.setBounds(764, 779, 89, 29);
+		button_1.setBounds(759, 714, 89, 29);
 		contentPane.add(button_1);
 		
 		
@@ -107,7 +107,7 @@ public class Medicine extends JFrame {
 			}
 		});
 		button_2.setFont(new Font("宋体", Font.PLAIN, 14));
-		button_2.setBounds(630, 779, 116, 29);
+		button_2.setBounds(631, 714, 116, 29);
 		contentPane.add(button_2);
 		
 		JMenuBar menuBar = new JMenuBar();
@@ -124,7 +124,7 @@ public class Medicine extends JFrame {
 			}
 		});
 		button.setFont(new Font("宋体", Font.PLAIN, 14));
-		button.setBounds(494, 779, 116, 29);
+		button.setBounds(503, 708, 116, 40);
 		contentPane.add(button);
 		/*button.addActionListener(new ActionListener() {
 			public void actionPerformed(ActionEvent arg0) {
@@ -135,7 +135,7 @@ public class Medicine extends JFrame {
 		try{
 				Connection con=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+				con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement st=null;
 				st=con.createStatement();
@@ -156,7 +156,7 @@ public class Medicine extends JFrame {
 		        
 		        
 		JTable table = new JTable(model);
-		table.setBounds(21, 125, 832, 633);
+		table.setBounds(21, 125, 832, 558);
 		table.setAutoResizeMode(JTable.AUTO_RESIZE_ALL_COLUMNS);
 		contentPane.add(table);
 		
@@ -169,7 +169,7 @@ public class Medicine extends JFrame {
 				 a.setVisible(true);
 			}
 		});
-		button_3.setBounds(357, 779, 116, 29);
+		button_3.setBounds(361, 714, 116, 29);
 		contentPane.add(button_3);
 		}catch(Exception e){
 			System.out.println(e);

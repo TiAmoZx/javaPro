@@ -81,7 +81,7 @@ public class Usermanage extends JFrame {
 		try{
 			Connection con = null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hospital","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 			/*if(con !=null)
 				System.out.println("Connect succeed!");*/
 			Statement st=null;
@@ -117,7 +117,7 @@ public class Usermanage extends JFrame {
 								String psword=rs.getString("password");
 								model.addRow(new Object[]{wn,name,psword});
 							}else if(stype == "sicker"){
-								String on = rs.getString("ordernum");
+								String on = rs.getString("innum");
 								String name = rs.getString("name");
 								String sex = rs.getString("sex");
 								String age = rs.getString("age");

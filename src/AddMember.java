@@ -46,7 +46,7 @@ public class AddMember extends JFrame {
 	String dept = textField_2.getText().toString();;
 		try{Connection con = null;
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		con= DriverManager.getConnection("jdbc:sqlserver://localhost:1433;DatabaseName=hospital","sa","sa");
+		con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 		/*if(con !=null)
 			System.out.println("Connect succeed!");*/
 		Statement st=null;

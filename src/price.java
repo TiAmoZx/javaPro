@@ -58,7 +58,7 @@ public class price extends JFrame {
 				try{
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://10.40.186.193:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;

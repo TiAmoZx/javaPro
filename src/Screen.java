@@ -45,7 +45,7 @@ public class Screen extends JFrame implements ActionListener{
 	
 	
 
-    String url = "jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial;";
+    String url = "jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial;";
     String sql = "select * from sicker";
 
 	String time=null;
@@ -103,7 +103,7 @@ public class Screen extends JFrame implements ActionListener{
 		             * 语句，该语句返回单个 ResultSet 对象
 		             */
 		            while (rs.next()) {
-		                int numb = rs.getInt("ordernum");
+		                int numb = rs.getInt("innum");
 		                String mmmm=rs.getString("dept");
 		                String iiii = rs.getString("name");
 		            	JTextField t3=new JTextField(""+numb);
