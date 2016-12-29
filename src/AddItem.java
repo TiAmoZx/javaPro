@@ -141,7 +141,7 @@ public class AddItem extends JFrame {
 			public void actionPerformed(ActionEvent e) {
 				ResultSet resultSet = null;
 				try {
-					resultSet = st.executeQuery("Insert into list values('1',"+item.name+")");
+					resultSet = st.executeQuery("Insert into list values(item.name,item.price)");
 				} catch (SQLException e2) {
 					// TODO Auto-generated catch block
 					e2.printStackTrace();

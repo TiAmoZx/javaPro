@@ -26,13 +26,13 @@ public class Login extends JFrame {
         initLayout();
         // 初始化数据库连接
         String driverName = "com.microsoft.sqlserver.jdbc.SQLServerDriver";
-        String dbURL = "jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial";
+        String dbURL = "jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial";
         String userName = "sa";
         String userPwd = "sa";
 
         try {
             Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-            con = DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial", "sa", "sa");
+            con = DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial", "sa", "sa");
             validateIdPwdStmt = con.createStatement();
         } catch (ClassNotFoundException | SQLException e) {
             System.out.println("数据库初始化失败！");

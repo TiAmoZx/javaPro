@@ -46,7 +46,7 @@ public class AddMember extends JFrame {
 	String dept = textField_2.getText().toString();;
 		try{Connection con = null;
 		Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-		con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+		con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 		/*if(con !=null)
 			System.out.println("Connect succeed!");*/
 		Statement st=null;
@@ -182,7 +182,7 @@ public class AddMember extends JFrame {
 		contentPane.add(label_4);
 		
 		JLabel label_6 = new JLabel("");
-		label_6.setIcon(new ImageIcon("/Users/yuelei/Desktop/avlogin.jpg"));
+		label_6.setIcon(new ImageIcon("/Users/yuelei/Desktop/av.jpg"));
 		label_6.setBounds(6, -50, 382, 520);
 		contentPane.add(label_6);
 		

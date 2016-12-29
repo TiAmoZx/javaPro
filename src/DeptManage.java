@@ -98,7 +98,7 @@ public class DeptManage extends JFrame {
 			e.printStackTrace();
 		}
 		try {
-			con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 		} catch (SQLException e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();

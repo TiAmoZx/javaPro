@@ -65,7 +65,7 @@ public class AddMedicine extends JFrame {
 		setBounds(500, 200, 479, 321);
 		getContentPane().setLayout(null);
 
-		JLabel label = new JLabel("输入拼音首字母");
+		JLabel label = new JLabel("输入药品名称");
 		label.setBounds(10, 10, 98, 15);
 		getContentPane().add(label);
 
@@ -119,7 +119,7 @@ public class AddMedicine extends JFrame {
 					medicine.amount = textField_drugamount.getText();
 					ResultSet resultSet = null;
 					try {
-						resultSet = st.executeQuery("Insert into list values('1',"+medicine.name+")");
+						resultSet = st.executeQuery("Insert into list values('1',medicine.name)");
 					} catch (SQLException e2) {
 						// TODO Auto-generated catch block
 						e2.printStackTrace();

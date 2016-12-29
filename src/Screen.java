@@ -19,33 +19,8 @@ public class Screen extends JFrame implements ActionListener{
     Statement stmt;
     ResultSet rs;
 
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
-	
 
-    String url = "jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial;";
+    String url = "jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial;";
     String sql = "select * from sicker";
 
 	String time=null;

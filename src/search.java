@@ -117,7 +117,7 @@ Thread thread2=new Thread();
 				try{
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://172.16.0.77:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
@@ -154,7 +154,7 @@ Thread thread2=new Thread();
 				try{
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;

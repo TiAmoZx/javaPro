@@ -71,7 +71,7 @@ public class Order extends JFrame {
 	         String p7="select 价格 from drug where 药品名='"+a7+"'".trim();*/
 	         Connection con=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+				con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement st=null;
 				st=con.createStatement();
@@ -210,7 +210,7 @@ public class Order extends JFrame {
 	         
 	         Connection cona=null;
 				Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-				con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+				con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 				//System.out.println("Connect succeed!");
 				Statement sta=null;
 				st=con.createStatement();
@@ -378,7 +378,7 @@ public class Order extends JFrame {
 		try{
 			Connection con=null;
 			Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-			con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+			con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 			//System.out.println("Connect succeed!");
 			Statement st=null;
 			st=con.createStatement();

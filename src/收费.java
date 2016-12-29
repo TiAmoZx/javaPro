@@ -237,7 +237,7 @@ private JTextField textField_1;
 				try{System.out.println(m);
 					Connection con = null;
 					Class.forName("com.microsoft.sqlserver.jdbc.SQLServerDriver");
-					con= DriverManager.getConnection("jdbc:sqlserver://192.168.0.9:1433;DatabaseName=hosptial","sa","sa");
+					con= DriverManager.getConnection("jdbc:sqlserver://10.20.168.23:1433;DatabaseName=hosptial","sa","sa");
 					/*if(con !=null)
 						System.out.println("Connect succeed!");*/
 					Statement st=null;
